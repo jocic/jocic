@@ -1,0 +1,15 @@
+Diamond Chat v1.0.0 Installation Guide
+
+1. Upload all the files on your server.
+
+2. CHMOD the 'classes/settings.php' to 777.
+
+Note: Some hosts doesn't allow CHMOD 777, in that case you can use CHMOD 755 if CHMOD 777 fails.
+
+4. Go to your website. Diamond Chat v1.0.0 installation script will redirect you to the installation folder.
+
+5. Complete the setup process..
+
+6. Immediately after completing the installation of CHMOD settings.php back to 644 AND delete the whole 'installation' folder from your server.
+
+7. Enjoy the free chat.

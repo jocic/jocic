@@ -1,0 +1,52 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+body
+{
+    font-family : Verdana, Arial, Helvetica, sans-serif;
+    font-size : 12px;
+    color: #ffffff;
+}
+p
+{
+    color: #ffffff;
+}
+table .date
+{
+    width: 95px;
+}
+table .username
+{
+    width: 580px;
+}
+.date
+{
+    font-weight: bold;
+    text-align: left;
+}
+.username0
+{
+    color: #1f9dec;
+    font-weight: bold;
+}
+.username1
+{
+    color: #1fec4b;
+    font-weight: bold;
+}
+.username2
+{
+    color: #d92323;
+    font-weight: bold;
+}
+.username3
+{
+    color: #23d9c1;
+    font-weight: bold;
+}
+.message
+{
+
+}

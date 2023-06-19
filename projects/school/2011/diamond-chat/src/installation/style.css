@@ -1,0 +1,122 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+body
+{
+    background: #2b2c2f;
+    font-family : Verdana, Arial, Helvetica, sans-serif;
+    font-size : 12px;
+    color: #ffffff;
+}
+a
+{
+    color: #ffffff;
+    text-decoration: none;
+}
+a:hover
+{
+    text-decoration: underline;
+}
+#header
+{
+    background: #1c1c1d url("../images/h.png");
+    height: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #a4a4a9;
+    padding: 5px 0 0 0;
+}
+#logo
+{
+    background: url("../images/logo.png") no-repeat center;
+    width: 700px;
+    height: 62px;
+    border-bottom: 5px solid #1f9dec;
+    margin: 0 auto 0 auto;
+    padding: 20px 0 5px 0;
+}
+.content
+{
+    width: 400px;
+    background: #0f6bc9;
+    border: 1px solid #a4a4a9;
+    margin: 20px auto 0 auto;
+    padding: 10px;
+}
+.content p
+{
+    height: 35px;
+}
+.content h3
+{
+    background: #1c1c1d url("../images/h.png");
+    height: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #a4a4a9;
+    margin: 0 0 10px 0;
+    padding: 5px 0 0 0;
+}
+.content .box
+{
+    background: #ffffff;
+    width: 220px;
+    float: right;
+    border: 1px solid #a4a4a9;
+    padding: 2px;
+}
+.content .button
+{
+    width: 100px;
+    float: right;
+    border: 1px solid #a4a4a9;
+    padding: 2px;
+}
+.content .passed
+{
+    color: #42ba07;
+    font-weight: bold;
+}
+.content .failed
+{
+    color: #ff0000;
+    font-weight: bold;
+}
+.left
+{
+    width: 180px;
+    float: left;
+}
+.right
+{
+    width: 220px;
+    float: left;
+}
+.error
+{
+    width: 400px;
+    background: #a61717;
+    border: 1px solid #a4a4a9;
+    margin: 20px auto 0 auto;
+    padding: 10px;
+}
+#footer
+{
+    background: #1c1c1d url("../images/h.png");
+    width: 600px;
+    height: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #a4a4a9;
+    margin: 20px auto 10px auto;
+    padding: 5px 0 0 0;
+}
+.clr
+{
+    clear: both;
+}
