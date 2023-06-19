@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<themeInfo version="1.0">
+    <name>Pages</name>
+    <description>This module lets visitors view and comment pages.</description>
+    <version>1.0.0</version>
+    <type>Content</type>
+    <author>Djordje Jocic</author>
+    <contact>office@frequency-cms.com</contact>
+    <website>http://www.frequency-cms.com/</website>
+</themeInfo>

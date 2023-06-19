@@ -1,0 +1,50 @@
+/* User Profile */
+
+/* Picture Assets */
+
+.picture-asset-preview
+{
+    width: 250px;
+    height: 150px;
+    text-indent: -20000px;
+}
+
+/* Social Buttons */
+
+#social-buttons
+{
+    width: 100%;
+}
+
+#facebook-like-button { width: 49px; }
+
+#facebook-share-button { width: 57px; }
+
+#twitter-button { width: 58px; }
+
+#google-button { width: 50px; }
+
+.social-button
+{
+    height: 62px;
+    text-align: center;
+    line-height: 62px;
+    padding: 5px 0 5px 10px;
+    float: left;
+}
+
+/* Tech Icons */
+
+#tech-icon-html5 { background: url(./../../../system/assets/images/powered/html5.png) no-repeat center; }
+
+#tech-icon-css3 { background: url(./../../../system/assets/images/powered/css3.png) no-repeat center; }
+
+#tech-icon-php { background: url(./../../../system/assets/images/powered/php.png) no-repeat center; }
+
+#tech-icon-mysql { background: url(./../../../system/assets/images/powered/mysql.png) no-repeat center; }
+
+#tech-icon-ckeditor { background: url(./../../../system/assets/images/powered/ckeditor.png) no-repeat center; }
+
+#tech-icon-jquery { background: url(./../../../system/assets/images/powered/jquery.png) no-repeat center; }
+
+#tech-icon-ace { background: url(./../../../system/assets/images/powered/ace.png) no-repeat center; }

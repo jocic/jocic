@@ -1,0 +1,315 @@
+/* Option Icons */
+
+.options-icon
+{
+    width: 20px;
+    height: 15px;
+    text-indent: -20000px;
+    font-size: 0px;
+    display: block;
+    margin: 0 5px 0 0;
+    float: left;
+}
+
+#move-up-icon { background: url(./../../../system/assets/images/options/move_up.png) 0 center no-repeat; }
+
+#move-up-icon:hover { background: url(./../../../system/assets/images/options/move_up.png) -20px center no-repeat; }
+
+#move-down-icon { background: url(./../../../system/assets/images/options/move_down.png) 0 center no-repeat; }
+
+#move-down-icon:hover { background: url(./../../../system/assets/images/options/move_down.png) -20px center no-repeat; }
+
+#arrange-icon { background: url(./../../../system/assets/images/options/arrange.png) 0 center no-repeat; }
+
+#arrange-icon:hover { background: url(./../../../system/assets/images/options/arrange.png) -20px center no-repeat; }
+
+#search-icon { background: url(./../../../system/assets/images/options/search.png) 0 center no-repeat; }
+
+#search-icon:hover { background: url(./../../../system/assets/images/options/search.png) -20px center no-repeat; }
+
+#profile-icon { background: url(./../../../system/assets/images/options/profile.png) 0 center no-repeat; }
+
+#profile-icon:hover { background: url(./../../../system/assets/images/options/profile.png) -20px center no-repeat; }
+
+#promote-icon { background: url(./../../../system/assets/images/options/move_up.png) 0 center no-repeat; }
+
+#promote-icon:hover { background: url(./../../../system/assets/images/options/move_up.png) -20px center no-repeat; }
+
+#demote-icon { background: url(./../../../system/assets/images/options/move_down.png) 0 center no-repeat; }
+
+#demote-icon:hover { background: url(./../../../system/assets/images/options/move_down.png) -20px center no-repeat; }
+
+#ban-icon { background: url(./../../../system/assets/images/options/ban.png) 0 center no-repeat; }
+
+#ban-icon:hover { background: url(./../../../system/assets/images/options/ban.png) -20px center no-repeat; }
+
+#unban-icon { background: url(./../../../system/assets/images/options/unban.png) 0 center no-repeat; }
+
+#unban-icon:hover { background: url(./../../../system/assets/images/options/unban.png) -20px center no-repeat; }
+
+#edit-icon { background: url(./../../../system/assets/images/options/edit.png) 0 center no-repeat; }
+
+#edit-icon:hover { background: url(./../../../system/assets/images/options/edit.png) -20px center no-repeat; }
+
+#delete-icon { background: url(./../../../system/assets/images/options/delete.png) 0 center no-repeat; }
+
+#delete-icon:hover { background: url(./../../../system/assets/images/options/delete.png) -20px center no-repeat; }
+
+/* Administration Icons */
+
+.administration-icon
+{
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    overflow: hidden;
+}
+
+#user-managment-icon { background: url(./../../../system/assets/images/administration/user_managment.png) 0 center no-repeat; }
+
+#user-managment-icon:hover { background: url(./../../../system/assets/images/administration/user_managment.png) -50px center no-repeat; }
+
+#messages-icon { background: url(./../../../system/assets/images/administration/messages.png) 0 center no-repeat; }
+
+#messages-icon:hover { background: url(./../../../system/assets/images/administration/messages.png) -50px center no-repeat; }
+
+#assets-icon { background: url(./../../../system/assets/images/administration/assets.png) 0 center no-repeat; }
+
+#assets-icon:hover { background: url(./../../../system/assets/images/administration/assets.png) -50px center no-repeat; }
+
+#pages-icon { background: url(./../../../system/assets/images/administration/pages.png) 0 center no-repeat; }
+
+#pages-icon:hover { background: url(./../../../system/assets/images/administration/pages.png) -50px center no-repeat; }
+
+#comments-icon { background: url(./../../../system/assets/images/administration/comments.png) 0 center no-repeat; }
+
+#comments-icon:hover { background: url(./../../../system/assets/images/administration/comments.png) -50px center no-repeat; }
+
+#shouts-icon { background: url(./../../../system/assets/images/administration/shouts.png) 0 center no-repeat; }
+
+#shouts-icon:hover { background: url(./../../../system/assets/images/administration/shouts.png) -50px center no-repeat; }
+
+#links-icon { background: url(./../../../system/assets/images/administration/links.png) 0 center no-repeat; }
+
+#links-icon:hover { background: url(./../../../system/assets/images/administration/links.png) -50px center no-repeat; }
+
+#themes-icon { background: url(./../../../system/assets/images/administration/themes.png) 0 center no-repeat; }
+
+#themes-icon:hover { background: url(./../../../system/assets/images/administration/themes.png) -50px center no-repeat; }
+
+#modules-icon { background: url(./../../../system/assets/images/administration/modules.png) 0 center no-repeat; }
+
+#modules-icon:hover { background: url(./../../../system/assets/images/administration/modules.png) -50px center no-repeat; }
+
+#statistics-icon { background: url(./../../../system/assets/images/administration/statistics.png) 0 center no-repeat; }
+
+#statistics-icon:hover { background: url(./../../../system/assets/images/administration/statistics.png) -50px center no-repeat; }
+
+#earnings-icon { background: url(./../../../system/assets/images/administration/earnings.png) 0 center no-repeat; }
+
+#earnings-icon:hover { background: url(./../../../system/assets/images/administration/earnings.png) -50px center no-repeat; }
+
+#security-icon { background: url(./../../../system/assets/images/administration/security.png) 0 center no-repeat; }
+
+#security-icon:hover { background: url(/./../../../system/assets/images/administration/security.png) -50px center no-repeat; }
+
+#settings-icon { background: url(./../../../system/assets/images/administration/settings.png) 0 center no-repeat; }
+
+#settings-icon:hover { background: url(./../../../system/assets/images/administration/settings.png) -50px center no-repeat; }
+
+/* Administration Section - Pages */
+
+#core-pages-holder
+{
+    height: 50px;
+    padding: 10px 0 10px 0;
+}
+
+.page-option
+{
+    background: #f6f6f6;
+    color: #666666;
+    width: 170px;
+    height: 50px;
+    line-height: 50px;
+    text-indent: 55px;
+    float: left;
+    margin: 0 0 0 10px;
+    border: 1px solid #b3b3b3;
+}
+
+.page-option:hover
+{
+    background: #42b3e5;
+    color: #ffffff;
+}
+
+.page-option a
+{
+    display: block;
+    color: #666666;
+}
+
+.page-option a:hover
+{
+    color: #ffffff;
+}
+
+#page-homepage { background: url(./../../../system/assets/images/core_pages/homepage.png) 10px 10px no-repeat; }
+
+#page-terms-of-service { background: url(./../../../system/assets/images/core_pages/terms_of_service.png) 10px 10px no-repeat; }
+
+#page-privacy-policy { background: url(./../../../system/assets/images/core_pages/privacy_policy.png) 10px 10px no-repeat; }
+
+/* Administration Section - Assets */
+
+#option-holder
+{
+    width: 910px;
+    height: 50px;
+    padding: 10px 0 10px 0;
+}
+
+.asset-option
+{
+    background: #f6f6f6;
+    color: #666666;
+    width: 138px;
+    height: 50px;
+    line-height: 50px;
+    text-indent: 55px;
+    float: left;
+    margin: 0 0 0 10px;
+    border: 1px solid #b3b3b3;
+}
+
+.asset-option:hover
+{
+    background: #42b3e5;
+    color: #ffffff;
+}
+
+.asset-option a
+{
+    display: block;
+    color: #666666;
+}
+
+.asset-option a:hover
+{
+    color: #ffffff;
+}
+
+#picture-assets { background: url(./../../../system/assets/images/asset_types/picture.png) 10px 10px no-repeat; }
+
+#video-assets { background: url(./../../../system/assets/images/asset_types/video.png) 10px 10px no-repeat; }
+
+#audio-assets { background: url(./../../../system/assets/images/asset_types/audio.png) 10px 10px no-repeat; }
+
+#archive-assets { background: url(./../../../system/assets/images/asset_types/archive.png) 10px 10px no-repeat; }
+
+#document-assets { background: url(./../../../system/assets/images/asset_types/document.png) 10px 10px no-repeat; }
+
+#other-assets { background: url(./../../../system/assets/images/asset_types/other.png) 10px 10px no-repeat; }
+
+/* Statistics */
+
+.bar-container
+{
+    background: #ededed;
+    float: left;
+    margin: 10px;
+    padding: 10px 0 10px 10px;
+    border: 1px solid #b3b3b3;
+}
+
+.bar-information
+{
+    margin: 10px 10px 10px 0;
+    float: left;
+}
+
+.bar-holder
+{
+    text-align: center;
+    margin: 0 10px 0 0;
+    float: left;
+}
+
+.bar-1, .bar-2, .bar-3, .bar-4
+{
+    border: 1px solid #333333;
+    width: 50px;
+    margin: 0 0 5px 0;
+    text-indent: -20000px;
+}
+
+.bar-1, .bar-color-1 { background: #cc5754; }
+
+.bar-2, .bar-color-2 { background: #3da5d3; }
+
+.bar-3, .bar-color-3 { background: #9bbb59; }
+
+.bar-4, .bar-color-4 { background: #8064a2; }
+
+.bar-color-1, .bar-color-2, .bar-color-3, .bar-color-4
+{
+    width: 10px;
+    height: 10px;
+    float: left;
+    text-indent: -20000px;
+    border: 1px solid #333333;
+}
+
+.bar-description
+{
+    margin: 0 0 0 5px;
+    line-height: 10px;
+    float: left;
+}
+
+.bar-info-line
+{
+    margin: 0 0 10px 0;
+}
+
+/* Social Icons */
+
+#social-icons span
+{
+    width: 35px;
+    height: 35px;
+    font-size: 0px;
+    text-indent: -20000px;
+    float: left;
+    margin: 0 5px 0 0;
+}
+
+#social-icons #facebook { background: url(./../../../system/assets/images/social/fb.png) 0 center no-repeat; }
+
+#social-icons #facebook:hover { background: url(./../../../system/assets/images/social/fb.png) -35px center no-repeat; }
+
+#social-icons #twitter { background: url(./../../../system/assets/images/social/tw.png) 0 center no-repeat; }
+
+#social-icons #twitter:hover { background: url(./../../../system/assets/images/social/tw.png) -35px center no-repeat; }
+
+#social-icons #gplus { background: url(./../../../system/assets/images/social/gp.png) 0 center no-repeat; }
+
+#social-icons #gplus:hover { background: url(./../../../system/assets/images/social/gp.png) -35px center no-repeat; }
+
+#social-icons #youtube { background: url(./../../../system/assets/images/social/yt.png) 0 center no-repeat; }
+
+#social-icons #youtube:hover { background: url(./../../../system/assets/images/social/yt.png) -35px center no-repeat; }
+
+/* Advert */
+
+#advert-one, #advert-two
+{
+    padding: 1px;
+}
+
+#advert-one:hover, #advert-two:hover
+{
+    padding: 0px;
+    border: 1px solid #000000;
+}

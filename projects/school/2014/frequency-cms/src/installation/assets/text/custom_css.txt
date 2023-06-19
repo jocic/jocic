@@ -1,0 +1,13 @@
+.leaderboard-728x90
+{
+    width: 728px;
+    height: 90px;
+    margin: 15px auto 0 auto;
+}
+
+.half-banner-200x60
+{
+    width: 200px;
+    height: 60px;
+    margin: 15px auto 0 auto;
+}

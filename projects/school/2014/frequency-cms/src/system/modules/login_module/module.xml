@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<themeInfo version="1.0">
+    <name>Log-In Module</name>
+    <description>This module lets users perform log-in action.</description>
+    <version>1.0.0</version>
+    <type>Functionality</type>
+    <author>Djordje Jocic</author>
+    <contact>office@frequency-cms.com</contact>
+    <website>http://www.frequency-cms.com/</website>
+</themeInfo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<themeInfo version="1.0">
+    <name>Custom CSS Styles</name>
+    <description>This module includes your custom CSS style in the page.</description>
+    <version>1.0.0</version>
+    <type>Standalone</type>
+    <author>Djordje Jocic</author>
+    <contact>office@frequency-cms.com</contact>
+    <website>http://www.frequency-cms.com/</website>
+</themeInfo>
