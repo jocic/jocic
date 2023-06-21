@@ -7,7 +7,7 @@
 
 #include "diskio.h"
 
-#define VOLUME_PATH "./test.dat"
+#define VOLUME_PATH "C:/Users/jocic/Desktop/GitHub/jocic/doodles/2023/petit-fatfs/assets/floppy.img"
 
 FILE* disk;
 
@@ -64,7 +64,26 @@ DRESULT disk_writep (
 {
     DRESULT res = RES_ERROR;
     
-    // Don't want to implement this...
+    if (buff == 0 && sc) { // Initiate Sector Transaction
+        
+        if (fseek(disk, sc * 512, SEEK_SET) == 0) {
+            res = RES_OK;
+        }
+    }
+    else if (buff && sc) { // Regular Write Operation
+        
+        int bytes_written = fwrite(buff, 1, sc, disk);
+        
+        if (bytes_written == sc) {
+            res = RES_OK;
+        }
+    }
+    else if (buff == 0 && sc == 0) { // Finalize Sector Transaction
+        
+        if (fflush(disk) == 0) {
+            res = RES_OK;
+        }
+    }
     
     return res;
 }

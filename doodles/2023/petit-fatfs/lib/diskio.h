@@ -11,7 +11,6 @@ extern "C" {
 
 #include "pff.h"
 
-
 /* Status of Disk Functions */
 typedef BYTE	DSTATUS;
 
