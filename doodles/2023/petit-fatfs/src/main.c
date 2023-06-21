@@ -45,7 +45,7 @@ void fatfs_read(const char* filename) {
         return;
     }
     
-    printf("[*] Dumping contents...\n\n");
+    printf("[*] Dumping contents...\n");
     
     while (pf_read(buff, 3, &br) == FR_OK && br > 0) {
         
@@ -57,7 +57,51 @@ void fatfs_read(const char* filename) {
     printf("\n");
 }
 
-void fatfs_write(const char* filename) {
+void fatfs_seek(const char* filename) {
+    
+    res = pf_mount(&fs);
+    printf("[*] Mounting file system; Code=%d\n", res);
+    
+    if (res != FR_OK) {
+        return;
+    }
+    
+    res = pf_open(filename);
+    printf("[*] Attempting to open %s; Code=%d\n", filename, res);
+    
+    if (res != FR_OK) {
+        return;
+    }
+    
+    char buff[5];
+    int  num;
+    
+    int param_offset = 15;
+    int line_offset  = 22;
+    
+    for (int i = 0; i < 3; i++) {
+        
+        res = pf_lseek(param_offset + line_offset * i);
+        printf("[*] Attempting to seek; Code=%d\n", res);
+        
+        if (res != FR_OK) {
+            return;
+        }
+        
+        pf_read(buff, 5, &br);
+        printf("[*] Attempting to read; Code=%d\n", res);
+        
+        if (res != FR_OK) {
+            return;
+        }
+        
+        num = atoi(buff);
+        
+        printf("#%d = %d\n", (i + 1), num);
+    }
+}
+
+void fatfs_write_1(const char* filename) {
     
     res = pf_mount(&fs);
     printf("[*] Mounting file system; Code=%d\n", res);
@@ -95,7 +139,7 @@ void fatfs_write(const char* filename) {
     pf_write(0, 0, &bw);
 }
 
-void fatfs_stream(const char* filename) {
+void fatfs_write_2(const char* filename) {
     
     res = pf_mount(&fs);
     printf("[*] Mounting file system; Code=%d\n", res);
@@ -118,26 +162,25 @@ void fatfs_stream(const char* filename) {
     for (int i = 0; i < 2048; i++) {
         
         num = gen_rand(1, 9999);
+        
         char_count = sprintf(buffer, "%04d ", num);
         
         res = pf_write(buffer, char_count, &bw);
         
-        if (res != FR_OK) {
-            printf("[x] Write error occured; Code=%d\n", res);
-            return;
+        if (res != 0) {
+            printf("WTF: %d\n", res);
         }
-        
-    }        
+    }
+    
     pf_write(0, 0, &bw);
 }
 
 int main() {
     
     fatfs_read("LOGS.TXT");
-    
-    fatfs_write("CONF.DAT");
-    
-    fatfs_stream("RAND.TXT");
+    fatfs_seek("CONF.DAT");
+    fatfs_write_1("CONF.DAT");
+    fatfs_write_2("RAND.TXT");
     
     return 0;
 }
