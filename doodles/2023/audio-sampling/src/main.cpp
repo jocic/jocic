@@ -10,11 +10,16 @@
 #define SINE_DC_OFFSET_V  1.65F
 
 #include <iostream>
+#include <fstream>
 #include <cstdint>
 #include <cmath>
 #include <algorithm>
 
 using namespace std;
+
+const uint8_t WAV_HEADER[44] = {
+    0x52, 0x49, 0x46, 0x46, 0xC4, 0x86, 0x01, 0x00, 0x57, 0x41, 0x56, 0x45, 0x66, 0x6D, 0x74, 0x20, 0x10, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x88, 0x13, 0x00, 0x00, 0x10, 0x27, 0x00, 0x00, 0x02, 0x00, 0x10, 0x00, 0x64, 0x61, 0x74, 0x61, 0xA0, 0x86
+};
 
 uint16_t* generate_samples(uint16_t& size) {
     
@@ -82,10 +87,29 @@ void generate_matlab_array(uint16_t* data, uint16_t& size) {
 
 int main() {
     
-    uint16_t  sample_size = 100;
+    uint16_t  sample_size;
     uint16_t* sample_data = generate_samples(sample_size);
     
-    generate_matlab_array(sample_data, sample_size);
+    //generate_matlab_array(sample_data, sample_size);
+    
+    ofstream of;
+    
+    of.open("test.wav", ios_base::out | ios_base::binary);
+    cout << sample_size << endl;
+    if (of.is_open()) {
+        of.write((char*)WAV_HEADER, 44);
+        
+        for (int i = 0; i < sample_size; i++) {
+            
+            int test = sample_data[i] - 1024;
+            
+            of << (unsigned char)((test >> 8) & 0xFF);
+            of << (unsigned char)(test & 0xFF);
+            
+        }
+        
+        of.seekp(4);
+    }
     
     return 0;
 }
