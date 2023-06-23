@@ -7,7 +7,7 @@
 
 #include "diskio.h"
 
-#define VOLUME_PATH "C:/Users/jocic/Desktop/GitHub/jocic/doodles/2023/petit-fatfs/assets/floppy.img"
+#define VOLUME_PATH "C:/Users/jocic/Desktop/GitHub/jocic/doodles/2023/audio-sampling/assets/test.img"
 
 FILE* disk;
 
@@ -71,7 +71,7 @@ DRESULT disk_writep (
         }
     }
     else if (buff && sc) { // Regular Write Operation
-        
+            
         int bytes_written = fwrite(buff, 1, sc, disk);
         
         if (bytes_written == sc) {

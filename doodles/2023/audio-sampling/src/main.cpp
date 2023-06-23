@@ -2,10 +2,10 @@
 
 #define ADC_REFERENCE_V           3.3F
 #define ADC_RESOLUTION            10
-#define ADC_SAMPLING_RATE         5000
-#define ADC_SAMPLING_DURATION_SEC 25
+#define ADC_SAMPLING_RATE         3000
+#define ADC_SAMPLING_DURATION_SEC 10
 
-#define SINE_FREQUENCY_HZ 500
+#define SINE_FREQUENCY_HZ 750
 #define SINE_VPP_MV       400
 #define SINE_DC_OFFSET_V  1.65F
 
@@ -15,6 +15,9 @@
 #include <cmath>
 #include <algorithm>
 #include <vector>
+
+#include <pff.h>
+#include <diskio.h>
 
 using namespace std;
 
@@ -73,7 +76,7 @@ uint16_t* generate_samples(uint16_t& size) {
     return samples;
 }
 
-vector<uint8_t> generate_wave_binaries(uint16_t* data, uint16_t& size) {
+vector<uint8_t> generate_wave_binaries(vector<uint16_t>& samples) {
     
     vector<uint8_t> bin;
     
@@ -81,12 +84,12 @@ vector<uint8_t> generate_wave_binaries(uint16_t* data, uint16_t& size) {
         bin.push_back(WAV_HEADER[i]);
     }
     
-    for (uint32_t i = 0; i < size; i++) {
+    for (uint32_t i = 0; i < samples.size(); i++) {
         
-        int16_t test = data[i] - 1024;
+        int16_t sample = samples[i] - 1024;
         
-        bin.push_back((test >> 8) & 0xFF);
-        bin.push_back(test & 0xFF);
+        bin.push_back((sample >> 8) & 0xFF);
+        bin.push_back(sample & 0xFF);
     }
     
     uint32_t rate = ADC_SAMPLING_RATE;
@@ -103,7 +106,7 @@ vector<uint8_t> generate_wave_binaries(uint16_t* data, uint16_t& size) {
     bin[30] = ((byte_rate >> 16) & 0xFF);
     bin[31] = ((byte_rate >> 24) & 0xFF);
     
-    uint32_t subchunk_size = size * 1 * 2;
+    uint32_t subchunk_size = samples.size() * 1 * 2;
     
     bin[40] = (subchunk_size & 0xFF);
     bin[41] = ((subchunk_size >> 8) & 0xFF);
@@ -113,7 +116,7 @@ vector<uint8_t> generate_wave_binaries(uint16_t* data, uint16_t& size) {
     return bin;
 }
 
-void generate_matlab_array(const char* filename, uint16_t* data, uint16_t& size) {
+void generate_matlab_array(const char* filename, vector<uint16_t>& samples) {
     
     ofstream of(filename, ios_base::out);
     
@@ -121,9 +124,9 @@ void generate_matlab_array(const char* filename, uint16_t* data, uint16_t& size)
         
         of << "ARR = [ ";
         
-        for (uint16_t i = 0, j = size - 1; i < size; i++) {
+        for (uint16_t i = 0, j = samples.size() - 1; i < samples.size(); i++) {
             
-            of << data[i];
+            of << samples[i];
             
             if (i != j) {
                 of << ", ";
@@ -139,13 +142,13 @@ void generate_matlab_array(const char* filename, uint16_t* data, uint16_t& size)
     }
 }
 
-void generate_wave_file(const char* filename, uint16_t* data, uint16_t& size) {
+void generate_wave_file(const char* filename, vector<uint16_t>& samples) {
     
     ofstream of("sine.wav", ios_base::binary | ios_base::out);
     
     if (of.is_open()) {
         
-        vector<uint8_t> binary_wave = generate_wave_binaries(data, size);
+        vector<uint8_t> binary_wave = generate_wave_binaries(samples);
         
         for (auto n : binary_wave) {
             of << n;
@@ -158,10 +161,52 @@ void generate_wave_file(const char* filename, uint16_t* data, uint16_t& size) {
     }
 }
 
+void write_to_fat_volume(const char* filename, vector<uint16_t>& samples) {
+    
+    FATFS   fs;
+    UINT    bs, br, bw;
+    FRESULT res;
+    
+    bs = 512;
+    
+    vector<uint8_t> buffer(bs, 0);
+    
+    res = pf_mount(&fs);
+    if (res != RES_OK) {
+        throw runtime_error("[x] Volume not prepared...");
+    }
+    
+    res = pf_open(filename);
+    if (res != RES_OK) {
+        throw runtime_error("[x] File couldn't be open...");
+    }
+    
+    vector<uint8_t> wav_bin = generate_wave_binaries(samples);
+    
+    pf_lseek(0);
+    
+    for (int i = 0; i < wav_bin.size(); i += 512) {
+        
+        res = pf_write((void*)(&wav_bin[0] + i), 512, &bw);
+        if (res != RES_OK) {
+            throw runtime_error("[x] Write error occured...");
+        }
+    }
+    
+    res = pf_write(0, 0, &bw);
+    if (res != RES_OK) {
+        throw runtime_error("[x] Write finalization error occured...");
+    }
+    
+    cout << "[*] File \"" << filename << "\" has been updated..." << endl;
+}
+
 int main() {
     
     uint16_t  sample_size;
     uint16_t* sample_data = generate_samples(sample_size);
+    
+    vector<uint16_t> samples(sample_data, sample_data + sample_size);
     
     string option;
     
@@ -174,9 +219,11 @@ int main() {
     cout << endl;
     
     if (option == "1") {
-        generate_matlab_array("data.m", sample_data, sample_size);
+        generate_matlab_array("data.m", samples);
     } else if (option == "2") {
-        generate_wave_file("sine.wav", sample_data, sample_size);
+        generate_wave_file("sine.wav", samples);
+    } else if (option == "3") {
+        write_to_fat_volume("TEST.WAV", samples);
     } else {
         cerr << "[x] Not implemented yet..." << endl;
     }
