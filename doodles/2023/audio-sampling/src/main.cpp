@@ -48,7 +48,7 @@ uint16_t* generate_samples(uint16_t& size) {
     int j = 0;
     
     for (float radian = 0; radian < 2 * PI_VAL; radian += radian_increment) {
-        period_samples[j++] = min(uint16_t((sin(radian) * ((SINE_VPP_MV / 1e3) / volts_per_bit)) + (SINE_DC_OFFSET_V / volts_per_bit)), adc_range);
+        period_samples[j++] = min(uint32_t((sin(radian) * ((SINE_VPP_MV / 1e3) / volts_per_bit)) + (SINE_DC_OFFSET_V / volts_per_bit)), adc_range);
     }
     
     j = 0;
@@ -71,22 +71,6 @@ uint16_t* generate_samples(uint16_t& size) {
     }
     
     return samples;
-}
-
-void generate_matlab_array(uint16_t* data, uint16_t& size) {
-    
-    cout << "ARR = [ ";
-    
-    for (uint16_t i = 0, j = size - 1; i < size; i++) {
-        
-        cout << data[i];
-        
-        if (i != j) {
-            cout << ", ";
-        }
-    }
-    
-    cout << " ];" << endl;
 }
 
 vector<uint8_t> generate_wave_binaries(uint16_t* data, uint16_t& size) {
@@ -129,19 +113,72 @@ vector<uint8_t> generate_wave_binaries(uint16_t* data, uint16_t& size) {
     return bin;
 }
 
+void generate_matlab_array(const char* filename, uint16_t* data, uint16_t& size) {
+    
+    ofstream of(filename, ios_base::out);
+    
+    if (of.is_open()) {
+        
+        of << "ARR = [ ";
+        
+        for (uint16_t i = 0, j = size - 1; i < size; i++) {
+            
+            of << data[i];
+            
+            if (i != j) {
+                of << ", ";
+            }
+        }
+        
+        of << " ];" << endl;
+        
+        cout << "[*] File \"" << filename << "\" has been successfully generated..." << endl;
+    }
+    else {
+        throw runtime_error("[x] Couldn't generate the file...");
+    }
+}
+
+void generate_wave_file(const char* filename, uint16_t* data, uint16_t& size) {
+    
+    ofstream of("sine.wav", ios_base::binary | ios_base::out);
+    
+    if (of.is_open()) {
+        
+        vector<uint8_t> binary_wave = generate_wave_binaries(data, size);
+        
+        for (auto n : binary_wave) {
+            of << n;
+        }
+        
+        cout << "[*] File \"" << filename << "\" has been successfully generated..." << endl;
+    }
+    else {
+        throw runtime_error("[x] Couldn't generate the file...");
+    }
+}
+
 int main() {
     
     uint16_t  sample_size;
     uint16_t* sample_data = generate_samples(sample_size);
     
-    generate_matlab_array(sample_data, sample_size);
+    string option;
     
-    vector<uint8_t> binary_wave = generate_wave_binaries(sample_data, sample_size);
+    cout << "1 - Generate MatLab Data" << endl
+         << "2 - Generate Wave File" << endl
+         << "3 - Write Wave File to FAT12 Image" << endl;
     
-    ofstream output("sine.wav", ios_base::binary | ios_base::out);
+    cout << endl << "Option: ";
+    cin  >> option;
+    cout << endl;
     
-    for (auto n : binary_wave) {
-        output << n;
+    if (option == "1") {
+        generate_matlab_array("data.m", sample_data, sample_size);
+    } else if (option == "2") {
+        generate_wave_file("sine.wav", sample_data, sample_size);
+    } else {
+        cerr << "[x] Not implemented yet..." << endl;
     }
     
     return 0;
