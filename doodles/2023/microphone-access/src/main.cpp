@@ -1,9 +1,16 @@
 #include <iostream>
 
+#include <portaudio.h>
+
 using namespace std;
 
 int main()
 {
-    cout << "Hello World!" << endl;
+    PaError err;
+    
+    err = Pa_Initialize();
+    
+    cout << err << endl;
+    
     return 0;
 }
