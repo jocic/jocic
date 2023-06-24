@@ -1,11 +1,13 @@
 #define PI_VAL 3.14F
 
+#define SIGNAL_BUFFER_LEN 4e6
+
 #define ADC_REFERENCE_V           3.3F
 #define ADC_RESOLUTION            10
-#define ADC_SAMPLING_RATE         3000
+#define ADC_SAMPLING_RATE         5000
 #define ADC_SAMPLING_DURATION_SEC 10
 
-#define SINE_FREQUENCY_HZ 750
+#define SINE_FREQUENCY_HZ 500
 #define SINE_VPP_MV       400
 #define SINE_DC_OFFSET_V  1.65F
 
@@ -17,7 +19,6 @@
 #include <vector>
 
 #include <pff.h>
-#include <diskio.h>
 
 using namespace std;
 
@@ -28,27 +29,23 @@ const uint8_t WAV_HEADER[44] = {
     0x64, 0x61, 0x74, 0x61, 0xA0, 0x86
 };
 
-uint16_t* generate_samples(uint16_t& size) {
+vector<uint16_t> generate_samples() {
     
     uint32_t samples_total = ADC_SAMPLING_RATE * ADC_SAMPLING_DURATION_SEC;
     uint32_t adc_range     = pow(2, ADC_RESOLUTION);
     double   volts_per_bit = ADC_REFERENCE_V / adc_range;
     
-    uint16_t* samples = new uint16_t[samples_total];
+    vector<uint16_t> samples(samples_total, 0);
     
-    fill(samples, samples + samples_total, 0);
-    
-    double time_constant = pow(SINE_FREQUENCY_HZ, -1);
-    
-    uint32_t  signal_data_len = ADC_SAMPLING_DURATION_SEC * 500e3;
+    uint32_t  signal_data_len = ADC_SAMPLING_DURATION_SEC * SIGNAL_BUFFER_LEN;
     uint16_t* signal_data     = new uint16_t[signal_data_len];
     
-    uint32_t  period_samples_len = 500e3 / SINE_FREQUENCY_HZ;
+    uint32_t  period_samples_len = SIGNAL_BUFFER_LEN / SINE_FREQUENCY_HZ;
     uint16_t* period_samples     = new uint16_t[period_samples_len];
     
     double radian_increment = (2 * PI_VAL) / period_samples_len;
     
-    int j = 0;
+    uint32_t i, j = 0;
     
     for (float radian = 0; radian < 2 * PI_VAL; radian += radian_increment) {
         period_samples[j++] = min(uint32_t((sin(radian) * ((SINE_VPP_MV / 1e3) / volts_per_bit)) + (SINE_DC_OFFSET_V / volts_per_bit)), adc_range);
@@ -56,7 +53,7 @@ uint16_t* generate_samples(uint16_t& size) {
     
     j = 0;
     
-    for (int i = 0; i < signal_data_len; i++) {
+    for (i = 0; i < signal_data_len; i++) {
         
         signal_data[i] = period_samples[j++];
         
@@ -65,11 +62,9 @@ uint16_t* generate_samples(uint16_t& size) {
         }
     }
     
-    size = samples_total;
+    uint32_t sample_increment = SIGNAL_BUFFER_LEN / ADC_SAMPLING_RATE;
     
-    uint32_t sample_increment = 500e3 / ADC_SAMPLING_RATE;
-    
-    for (int i = 0, j = 0; i < samples_total; i++, j += sample_increment) {
+    for (i = 0, j = 0; i < samples_total; i++, j += sample_increment) {
         samples[i] = signal_data[j];
     }
     
@@ -78,11 +73,7 @@ uint16_t* generate_samples(uint16_t& size) {
 
 vector<uint8_t> generate_wave_binaries(vector<uint16_t>& samples) {
     
-    vector<uint8_t> bin;
-    
-    for (int i = 0; i < 44; i++) {
-        bin.push_back(WAV_HEADER[i]);
-    }
+    vector<uint8_t> bin(WAV_HEADER, WAV_HEADER + 44);
     
     for (uint32_t i = 0; i < samples.size(); i++) {
         
@@ -144,7 +135,7 @@ void generate_matlab_array(const char* filename, vector<uint16_t>& samples) {
 
 void generate_wave_file(const char* filename, vector<uint16_t>& samples) {
     
-    ofstream of("sine.wav", ios_base::binary | ios_base::out);
+    ofstream of(filename, ios_base::binary | ios_base::out);
     
     if (of.is_open()) {
         
@@ -164,37 +155,36 @@ void generate_wave_file(const char* filename, vector<uint16_t>& samples) {
 void write_to_fat_volume(const char* filename, vector<uint16_t>& samples) {
     
     FATFS   fs;
-    UINT    bs, br, bw;
+    UINT    bw;
     FRESULT res;
     
-    bs = 512;
-    
-    vector<uint8_t> buffer(bs, 0);
-    
     res = pf_mount(&fs);
-    if (res != RES_OK) {
+    if (res != FR_OK) {
         throw runtime_error("[x] Volume not prepared...");
     }
     
     res = pf_open(filename);
-    if (res != RES_OK) {
+    if (res != FR_OK) {
         throw runtime_error("[x] File couldn't be open...");
     }
     
     vector<uint8_t> wav_bin = generate_wave_binaries(samples);
     
-    pf_lseek(0);
+    res = pf_lseek(0);
+    if (res != FR_OK) {
+        throw runtime_error("[x] Write initialization failedd...");
+    }
     
     for (int i = 0; i < wav_bin.size(); i += 512) {
         
         res = pf_write((void*)(&wav_bin[0] + i), 512, &bw);
-        if (res != RES_OK) {
+        if (res != FR_OK) {
             throw runtime_error("[x] Write error occured...");
         }
     }
     
     res = pf_write(0, 0, &bw);
-    if (res != RES_OK) {
+    if (res != FR_OK) {
         throw runtime_error("[x] Write finalization error occured...");
     }
     
@@ -203,10 +193,7 @@ void write_to_fat_volume(const char* filename, vector<uint16_t>& samples) {
 
 int main() {
     
-    uint16_t  sample_size;
-    uint16_t* sample_data = generate_samples(sample_size);
-    
-    vector<uint16_t> samples(sample_data, sample_data + sample_size);
+    vector<uint16_t> samples = generate_samples();
     
     string option;
     
