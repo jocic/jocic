@@ -1,5 +1,3 @@
-#define FRAMES_PER_BUFFER 512
-
 #include <iostream>
 #include <fstream>
 #include <cstdint>
@@ -14,11 +12,14 @@ void play_wav_file(const char* filename) {
     
     vector<uint32_t> samples;
     
+    uint8_t  buffer[4];
     char     format[4];
     uint16_t channel_count;
     uint32_t sample_rate;
     uint16_t bits_per_sample;
     uint32_t subchunk2_size;
+    uint32_t sample_count;
+    float    duration_sec;
     
     ifstream fs(filename, ios_base::in | ios_base::binary);
     
@@ -31,26 +32,42 @@ void play_wav_file(const char* filename) {
             throw runtime_error("Specifie file isn't a WAVE file...");
         }
         
+        channel_count = 0;
         fs.seekg(22);
         fs.read((char*)&channel_count, 2);
         
+        sample_rate = 0;
         fs.seekg(24);
         fs.read((char*)&sample_rate, 4);
         
+        bits_per_sample = 0;
         fs.seekg(34);
-        fs.read((char*)&bits_per_sample, 4);
+        fs.read((char*)&bits_per_sample, 2);
         
+        subchunk2_size = 0;
         fs.seekg(40);
         fs.read((char*)&subchunk2_size, 4);
         
-        samples.resize(subchunk2_size / (channel_count * bits_per_sample / 8));
+        sample_count = subchunk2_size / (channel_count * bits_per_sample / 8);
+        
+        samples.resize(sample_count / (32 / bits_per_sample));
         
         fs.seekg(44);
         fs.read((char*)&samples.at(0), subchunk2_size);
         
+        duration_sec = float(sample_count) / sample_rate;
+        
     } else {
         throw runtime_error("Couldn't open the specified WAV file...");
     }
+    
+    cout << "Wave File Details: " << endl
+         << "Number of Channels: " << channel_count << endl
+         << "Sample Rate: " << sample_rate << endl
+         << "Total Samples: " << sample_count << endl
+         << "Bits per Sample: " << bits_per_sample << endl
+         << "Subchunk2 Size: " << subchunk2_size << endl
+         << "Duration: " << duration_sec << endl;
     
     PaError             err;
     PaDeviceIndex       device_index;
@@ -64,39 +81,12 @@ void play_wav_file(const char* filename) {
             PaStreamCallbackFlags status_flags,
             void *user_data) -> PaError {
         
-        pair<vector<uint32_t>, PaSampleFormat> playback_data =
-            *((pair<vector<uint32_t>, PaSampleFormat>*)user_data);
+        vector<uint32_t> samples = *((vector<uint32_t>*)user_data);
         
-        vector<uint32_t>& samples = playback_data.first;
-        PaSampleFormat&   format  = playback_data.second;
+        int32_t* wptr = (int32_t*)output;
         
-        if (format == paInt32) {
-            
-            int32_t* wptr = (int32_t*)output;
-            
-            for (const auto& sample : samples) {
-                *wptr++ = sample & 0xFFFFFFFF;
-            }
-        }
-        else if (format == paInt16) {
-            
-            int16_t* wptr = (int16_t*)output;
-            
-            for (const auto& sample : samples) {
-                *wptr++ = (sample >> 16)  & 0xFFFF;
-                *wptr++ = (sample >> 0 )  & 0xFFFF;
-            }
-        }
-        else {
-            
-            int8_t* wptr = (int8_t*)output;
-            
-            for (const auto& sample : samples) {
-                *wptr++ = (sample >> 24) & 0xFF;
-                *wptr++ = (sample >> 16) & 0xFF;
-                *wptr++ = (sample >> 8 ) & 0xFF;
-                *wptr++ = (sample >> 0 ) & 0xFF;
-            }
+        for (const auto& sample : samples) {
+            *wptr++ = (sample & 0xFFFF);
         }
         
         return paContinue;
@@ -117,8 +107,6 @@ void play_wav_file(const char* filename) {
         throw runtime_error("Device infor couldn't be fetched...");
     }
     
-    uint8_t size_modifier = 32 / bits_per_sample;
-    
     if (bits_per_sample == 8) {
         device_params.sampleFormat = paInt8;
     } else if (bits_per_sample == 16) {
@@ -132,11 +120,9 @@ void play_wav_file(const char* filename) {
     device_params.suggestedLatency          = device_info->defaultLowOutputLatency;
     device_params.hostApiSpecificStreamInfo = NULL;
     
-    pair<vector<uint32_t>, PaSampleFormat> playback_data = {
-        samples, device_params.sampleFormat
-    };
+    err = Pa_OpenStream(&device_stream, NULL, &device_params, sample_rate,
+        sample_count, paNoFlag, playback_fn, &samples);
     
-    err = Pa_OpenStream(&device_stream, NULL, &device_params, sample_rate * 1.75F, samples.size() * size_modifier, paNoFlag, playback_fn, &playback_data);
     if (err != paNoError) {
         throw runtime_error("Couldn't open the stream...");
     }
@@ -149,7 +135,7 @@ void play_wav_file(const char* filename) {
     }
     
     while (Pa_IsStreamActive(device_stream)) {
-        Pa_Sleep(100);
+        Pa_Sleep(1000);
     }
     
     cout << "Stopping playback..." << endl;
@@ -165,9 +151,15 @@ void play_wav_file(const char* filename) {
     }
 }
 
+void record_wav_file(const char* filename, uint32_t duration) {
+    
+}
+
 int main() {
     
     play_wav_file("test.wav");
+    
+    record_wav_file("recording.wav", 15);
     
     return 0;
 }
