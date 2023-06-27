@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QVector>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -14,8 +15,15 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void showErrorMessage(QString title, QString message);
+    
+private slots:
+    void on_btnCapture_clicked();
+    void on_btnSave_clicked();
+    void on_btnLoad_clicked();
     
 private:
     Ui::MainWindow *ui;
+    QVector<qint64> samples;
 };
 #endif // MAINWINDOW_H
