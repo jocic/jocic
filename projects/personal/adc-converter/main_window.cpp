@@ -48,16 +48,21 @@ void MainWindow::on_btnLoad_clicked()
 {
     // Get UI Options
     
+    QString  ui_rate_text;
+    quint32  ui_rate_value;
     quint16  ui_bits_index;
     QString  ui_bits_text;
     quint8   ui_bits_value;
     bool     ui_sample_signed;
     
+    ui_rate_text  = this->ui->txtSampleRate->text();
+    ui_rate_value = ui_rate_text.toUInt(NULL, 10);
+    
     ui_bits_index = this->ui->cmbBitsPerSample->currentIndex();
     ui_bits_text  = this->ui->cmbBitsPerSample->itemText(ui_bits_index);
     ui_bits_value = ui_bits_text.toUInt(NULL, 10);
     
-    ui_sample_signed = this->ui->cbSigned->isChecked();
+    ui_sample_signed = this->ui->cbSignedSample->isChecked();
     
     qDebug() << "Bits per Sample: " << ui_bits_value;
     qDebug() << "Sample Signed: " << (ui_sample_signed ? "Yes" : "No");
@@ -68,6 +73,7 @@ void MainWindow::on_btnLoad_clicked()
     QString     dump_filepath;
     QFile       dump_file;
     quint32     dump_sample;
+    quint64     dump_limit;
     
     file_dialog.setWindowTitle("Load Dump");
     file_dialog.exec();
@@ -111,6 +117,14 @@ void MainWindow::on_btnLoad_clicked()
             
             this->samples.push_back(dump_sample);
         }
+        
+        // Display Info
+        
+        quint64 dump_samples = this->samples.size();
+        qreal   dump_duration = dump_samples / qreal(ui_rate_value);
+        
+        this->ui->lblSampleCount->setText(QString::asprintf("%lld", dump_samples));
+        this->ui->lblDurationCount->setText(QString::asprintf("%.2fs", dump_duration));
         
         qDebug() << "Loaded " << this->samples.count()
             << " samples from the \"" << dump_filepath << "\" file";
