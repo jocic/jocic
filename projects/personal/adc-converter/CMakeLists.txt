@@ -14,14 +14,22 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Charts)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Charts)
+
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS SerialPort)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS SerialPort)
 
 set(PROJECT_SOURCES
-        main.cpp
-        main_window.cpp
-        main_window.h
+        
         main_window.ui
+        
+        scope_widget.h
+        main_window.h
+        
+        scope_widget.cpp
+        main_window.cpp
+        main.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -50,6 +58,7 @@ endif()
 target_link_libraries(adc-converter PRIVATE
     Qt${QT_VERSION_MAJOR}::Widgets
     Qt${QT_VERSION_MAJOR}::SerialPort
+    Qt${QT_VERSION_MAJOR}::Charts
 )
 
 set_target_properties(adc-converter PROPERTIES

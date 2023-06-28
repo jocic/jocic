@@ -11,6 +11,7 @@
 using namespace std;
 
 #include "main_window.h"
+#include "scope_widget.h"
 #include "./ui_main_window.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -39,7 +40,35 @@ void MainWindow::showErrorMessage(QString title, QString message) {
 
 void MainWindow::on_btnCapture_clicked()
 {
+    QString ui_port_text;
+    QString ui_baud_text;
+    quint16 ui_baud_value;
     
+    ui_port_text  = this->ui->cmbPort->currentText();
+    ui_baud_text  = this->ui->cmbBaud->currentText();
+    ui_baud_value = ui_baud_text.toUInt(NULL, 10);
+    
+    qDebug() << "Port =" << ui_port_text << "Baud =" << ui_baud_value;
+    
+    if (ui_port_text.length() == 0) {
+        this->showErrorMessage("Generic Error", "COM port not selected.");
+    }
+    
+    QSerialPort serial_port;
+    
+    serial_port.setPortName(ui_port_text);
+    serial_port.setBaudRate(ui_baud_value);
+    
+    
+    if (serial_port.open(QSerialPort::ReadWrite)) {
+        qDebug() << "all good"; 
+        for (int i = 0; i < 2000; i++) {
+    serial_port.write("this is just a test");
+    serial_port.flush();
+        }
+    } else {
+        qDebug() << serial_port.errorString();
+    }
 }
 
 void MainWindow::on_btnRefresh_clicked()
