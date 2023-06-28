@@ -66,8 +66,8 @@ void MainWindow::on_btnLoad_clicked()
     
     ui_sample_signed = this->ui->cbSignedSample->isChecked();
     
-    qDebug() << "Bits per Sample: " << ui_bits_value;
-    qDebug() << "Sample Signed: " << (ui_sample_signed ? "Yes" : "No");
+    qDebug() << "Bits per Sample =" << ui_bits_value;
+    qDebug() << "Sample Signed =" << (ui_sample_signed ? "Yes" : "No");
     
     // Load Dump File
     
@@ -128,8 +128,8 @@ void MainWindow::on_btnLoad_clicked()
         this->ui->lblSampleCount->setText(QString::asprintf("%lld", dump_samples));
         this->ui->lblDurationCount->setText(QString::asprintf("%.2fs", dump_duration));
         
-        qDebug() << "Loaded " << this->samples.count()
-            << " samples from the \"" << dump_filepath << "\" file";
+        qDebug() << "Loaded Samples =" << this->samples.count()
+            << ", Filepath =" << dump_filepath;
         
         // Generate Human-Readable Samples
         
@@ -223,7 +223,7 @@ void MainWindow::on_txtHex_1_textChanged(const QString &arg1)
     
     this->ui->txtDec_1->setText(text);
     
-    qDebug() << "Hex to Dec: " << arg1 << "(" << (sig ? "Yes" : "No") << ")";
+    qDebug() << "Hex to Dec: Input=" << arg1 << ", Signed =" << (sig ? "Yes" : "No");
 }
 
 void MainWindow::on_cbSignedInteger_toggled(bool checked)
@@ -257,7 +257,8 @@ void MainWindow::on_txtDec_2_textChanged(const QString &arg1)
             }  else if (-2147483648 <= value_sig) {
                 text = QString::asprintf("%08X", quint32(value_sig));
             } else {
-                // doesn't work - text = QString::asprintf("%016X", value_sig);
+                text  = QString::asprintf("%08X", quint32((value_sig >> 32) & 0xFFFFFFFFFFFFFFFF));
+                text += QString::asprintf("%08X", quint32((value          ) & 0xFFFFFFFFFFFFFFFF));
             } 
         }
         else {
@@ -278,6 +279,6 @@ void MainWindow::on_txtDec_2_textChanged(const QString &arg1)
     
     this->ui->txtHex_2->setText(text);
     
-    qDebug() << "Dec to Hex: " << arg1;
+    qDebug() << "Dec to Hex: Input =" << arg1;
 }
 
