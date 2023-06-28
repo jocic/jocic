@@ -137,7 +137,7 @@
     <item>
      <widget class="QTabWidget" name="tabMain">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tabPlayback">
        <attribute name="title">
@@ -156,8 +156,17 @@
        <layout class="QVBoxLayout" name="verticalLayout_8">
         <item>
          <widget class="QPlainTextEdit" name="txtSamples">
+          <property name="font">
+           <font>
+            <family>Cascadia Mono</family>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="autoFillBackground">
            <bool>false</bool>
+          </property>
+          <property name="plainText">
+           <string/>
           </property>
          </widget>
         </item>

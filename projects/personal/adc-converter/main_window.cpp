@@ -67,7 +67,7 @@ void MainWindow::on_btnLoad_clicked()
     QFileDialog file_dialog;
     QString     dump_filepath;
     QFile       dump_file;
-    quint16     dump_sample;
+    quint32     dump_sample;
     
     file_dialog.setWindowTitle("Load Dump");
     file_dialog.exec();
@@ -94,17 +94,14 @@ void MainWindow::on_btnLoad_clicked()
                 
                 case 8:
                     dump_file.read((char*)&dump_sample, 1);
-                    dump_sample = ui_sample_signed ? qint8(dump_sample) : quint8(dump_sample);
                     break;
                 
                 case 16:
                     dump_file.read((char*)&dump_sample, 2);
-                    dump_sample = ui_sample_signed ? qint16(dump_sample) : quint16(dump_sample);
                     break;
                     
                 case 32:
                     dump_file.read((char*)&dump_sample, 4);
-                    dump_sample = ui_sample_signed ? qint32(dump_sample) : quint32(dump_sample);
                     break;
                     
                 default:
@@ -117,6 +114,51 @@ void MainWindow::on_btnLoad_clicked()
         
         qDebug() << "Loaded " << this->samples.count()
             << " samples from the \"" << dump_filepath << "\" file";
+        
+        // Generate Human-Readable Samples
+        
+        QString ui_samples;
+        qint16  ui_tab_samples_index = -1;
+        
+        for (qint16 i = 0; i < this->ui->tabMain->count(); i++) {
+            
+            if (this->ui->tabMain->tabText(i) == "Samples") {
+                ui_tab_samples_index = i;
+                break;
+            }
+        }
+        
+        if (ui_tab_samples_index == -1) {
+            this->showErrorMessage("Application Error", "Samples tab is missing.");
+            return;
+        }
+        
+        for (const auto& sample : this->samples) {
+            
+            switch (ui_bits_value) {
+                case 8:
+                    ui_samples += QString::asprintf("%02X ", quint8(sample));
+                    break;
+                case 16:
+                    ui_samples += QString::asprintf("%02X", quint8(sample & 0xFF));
+                    ui_samples += QString::asprintf("%02X ", quint8((sample >> 8) & 0xFF));
+                    break;
+                case 32:
+                    ui_samples += QString::asprintf("%02X", quint8(sample & 0xFF));
+                    ui_samples += QString::asprintf("%02X", quint8((sample >> 8) & 0xFF));
+                    ui_samples += QString::asprintf("%02X", quint8((sample >> 16) & 0xFF));
+                    ui_samples += QString::asprintf("%02X ", quint8((sample >> 24) & 0xFF));
+                    break;
+                default:
+                    this->showErrorMessage("Application Error", "Invalid bits per sample value.");
+                    return;
+            }
+        }
+        
+        this->ui->txtSamples->clear();
+        this->ui->txtSamples->insertPlainText(ui_samples);
+        
+        this->ui->tabMain->setCurrentIndex(ui_tab_samples_index);
     }
 }
 
