@@ -1,3 +1,5 @@
+
+
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QDebug>
@@ -181,35 +183,42 @@ void MainWindow::on_txtHex_1_textChanged(const QString &arg1)
 {
     bool    sig;
     quint64 value;
-    qint64  value_conv;
+    qint64  value_sig;
     QString text;
     
-    sig   = this->ui->cbSignedInteger->isChecked();
-    value = arg1.toULongLong(NULL, 16);
-    
-    if (sig) {
+    if (arg1.size() == 0) {
         
-        switch (arg1.size()) {
-            case 2:
-                value_conv = qint8(value);
-                break;
-            case 4:
-                value_conv = qint16(value);
-                break;
-            case 8:
-                value_conv = qint32(value);
-                break;
-            case 16:
-                value_conv = qint64(value);
-                break;
-            default:
-                value_conv = 0;
-        }
-        
-        text = QString::asprintf("%lld", value_conv);
+        text = "";
     }
     else {
-        text = QString::asprintf("%lld", value);
+        
+        sig   = this->ui->cbSignedInteger->isChecked();
+        value = arg1.toULongLong(NULL, 16);
+        
+        if (sig) {
+            
+            switch (arg1.size()) {
+                case 2:
+                    value_sig = qint8(value);
+                    break;
+                case 4:
+                    value_sig = qint16(value);
+                    break;
+                case 8:
+                    value_sig = qint32(value);
+                    break;
+                case 16:
+                    value_sig = qint64(value);
+                    break;
+                default:
+                    value_sig = 0;
+            }
+            
+            text = QString::asprintf("%lld", value_sig);
+        }
+        else {
+            text = QString::asprintf("%lld", value);
+        }
     }
     
     this->ui->txtDec_1->setText(text);
@@ -228,6 +237,47 @@ void MainWindow::on_cbSignedInteger_toggled(bool checked)
 
 void MainWindow::on_txtDec_2_textChanged(const QString &arg1)
 {
+    bool    sig;
+    quint64 value;
+    qint64  value_sig;
+    QString text;
+    
+    if (arg1.size() > 0) {
+        
+        sig = (arg1.front() == '-');
+        
+        value_sig = arg1.toLongLong(NULL, 10);
+        
+        if (sig) {
+            
+            if (-128 <= value_sig) {
+                text = QString::asprintf("%02X", quint8(value_sig));
+            } else if (-32768 <= value_sig) {
+                text = QString::asprintf("%04X", quint16(value_sig));
+            }  else if (-2147483648 <= value_sig) {
+                text = QString::asprintf("%08X", quint32(value_sig));
+            } else {
+                // doesn't work - text = QString::asprintf("%016X", value_sig);
+            } 
+        }
+        else {
+            
+            value = arg1.toULongLong(NULL, 10);
+            
+            while (value > 0) {
+                text = QString::asprintf("%02X", (value & 0xFF)) + text;
+                value >>= 8;
+            }
+        }
+        
+        if (text.size() == 0) {
+            text = "00";
+        }
+    }
+    
+    
+    this->ui->txtHex_2->setText(text);
+    
     qDebug() << "Dec to Hex: " << arg1;
 }
 
