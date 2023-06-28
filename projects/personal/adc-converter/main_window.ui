@@ -479,9 +479,25 @@
        </widget>
       </item>
       <item>
+       <widget class="QComboBox" name="cmbBaud">
+        <item>
+         <property name="text">
+          <string>19200</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="btnCapture">
         <property name="text">
          <string>Capture</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnRefresh">
+        <property name="text">
+         <string>Refresh</string>
         </property>
        </widget>
       </item>

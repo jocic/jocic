@@ -28,6 +28,8 @@ private slots:
     
     void on_cbSignedInteger_toggled(bool checked);
     
+    void on_btnRefresh_clicked();
+    
 private:
     Ui::MainWindow *ui;
     QVector<qint64> samples;

@@ -1,3 +1,5 @@
+#include <QSerialPortInfo>
+#include <QSerialPort>
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QDateTime>
@@ -16,6 +18,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    
+    emit on_btnRefresh_clicked();
 }
 
 MainWindow::~MainWindow()
@@ -38,6 +42,37 @@ void MainWindow::on_btnCapture_clicked()
     
 }
 
+void MainWindow::on_btnRefresh_clicked()
+{
+    quint8 rate_index;
+    quint8 rate_temp;
+    
+    qDebug() << "Refreshing COM port elements...";
+    
+    this->ui->cmbPort->clear();
+    
+    for (const auto& port : QSerialPortInfo::availablePorts()) {
+        this->ui->cmbPort->addItem(port.portName());
+        qDebug() << "Found:" << port.portName();
+    }
+    
+    this->ui->cmbBaud->clear();
+    
+    rate_temp = 0;
+    
+    for (const auto& rate : QSerialPortInfo::standardBaudRates()) {
+        
+        this->ui->cmbBaud->addItem(QString::asprintf("%d", rate));
+        
+        if (rate == 19200) {
+            rate_index = rate_temp;
+        }
+        
+        rate_temp++;
+    }
+    
+    this->ui->cmbBaud->setCurrentIndex(rate_index);
+}
 
 void MainWindow::on_btnSave_clicked()
 {
@@ -100,9 +135,8 @@ void MainWindow::on_btnSave_clicked()
     }
     
     qDebug() << "Saving Samples =" << this->samples.size()
-        << ", Filename = " << dump_filename;
+        << ", Filename =" << dump_filename;
 }
-
 
 void MainWindow::on_btnLoad_clicked()
 {
