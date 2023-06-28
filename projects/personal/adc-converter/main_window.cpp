@@ -47,7 +47,9 @@ void MainWindow::on_btnRefresh_clicked()
     quint8 rate_index;
     quint8 rate_temp;
     
-    qDebug() << "Refreshing COM port elements...";
+    qDebug() << "Enumerating COM ports...";
+    
+    // COM Ports
     
     this->ui->cmbPort->clear();
     
@@ -57,6 +59,8 @@ void MainWindow::on_btnRefresh_clicked()
     }
     
     this->ui->cmbBaud->clear();
+    
+    // Baud Rates
     
     rate_temp = 0;
     
@@ -92,6 +96,7 @@ void MainWindow::on_btnSave_clicked()
     QFileDialog file_dialog;
     QString     dump_filename;
     QFile       dump_file;
+    quint64     dump_size;
     quint8      sample_length;
     
     dump_filename = "dump_" + QDateTime::currentDateTime().toString("yyyyMMdd_hhmmss") + ".dat";
@@ -111,6 +116,7 @@ void MainWindow::on_btnSave_clicked()
         if (dump_file.isOpen()) {
             
             sample_length = ui_bits_value / 8;
+            dump_size     = this->samples.size() * sample_length;
             
             for (const auto& sample : this->samples) {
                 
@@ -127,10 +133,14 @@ void MainWindow::on_btnSave_clicked()
                 }
             }
             
+            if (dump_file.size() != dump_size) {
+                this->showErrorMessage("I/O Error", "File couldn't be saved properly.");
+            }
+            
             dump_file.close();
         }
         else {
-            this->showErrorMessage("I/O Error", "Specified file couldn't be open.");
+            this->showErrorMessage("I/O Error", "Specified file couldn't be created.");
         }
     }
     
@@ -228,6 +238,7 @@ void MainWindow::on_btnLoad_clicked()
         // Generate Human-Readable Samples
         
         QString ui_samples;
+        QString ui_temp;
         qint16  ui_tab_samples_index = -1;
         
         for (qint16 i = 0; i < this->ui->tabMain->count(); i++) {
@@ -247,22 +258,24 @@ void MainWindow::on_btnLoad_clicked()
             
             switch (ui_bits_value) {
                 case 8:
-                    ui_samples += QString::asprintf("%02X ", quint8(sample));
+                    ui_temp = QString::asprintf("%02X ", quint8(sample));
                     break;
                 case 16:
-                ui_samples += QString::asprintf("%02X", quint8((sample >> 8) & 0xFF));
-                    ui_samples += QString::asprintf("%02X ", quint8(sample & 0xFF));
+                    ui_temp  = QString::asprintf("%02X", quint8((sample >> 8) & 0xFF));
+                    ui_temp += QString::asprintf("%02X ", quint8(sample & 0xFF));
                     break;
                 case 32:
-                    ui_samples += QString::asprintf("%02X", quint8((sample >> 24) & 0xFF));
-                    ui_samples += QString::asprintf("%02X", quint8((sample >> 16) & 0xFF));
-                    ui_samples += QString::asprintf("%02X", quint8((sample >> 8) & 0xFF));
-                    ui_samples += QString::asprintf("%02X ", quint8(sample & 0xFF));
+                    ui_temp  = QString::asprintf("%02X", quint8((sample >> 24) & 0xFF));
+                    ui_temp += QString::asprintf("%02X", quint8((sample >> 16) & 0xFF));
+                    ui_temp += QString::asprintf("%02X", quint8((sample >> 8) & 0xFF));
+                    ui_temp += QString::asprintf("%02X ", quint8(sample & 0xFF));
                     break;
                 default:
                     this->showErrorMessage("Application Error", "Invalid bits per sample value.");
                     return;
             }
+            
+            ui_samples += ui_temp;
         }
         
         this->ui->txtSamples->clear();
@@ -317,7 +330,7 @@ void MainWindow::on_txtHex_1_textChanged(const QString &arg1)
     
     this->ui->txtDec_1->setText(text);
     
-    qDebug() << "Hex to Dec: Input=" << arg1 << ", Signed =" << (sig ? "Yes" : "No");
+    qDebug() << "Hex to Dec: Input=" << arg1 << "Signed =" << (sig ? "Yes" : "No");
 }
 
 void MainWindow::on_cbSignedInteger_toggled(bool checked)
@@ -374,5 +387,72 @@ void MainWindow::on_txtDec_2_textChanged(const QString &arg1)
     this->ui->txtHex_2->setText(text);
     
     qDebug() << "Dec to Hex: Input =" << arg1;
+}
+
+
+void MainWindow::on_txtSamples_selectionChanged()
+{
+    // Get UI Parameters
+    
+    QString ui_bits_text;
+    quint8  ui_bits_value;
+    
+    ui_bits_text  = this->ui->cmbBitsPerSample->currentText();
+    ui_bits_value = ui_bits_text.toUInt(NULL, 10);
+    
+    // Extract Clicked Word
+    
+    QString text;
+    quint64 text_cursor;
+    QString word;
+    qint64  word_i, word_j;
+    quint8  word_length;
+    
+    text        = this->ui->txtSamples->toPlainText();
+    text_cursor = this->ui->txtSamples->textCursor().selectionStart();
+    
+    qDebug() << "Text Cursor=" << text_cursor;
+    
+    if (text.size() > 0) {
+        
+        word_length = ui_bits_value / 4;
+        
+        word_i = word_j = text_cursor;
+        
+        while (word_j < text.size()) {
+            
+            if (text[word_j] == ' ') {
+                word_j--;
+                break;
+            }
+            
+            word_j++;
+        }
+        
+        if ((word_j - word_i) < word_length) {
+            
+            word_i = text_cursor - 1;
+            
+            while (word_i > 0) {
+                
+                if (text[word_i] == ' ') {
+                    word_i++;
+                    break;
+                }
+                
+                word_i--;
+            }
+            
+            if (word_i < 0) {
+                word_i = 0;
+            }
+        }
+        
+        word = QString(&text[word_i], word_length);
+        
+        this->ui->txtHex_1->setText(word);
+    }
+    
+    qDebug() << "Extracted Word=" << word;
 }
 

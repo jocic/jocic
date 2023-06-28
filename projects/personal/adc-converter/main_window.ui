@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
+    <width>650</width>
     <height>500</height>
    </rect>
   </property>
@@ -18,13 +18,13 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>600</width>
+    <width>650</width>
     <height>500</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>600</width>
+    <width>650</width>
     <height>500</height>
    </size>
   </property>
@@ -179,7 +179,7 @@
          <enum>QTabWidget::Rounded</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="tabFFT">
          <attribute name="title">
@@ -238,11 +238,11 @@
             <property name="lineWidth">
              <number>0</number>
             </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-            <property name="backgroundVisible">
+            <property name="undoRedoEnabled">
              <bool>false</bool>
+            </property>
+            <property name="textInteractionFlags">
+             <set>Qt::TextSelectableByMouse</set>
             </property>
            </widget>
           </item>
@@ -483,6 +483,30 @@
         <item>
          <property name="text">
           <string>19200</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="cmbEnd">
+        <item>
+         <property name="text">
+          <string>NONE</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>NL+RC</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>NL</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>CR</string>
          </property>
         </item>
        </widget>

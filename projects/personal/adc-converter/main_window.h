@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QVector>
+#include <QPlainTextEdit>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -29,6 +30,8 @@ private slots:
     void on_cbSignedInteger_toggled(bool checked);
     
     void on_btnRefresh_clicked();
+    
+    void on_txtSamples_selectionChanged();
     
 private:
     Ui::MainWindow *ui;
