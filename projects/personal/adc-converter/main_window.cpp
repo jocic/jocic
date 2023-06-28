@@ -154,14 +154,14 @@ void MainWindow::on_btnLoad_clicked()
                     ui_samples += QString::asprintf("%02X ", quint8(sample));
                     break;
                 case 16:
-                    ui_samples += QString::asprintf("%02X", quint8(sample & 0xFF));
-                    ui_samples += QString::asprintf("%02X ", quint8((sample >> 8) & 0xFF));
+                ui_samples += QString::asprintf("%02X", quint8((sample >> 8) & 0xFF));
+                    ui_samples += QString::asprintf("%02X ", quint8(sample & 0xFF));
                     break;
                 case 32:
-                    ui_samples += QString::asprintf("%02X", quint8(sample & 0xFF));
-                    ui_samples += QString::asprintf("%02X", quint8((sample >> 8) & 0xFF));
+                    ui_samples += QString::asprintf("%02X", quint8((sample >> 24) & 0xFF));
                     ui_samples += QString::asprintf("%02X", quint8((sample >> 16) & 0xFF));
-                    ui_samples += QString::asprintf("%02X ", quint8((sample >> 24) & 0xFF));
+                    ui_samples += QString::asprintf("%02X", quint8((sample >> 8) & 0xFF));
+                    ui_samples += QString::asprintf("%02X ", quint8(sample & 0xFF));
                     break;
                 default:
                     this->showErrorMessage("Application Error", "Invalid bits per sample value.");
@@ -174,5 +174,60 @@ void MainWindow::on_btnLoad_clicked()
         
         this->ui->tabMain->setCurrentIndex(ui_tab_samples_index);
     }
+}
+
+
+void MainWindow::on_txtHex_1_textChanged(const QString &arg1)
+{
+    bool    sig;
+    quint64 value;
+    qint64  value_conv;
+    QString text;
+    
+    sig   = this->ui->cbSignedInteger->isChecked();
+    value = arg1.toULongLong(NULL, 16);
+    
+    if (sig) {
+        
+        switch (arg1.size()) {
+            case 2:
+                value_conv = qint8(value);
+                break;
+            case 4:
+                value_conv = qint16(value);
+                break;
+            case 8:
+                value_conv = qint32(value);
+                break;
+            case 16:
+                value_conv = qint64(value);
+                break;
+            default:
+                value_conv = 0;
+        }
+        
+        text = QString::asprintf("%lld", value_conv);
+    }
+    else {
+        text = QString::asprintf("%lld", value);
+    }
+    
+    this->ui->txtDec_1->setText(text);
+    
+    qDebug() << "Hex to Dec: " << arg1 << "(" << (sig ? "Yes" : "No") << ")";
+}
+
+void MainWindow::on_cbSignedInteger_toggled(bool checked)
+{
+    qDebug() << "Signed Integer: " << checked;
+    
+    QString text = this->ui->txtHex_1->text();
+    
+    emit on_txtHex_1_textChanged(text);
+}
+
+void MainWindow::on_txtDec_2_textChanged(const QString &arg1)
+{
+    qDebug() << "Dec to Hex: " << arg1;
 }
 

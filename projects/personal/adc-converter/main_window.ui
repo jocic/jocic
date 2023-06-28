@@ -326,7 +326,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label">
+         <widget class="QLabel" name="lblInfo">
           <property name="font">
            <font>
             <bold>true</bold>
@@ -338,7 +338,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QGroupBox" name="groupBox">
+         <widget class="QGroupBox" name="gbInfo">
           <property name="title">
            <string>General</string>
           </property>

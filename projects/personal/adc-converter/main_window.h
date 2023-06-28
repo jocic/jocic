@@ -22,6 +22,12 @@ private slots:
     void on_btnSave_clicked();
     void on_btnLoad_clicked();
     
+    void on_txtHex_1_textChanged(const QString &arg1);
+    
+    void on_txtDec_2_textChanged(const QString &arg1);
+    
+    void on_cbSignedInteger_toggled(bool checked);
+    
 private:
     Ui::MainWindow *ui;
     QVector<qint64> samples;
