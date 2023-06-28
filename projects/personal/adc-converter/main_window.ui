@@ -181,6 +181,16 @@
         <property name="currentIndex">
          <number>0</number>
         </property>
+        <widget class="QWidget" name="tabFFT">
+         <attribute name="title">
+          <string>Scope</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_10">
+          <item>
+           <widget class="QWidget" name="widget" native="true"/>
+          </item>
+         </layout>
+        </widget>
         <widget class="QWidget" name="tabPlayback">
          <attribute name="title">
           <string>Playback</string>
@@ -235,16 +245,6 @@
              <bool>false</bool>
             </property>
            </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="tabFFT">
-         <attribute name="title">
-          <string>FFT</string>
-         </attribute>
-         <layout class="QVBoxLayout" name="verticalLayout_10">
-          <item>
-           <widget class="QWidget" name="widget" native="true"/>
           </item>
          </layout>
         </widget>

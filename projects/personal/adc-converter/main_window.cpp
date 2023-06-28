@@ -1,7 +1,6 @@
-
-
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QDateTime>
 #include <QDebug>
 #include <QFile>
 
@@ -42,7 +41,66 @@ void MainWindow::on_btnCapture_clicked()
 
 void MainWindow::on_btnSave_clicked()
 {
+    // Get UI Options
     
+    quint16  ui_bits_index;
+    QString  ui_bits_text;
+    quint8   ui_bits_value;
+    bool     ui_sample_signed;
+    
+    ui_bits_index = this->ui->cmbBitsPerSample->currentIndex();
+    ui_bits_text  = this->ui->cmbBitsPerSample->itemText(ui_bits_index);
+    ui_bits_value = ui_bits_text.toUInt(NULL, 10);
+    
+    // Save Dump File
+    
+    QFileDialog file_dialog;
+    QString     dump_filename;
+    QFile       dump_file;
+    quint8      sample_length;
+    
+    dump_filename = "dump_" + QDateTime::currentDateTime().toString("yyyyMMdd_hhmmss") + ".dat";
+    
+    file_dialog.setWindowTitle("Save Dump");
+    file_dialog.setAcceptMode(QFileDialog::AcceptSave);
+    file_dialog.selectFile(dump_filename);
+    file_dialog.exec();
+    
+    if (file_dialog.selectedFiles().count() > 0) {
+        
+        dump_filename = file_dialog.selectedFiles().front();
+        
+        dump_file.setFileName(dump_filename);
+        dump_file.open(QFile::OpenModeFlag::WriteOnly);
+        
+        if (dump_file.isOpen()) {
+            
+            sample_length = ui_bits_value / 8;
+            
+            for (const auto& sample : this->samples) {
+                
+                switch (ui_bits_value) {
+                    case 8:
+                    case 16:
+                    case 32:
+                        dump_file.write((char*)&sample, sample_length);
+                        break;
+                    
+                    default:
+                        this->showErrorMessage("Application Error", "Invalid bits per sample value.");
+                        return;
+                }
+            }
+            
+            dump_file.close();
+        }
+        else {
+            this->showErrorMessage("I/O Error", "Specified file couldn't be open.");
+        }
+    }
+    
+    qDebug() << "Saving Samples =" << this->samples.size()
+        << ", Filename = " << dump_filename;
 }
 
 
@@ -119,6 +177,8 @@ void MainWindow::on_btnLoad_clicked()
             
             this->samples.push_back(dump_sample);
         }
+        
+        dump_file.close();
         
         // Display Info
         
