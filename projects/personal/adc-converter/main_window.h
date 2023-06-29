@@ -5,6 +5,8 @@
 #include <QVector>
 #include <QPlainTextEdit>
 
+#include "data_receiver.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -35,6 +37,7 @@ private slots:
     
 private:
     Ui::MainWindow *ui;
+    DataReceiver receiver;
     QVector<qint64> samples;
 };
 #endif // MAINWINDOW_H

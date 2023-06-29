@@ -17,7 +17,7 @@ ScopeWidget::ScopeWidget(QWidget* parent)
     this->setContentsMargins(0, 0, 0, 0);
     
     this->chart_x->setTitleText("Time");
-    this->chart_x->setRange(0, 2000);
+    this->chart_x->setRange(0, 1024);
     
     this->chart_y->setTitleText("ADC Value");
     this->chart_y->setRange(0, 1024);
@@ -37,10 +37,24 @@ ScopeWidget::ScopeWidget(QWidget* parent)
     this->layout->addWidget(this->chart_view);
     
     this->setLayout(this->layout);
+}
+
+void ScopeWidget::on_new_scope_data(SerialData* data)
+{
+    static int asfd = 0;
     
-    // Data Processor Setup
-    
-    DataProcessor* dp = new DataProcessor(this);
-    
-    dp->start();
+    for (const auto& s : data->samples) {
+    this->chart_series->append(float(asfd), s.y());
+        asfd++;
+        
+        if (asfd > 1024) {
+            int diff = asfd - 1024;
+            
+            
+            this->chart_x->setRange(diff, 1024 + diff);
+            
+        }
+        
+    }
+    data->samples.clear();
 }

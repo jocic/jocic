@@ -24,9 +24,11 @@ set(PROJECT_SOURCES
         
         main_window.ui
         
+        data_receiver.h
         scope_widget.h
         main_window.h
         
+        data_receiver.cpp
         scope_widget.cpp
         main_window.cpp
         main.cpp

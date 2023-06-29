@@ -6,8 +6,6 @@
 #include <QRandomGenerator>
 
 #include <QtCore/QPointF>
-#include <QtCore/QList>
-#include <QtCore/QQueue>
 
 #include <QtWidgets/QWidget>
 
@@ -16,16 +14,13 @@
 #include <QtCharts/QChart>
 #include <QtCharts/QValueAxis>
 
+#include "data_receiver.h"
 
 class ScopeWidget : public QWidget
 {
     Q_OBJECT
     
     private:
-    
-    
-    QList<QPointF> test;
-    
         QWidget*     parent;
         QHBoxLayout* layout;
         QChartView*  chart_view;
@@ -37,45 +32,8 @@ class ScopeWidget : public QWidget
     public:
         ScopeWidget(QWidget* parent);
         
-        void does_smth() {
-            
-            test.clear();
-            
-            for (int i = 0; i < 44100; i++) {
-                
-                double x = QRandomGenerator::global()->generateDouble();
-                double y = QRandomGenerator::global()->generateDouble();
-                
-                y *= 200;
-                y += 412;
-                
-                QPointF point(i, y);
-                test.push_back(point);
-            }
-            
-            this->chart_series->replace(test);
-        }
-};
-
-class DataProcessor : public QThread {
-    
-private:
-    
-    ScopeWidget* reference;
-    
-public:
-    
-    DataProcessor(ScopeWidget* reference) {
-        this->reference = reference;
-    }
-    
-    void run() {
-        
-        while (true) {
-            this->reference->does_smth();
-            this->msleep(100);
-        }
-    }
+    public slots:
+        void on_new_scope_data(SerialData* data);
 };
 
 #endif // SCOPE_WIDGET_H

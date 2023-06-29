@@ -12,6 +12,7 @@ using namespace std;
 
 #include "main_window.h"
 #include "scope_widget.h"
+#include "data_receiver.h"
 #include "./ui_main_window.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -19,6 +20,9 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    
+    connect(&this->receiver, &DataReceiver::new_data,
+        this->ui->wdScope, &ScopeWidget::on_new_scope_data);
     
     emit on_btnRefresh_clicked();
 }
@@ -40,34 +44,45 @@ void MainWindow::showErrorMessage(QString title, QString message) {
 
 void MainWindow::on_btnCapture_clicked()
 {
+    QString ui_bits_text;
+    quint8  ui_bits_value;
     QString ui_port_text;
     QString ui_baud_text;
     quint16 ui_baud_value;
     
+    ui_bits_text  = this->ui->cmbBitsPerSample->currentText();
+    ui_bits_value = ui_bits_text.toUInt(NULL, 10);
+    
     ui_port_text  = this->ui->cmbPort->currentText();
+    
     ui_baud_text  = this->ui->cmbBaud->currentText();
     ui_baud_value = ui_baud_text.toUInt(NULL, 10);
     
-    qDebug() << "Port =" << ui_port_text << "Baud =" << ui_baud_value;
+    qDebug() << "Port =" << ui_port_text << "Baud ="
+        << ui_baud_value << "Bits Per Sample =" << ui_bits_value;
     
     if (ui_port_text.length() == 0) {
         this->showErrorMessage("Generic Error", "COM port not selected.");
+        return;
     }
     
-    QSerialPort serial_port;
+    if (!this->receiver.configure(ui_port_text, ui_baud_value, ui_bits_value)) {
+        this->showErrorMessage("Generic Error", "Invalid serial configuration parameters.");
+        return;
+    }
     
-    serial_port.setPortName(ui_port_text);
-    serial_port.setBaudRate(ui_baud_value);
+    this->ui->tabMain->setCurrentIndex(0);
     
-    
-    if (serial_port.open(QSerialPort::ReadWrite)) {
-        qDebug() << "all good"; 
-        for (int i = 0; i < 2000; i++) {
-    serial_port.write("this is just a test");
-    serial_port.flush();
-        }
+    if (this->receiver.isRunning()) {
+        this->ui->btnCapture->setText("Connect");
+        this->ui->btnRefresh->setEnabled(true);
+        this->ui->tabMain->setEnabled(true);
+        this->receiver.terminate();
     } else {
-        qDebug() << serial_port.errorString();
+        this->ui->btnCapture->setText("Disconnect");
+        this->ui->btnRefresh->setEnabled(false);
+        this->ui->tabMain->setEnabled(false);
+        this->receiver.start();
     }
 }
 
@@ -333,21 +348,16 @@ void MainWindow::on_txtHex_1_textChanged(const QString &arg1)
         
         if (sig) {
             
-            switch (arg1.size()) {
-                case 2:
-                    value_sig = qint8(value);
-                    break;
-                case 4:
-                    value_sig = qint16(value);
-                    break;
-                case 8:
-                    value_sig = qint32(value);
-                    break;
-                case 16:
-                    value_sig = qint64(value);
-                    break;
-                default:
-                    value_sig = 0;
+            if (arg1.size() <= 2) {
+                value_sig = qint8(value);
+            } else if (arg1.size() <= 4) {
+                value_sig = qint16(value);
+            } else if (arg1.size() <= 8) {
+                value_sig = qint32(value);
+            } else if (arg1.size() <= 16) {
+                value_sig = qint64(value);
+            } else {
+                value_sig = 0;
             }
             
             text = QString::asprintf("%lld", value_sig);
