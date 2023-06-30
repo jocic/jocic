@@ -17,7 +17,7 @@ bool DataReceiver::configure(QString port_name, quint32 baud_rate) {
     }
     
     this->serial_port->setPortName(port_name);
-    this->serial_port->setBaudRate(QSerialPort::Baud19200);
+    this->serial_port->setBaudRate(baud_rate);
     this->serial_port->setParity(QSerialPort::NoParity);
     this->serial_port->setDataBits(QSerialPort::Data8);
     this->serial_port->setStopBits(QSerialPort::OneStop);

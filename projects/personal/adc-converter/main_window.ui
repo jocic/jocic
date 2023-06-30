@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>ADC Converter v1.0 (Proof of Concept)</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icons/music-circle.svg</normaloff>icons/music-circle.svg</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_6">
     <property name="leftMargin">
