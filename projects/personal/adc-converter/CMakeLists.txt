@@ -20,6 +20,8 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Charts)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS SerialPort)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS SerialPort)
 
+FILE(COPY icons DESTINATION ${CMAKE_BINARY_DIR})
+
 set(PROJECT_SOURCES
         
         main_window.ui
