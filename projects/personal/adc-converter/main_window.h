@@ -22,6 +22,10 @@ class MainWindow : public QMainWindow
         
     private slots:
         
+        // General
+        
+        void on_point_processed(qint64 sample);
+        
         // UI
         
         void on_btnCapture_clicked();
@@ -34,7 +38,9 @@ class MainWindow : public QMainWindow
         void on_txtSamples_selectionChanged();
         void on_cmbBitsPerSample_currentIndexChanged(int index);
         
-    private:
+        void on_txtSampleRate_textChanged(const QString &arg1);
+        
+private:
         
         Ui::MainWindow* ui;
         DataReceiver    receiver;

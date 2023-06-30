@@ -18,16 +18,21 @@ class DataControl : public QThread
     
     private:
         chart_ref_t         chart_ref;
-        QQueue<qint64>*     data;
-        QQueue<QByteArray>* data_raw;
         quint64             queue_delay_ms;
     
     public:
+        quint64 _x = 0, x = 0;
+        QQueue<qint64>*     data;
+        QQueue<QByteArray>* data_raw;
         DataControl(chart_ref_t ref);
         void configure(quint64 queue_delay_ms);
         // associate chart view
         // associate chart series
         void run();
+        void reset() {
+            
+            _x = 0; x = 0;
+        }
         
     public slots:
         void on_new_data(QByteArray data);

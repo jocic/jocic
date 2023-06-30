@@ -48,6 +48,9 @@ void MainWindow::setupConnections() {
     
     connect(this, &MainWindow::adc_resolution_changed,
         this->ui->wdScope, &ScopeWidget::on_adc_resolution_change);
+    
+    connect(this->ui->wdScope->dat_ctl, &DataControl::point_processed,
+        this, &MainWindow::on_point_processed);
 }
 
 void MainWindow::on_btnCapture_clicked()
@@ -85,18 +88,61 @@ void MainWindow::on_btnCapture_clicked()
     this->receiver.setSampleRate(ui_rate_value);
     
     if (!this->receiver.configure(ui_port_text, ui_baud_value)) {
-        this->showErrorMessage("Generic Error", "Invalid serial configuration parameters.");
+        this->showErrorMessage("Generic Error", "Com port unavailable.");
         return;
     }
     
     this->ui->tabMain->setCurrentIndex(0);
     
     if (this->receiver.isRunning()) {
+        
+        this->receiver.terminate();
+        
+        QString ui_temp, ui_samples;
+        
+        for (const auto& sample : this->samples) {
+            
+            switch (ui_bits_value) {
+                case 8:
+                    ui_temp = QString::asprintf("%02X ", quint8(sample));
+                    break;
+                case 16:
+                    ui_temp  = QString::asprintf("%02X", quint8((sample >> 8) & 0xFF));
+                    ui_temp += QString::asprintf("%02X ", quint8(sample & 0xFF));
+                    break;
+                case 32:
+                    ui_temp  = QString::asprintf("%02X", quint8((sample >> 24) & 0xFF));
+                    ui_temp += QString::asprintf("%02X", quint8((sample >> 16) & 0xFF));
+                    ui_temp += QString::asprintf("%02X", quint8((sample >> 8) & 0xFF));
+                    ui_temp += QString::asprintf("%02X ", quint8(sample & 0xFF));
+                    break;
+                default:
+                    this->showErrorMessage("Application Error", "Invalid bits per sample value.");
+                    return;
+            }
+            
+            ui_samples += ui_temp;
+        }
+        
+        this->ui->txtSamples->insertPlainText(ui_samples);
+        
+        quint64 dump_samples = this->samples.size();
+        qreal   dump_duration = dump_samples / qreal(ui_rate_value);
+        
+        this->ui->lblSampleCount->setText(QString::asprintf("%lld", dump_samples));
+        this->ui->lblDurationCount->setText(QString::asprintf("%.2fs", dump_duration));
+        
+        
         this->ui->btnCapture->setText("Connect");
         this->ui->btnRefresh->setEnabled(true);
         this->ui->tabMain->setEnabled(true);
-        this->receiver.terminate();
-    } else {
+    }
+    else {
+        
+        this->samples.clear();
+        
+        this->ui->txtSamples->clear();
+        
         this->ui->btnCapture->setText("Disconnect");
         this->ui->btnRefresh->setEnabled(false);
         this->ui->tabMain->setEnabled(false);
@@ -149,6 +195,13 @@ void MainWindow::on_btnRefresh_clicked()
     
     ui_bits_text  = this->ui->cmbBitsPerSample->currentText();
     ui_bits_value = ui_bits_text.toUInt(NULL, 10);
+    
+    this->ui->wdScope->chart_series->clear();    
+    this->ui->wdScope->chart_x->setRange(0, 1024);
+    this->ui->wdScope->dat_ctl->reset();
+    
+    this->ui->lblSampleCount->setText("N/A");
+    this->ui->lblDurationCount->setText("N/A");
     
     // Emit Event
     
@@ -542,5 +595,43 @@ void MainWindow::on_cmbBitsPerSample_currentIndexChanged(int index)
     // Emit Event
     
     emit this->adc_resolution_changed(ui_bits_value);
+}
+
+void MainWindow::on_point_processed(qint64 sample) {
+    
+    // Get UI Options
+    
+    QString  ui_rate_text;
+    quint32  ui_rate_value;
+    quint16  ui_bits_index;
+    QString  ui_bits_text;
+    quint8   ui_bits_value;
+    bool     ui_sample_signed;
+    QString  ui_temp;
+    
+    ui_rate_text  = this->ui->txtSampleRate->text();
+    ui_rate_value = ui_rate_text.toUInt(NULL, 10);
+    
+    ui_bits_index = this->ui->cmbBitsPerSample->currentIndex();
+    ui_bits_text  = this->ui->cmbBitsPerSample->itemText(ui_bits_index);
+    ui_bits_value = ui_bits_text.toUInt(NULL, 10);
+    
+    ui_sample_signed = this->ui->cbSignedSample->isChecked();
+    
+    this->samples.push_back(sample);
+}
+
+
+void MainWindow::on_txtSampleRate_textChanged(const QString &arg1)
+{
+    QString  ui_rate_text;
+    quint32  ui_rate_value;
+    
+    ui_rate_text  = this->ui->txtSampleRate->text();
+    ui_rate_value = ui_rate_text.toUInt(NULL, 10);
+    
+    qreal duration = this->samples.size() / qreal(ui_rate_value);
+    
+    this->ui->lblDurationCount->setText(QString::asprintf("%.2fs", duration));
 }
 

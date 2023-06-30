@@ -4,9 +4,7 @@
 
 /*
  * TO-DO (Tomorrow)
- *   - com port couln't be open - error message not invali config
  *   - Update samples/duration in real time
- *   - move the range continously even if there's no signal (set it to 1ms per division)
  *   - playback feature - remove the tab, add a button with the play icon - don't overthink it or overengineer it (just needs to play the samples at the specified sample rate)
  * TO-DO (Paid Version):
  *   - Add an Icon

@@ -452,20 +452,6 @@
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="cmbType">
-        <item>
-         <property name="text">
-          <string>Text</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Binary</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item>
        <widget class="QPushButton" name="btnCapture">
         <property name="text">
          <string>Connect</string>

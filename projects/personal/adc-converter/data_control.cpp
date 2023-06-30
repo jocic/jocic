@@ -18,7 +18,6 @@ void DataControl::configure(quint64 queue_delay_ms)
 
 void DataControl::run()
 {
-    quint64 _x = 0, x = 0;
     
     while (true) {
         
@@ -40,7 +39,7 @@ void DataControl::run()
                     || (bytes[i] == '\n' && bytes[i + 1] == '\r')) {
                     
                     if (skipped_first) {
-                        
+                        emit this->point_processed(sample_value);
                         if (_x % 8 == 0) {
                             this->chart_ref.series->append(x, sample_value);
                             x += 8;
