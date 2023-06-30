@@ -21,10 +21,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     
-    connect(&this->receiver, &DataReceiver::new_data,
-        this->ui->wdScope, &ScopeWidget::on_new_scope_data);
+    this->setupConnections();
     
-    emit on_btnRefresh_clicked();
+    emit this->on_btnRefresh_clicked();
 }
 
 MainWindow::~MainWindow()
@@ -42,31 +41,49 @@ void MainWindow::showErrorMessage(QString title, QString message) {
     error.exec();
 }
 
+void MainWindow::setupConnections() {
+    
+    connect(&this->receiver, &DataReceiver::new_data,
+        this->ui->wdScope->dat_ctl, &DataControl::on_new_data);
+    
+    
+}
+
 void MainWindow::on_btnCapture_clicked()
 {
+    QString ui_rate_text;
+    quint64 ui_rate_value;
     QString ui_bits_text;
     quint8  ui_bits_value;
+    bool    ui_signed_value;
     QString ui_port_text;
     QString ui_baud_text;
     quint16 ui_baud_value;
     
-    ui_bits_text  = this->ui->cmbBitsPerSample->currentText();
-    ui_bits_value = ui_bits_text.toUInt(NULL, 10);
+    ui_rate_text    = this->ui->txtSampleRate->text();
+    ui_rate_value   = ui_rate_text.toULong(NULL, 10);
+    ui_bits_text    = this->ui->cmbBitsPerSample->currentText();
+    ui_bits_value   = ui_bits_text.toUInt(NULL, 10);
+    ui_signed_value = this->ui->cbSignedInteger->isChecked();
+    ui_port_text    = this->ui->cmbPort->currentText();
+    ui_baud_text    = this->ui->cmbBaud->currentText();
+    ui_baud_value   = ui_baud_text.toUInt(NULL, 10);
     
-    ui_port_text  = this->ui->cmbPort->currentText();
-    
-    ui_baud_text  = this->ui->cmbBaud->currentText();
-    ui_baud_value = ui_baud_text.toUInt(NULL, 10);
-    
-    qDebug() << "Port =" << ui_port_text << "Baud ="
-        << ui_baud_value << "Bits Per Sample =" << ui_bits_value;
+    qDebug() << "Sample Rate =" << ui_rate_value
+             << "Bits Per Sample =" << ui_bits_value
+             << "Signed =" << ui_signed_value
+             << "Port =" << ui_port_text
+             << "Baud =" << ui_baud_value;
     
     if (ui_port_text.length() == 0) {
         this->showErrorMessage("Generic Error", "COM port not selected.");
         return;
     }
     
-    if (!this->receiver.configure(ui_port_text, ui_baud_value, ui_bits_value)) {
+    this->receiver.setBitsPerSample(ui_bits_value, ui_signed_value);
+    this->receiver.setSampleRate(ui_rate_value);
+    
+    if (!this->receiver.configure(ui_port_text, ui_baud_value)) {
         this->showErrorMessage("Generic Error", "Invalid serial configuration parameters.");
         return;
     }

@@ -4,6 +4,8 @@
 #include <QHBoxLayout>
 #include <QThread>
 #include <QRandomGenerator>
+#include <QByteArray>
+#include <QQueue>
 
 #include <QtCore/QPointF>
 
@@ -14,26 +16,28 @@
 #include <QtCharts/QChart>
 #include <QtCharts/QValueAxis>
 
-#include "data_receiver.h"
+#include "data_control.h"
 
 class ScopeWidget : public QWidget
 {
     Q_OBJECT
     
     private:
+        
         QWidget*     parent;
         QHBoxLayout* layout;
+    
+    public:
         QChartView*  chart_view;
         QChart*      chart;
         QLineSeries* chart_series;
         QValueAxis*  chart_x;
         QValueAxis*  chart_y;
-    
-    public:
+        
+        DataControl* dat_ctl;
+        
         ScopeWidget(QWidget* parent);
         
-    public slots:
-        void on_new_scope_data(SerialData* data);
 };
 
 #endif // SCOPE_WIDGET_H

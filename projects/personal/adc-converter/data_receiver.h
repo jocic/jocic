@@ -7,25 +7,26 @@
 #include <QtCore/QPointF>
 #include <QtCore/QQueue>
 
-typedef struct Data {
-    QList<QPointF> samples;
-} SerialData;
-
 class DataReceiver : public QThread
 {
     Q_OBJECT
     
     private:
         QSerialPort* serial_port;
-        quint8 bps;
+        quint64      sample_rate;
+        quint8       bits_per_sample;
+        quint8       bytes_per_sample;
+        bool         signed_sample;
     
     public:
         DataReceiver();
-        bool configure(QString port_name, quint32 baud_rate, quint8 bits_per_sample);
+        bool configure(QString port_name, quint32 baud_rate);
+        void setSampleRate(quint64 sample_rate);
+        void setBitsPerSample(quint8 bits_per_sample, bool signed_sample);
         void run();
         
     signals:
-        void new_data(SerialData* data);
+        void new_data(QByteArray data);
 };
 
 #endif // DATARECEIVER_H

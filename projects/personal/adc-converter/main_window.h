@@ -15,29 +15,36 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
     
-public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
-    void showErrorMessage(QString title, QString message);
-    
-private slots:
-    void on_btnCapture_clicked();
-    void on_btnSave_clicked();
-    void on_btnLoad_clicked();
-    
-    void on_txtHex_1_textChanged(const QString &arg1);
-    
-    void on_txtDec_2_textChanged(const QString &arg1);
-    
-    void on_cbSignedInteger_toggled(bool checked);
-    
-    void on_btnRefresh_clicked();
-    
-    void on_txtSamples_selectionChanged();
-    
-private:
-    Ui::MainWindow *ui;
-    DataReceiver receiver;
-    QVector<qint64> samples;
+    public:
+        
+        MainWindow(QWidget *parent = nullptr);
+        ~MainWindow();
+        
+    private slots:
+        
+        // General
+        
+        void on_sample_processed(const quint64 sample);
+        
+        // UI
+        
+        void on_btnCapture_clicked();
+        void on_btnSave_clicked();
+        void on_btnLoad_clicked();
+        void on_txtHex_1_textChanged(const QString &arg1);
+        void on_txtDec_2_textChanged(const QString &arg1);
+        void on_cbSignedInteger_toggled(bool checked);
+        void on_btnRefresh_clicked();
+        void on_txtSamples_selectionChanged();
+        
+    private:
+        
+        Ui::MainWindow* ui;
+        DataReceiver    receiver;
+        QVector<qint64> samples;
+        
+        void setupConnections();
+        void showErrorMessage(QString title, QString message);
+        
 };
 #endif // MAINWINDOW_H

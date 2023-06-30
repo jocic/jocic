@@ -1,3 +1,5 @@
+#include <QtMath>
+
 #include <QDebug>
 #include <QRandomGenerator>
 
@@ -8,7 +10,7 @@ DataReceiver::DataReceiver()
     this->serial_port = new QSerialPort();
 }
 
-bool DataReceiver::configure(QString port_name, quint32 baud_rate, quint8 bits_per_sample) {
+bool DataReceiver::configure(QString port_name, quint32 baud_rate) {
     
     if (this->serial_port->isOpen()) {
         this->serial_port->close();
@@ -19,37 +21,38 @@ bool DataReceiver::configure(QString port_name, quint32 baud_rate, quint8 bits_p
     this->serial_port->setParity(QSerialPort::NoParity);
     this->serial_port->setDataBits(QSerialPort::Data8);
     this->serial_port->setStopBits(QSerialPort::OneStop);
-    
-    this->bps = bits_per_sample;
+    this->serial_port->setReadBufferSize(1024);
     
     return this->serial_port->open(QSerialPort::ReadWrite);
 }
 
+void DataReceiver::setSampleRate(quint64 sample_rate) {
+    
+    this->sample_rate = sample_rate;
+}
+
+void DataReceiver::setBitsPerSample(quint8 bits_per_sample, bool signed_sample) {
+    
+    this->bits_per_sample = bits_per_sample;
+    this->signed_sample   = signed_sample;
+    
+    this->bytes_per_sample = this->bits_per_sample / 8;
+}
+
 void DataReceiver::run() {
     
-    SerialData data;
-    quint16    sample;
-    
-    int i = 0;
+    QByteArray       buffer;
+    QVector<quint64> samples;
+    quint64          sample       = 0;
+    quint64          sample_count = 0;
     
     while (true) {
         
-        this->serial_port->read((char*)&sample, 2);
-        
         if (this->serial_port->waitForReadyRead()) {
             
-            quint8 first = sample & 0xFF;
-            quint8 second = sample >> 8;    
+            buffer = this->serial_port->readAll();
             
-            data.samples.push_back({ double(i), double(sample & 0xFFFF) });
-            //qDebug() << first << second;
-            i++;
-            
-            if (i == 10) {
-                i = 0;
-                emit this->new_data(&data);
-            }
+            emit this->new_data(buffer);
         }
-        
     }
 }
