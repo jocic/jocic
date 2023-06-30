@@ -11,7 +11,7 @@ ScopeWidget::ScopeWidget(QWidget* parent)
     this->setContentsMargins(0, 0, 0, 0);
     
     this->layout       = new QHBoxLayout();
-    this->chart_view   = new QChartView();
+    this->chart_view   = new ScopeChartView();
     this->chart        = new QChart();
     this->chart_series = new QLineSeries();
     this->chart_x      = new QValueAxis();
@@ -54,9 +54,8 @@ ScopeWidget::ScopeWidget(QWidget* parent)
     this->dat_ctl = new DataControl(ref);
     
     this->dat_ctl->start();
+    
 }
-
-
 void ScopeWidget::on_adc_resolution_change(int bits) {
     
     quint64 max = qPow(2, bits);

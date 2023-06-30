@@ -138,6 +138,21 @@ void MainWindow::on_btnRefresh_clicked()
     }
     
     this->ui->cmbBaud->setCurrentIndex(rate_index);
+    
+    
+    
+    // tidy up later
+    
+    
+    QString ui_bits_text;
+    quint8  ui_bits_value;
+    
+    ui_bits_text  = this->ui->cmbBitsPerSample->currentText();
+    ui_bits_value = ui_bits_text.toUInt(NULL, 10);
+    
+    // Emit Event
+    
+    emit this->adc_resolution_changed(ui_bits_value);
 }
 
 void MainWindow::on_btnSave_clicked()

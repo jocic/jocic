@@ -22,10 +22,6 @@ class MainWindow : public QMainWindow
         
     private slots:
         
-        // General
-        
-        void on_sample_processed(const quint64 sample);
-        
         // UI
         
         void on_btnCapture_clicked();

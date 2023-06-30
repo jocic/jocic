@@ -6,12 +6,14 @@
 #include <QtCharts/QLineSeries>
 #include <QtCharts/QValueAxis>
 
+#include "scope_chart.h"
+
 typedef struct chart_ref {
-    QChartView*  view;
-    QChart*      chart;
-    QLineSeries* series;
-    QValueAxis*  x_axis;
-    QValueAxis*  y_axis;
+    ScopeChartView* view;
+    QChart*         chart;
+    QLineSeries*    series;
+    QValueAxis*     x_axis;
+    QValueAxis*     y_axis;
 } chart_ref_t;
 
 #endif // SCOPE_DATA_TYPES_H

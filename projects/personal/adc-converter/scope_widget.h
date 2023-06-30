@@ -17,6 +17,7 @@
 #include <QtCharts/QValueAxis>
 
 #include "data_control.h"
+#include "scope_chart.h"
 
 class ScopeWidget : public QWidget
 {
@@ -29,7 +30,8 @@ class ScopeWidget : public QWidget
     
     public:
         
-        QChartView*  chart_view;
+        ScopeChartView* chart_view;
+        
         QChart*      chart;
         QLineSeries* chart_series;
         QValueAxis*  chart_x;

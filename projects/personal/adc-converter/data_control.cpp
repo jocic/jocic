@@ -41,9 +41,9 @@ void DataControl::run()
                     
                     if (skipped_first) {
                         
-                        if (_x % 16 == 0) {
+                        if (_x % 8 == 0) {
                             this->chart_ref.series->append(x, sample_value);
-                            x += 16;
+                            x += 8;
                         }
                         
                         
@@ -67,7 +67,7 @@ void DataControl::run()
             if (_x > 1024) {
                 this->chart_ref.x_axis->setRange(_x - 1024, _x);
                 
-                if (_x % 16 == 0)
+                if (_x % 8 == 0)
                 this->chart_ref.series->remove(0);
             }
             
