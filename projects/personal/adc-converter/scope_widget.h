@@ -28,6 +28,7 @@ class ScopeWidget : public QWidget
         QHBoxLayout* layout;
     
     public:
+        
         QChartView*  chart_view;
         QChart*      chart;
         QLineSeries* chart_series;
@@ -38,6 +39,9 @@ class ScopeWidget : public QWidget
         
         ScopeWidget(QWidget* parent);
         
+    public slots:
+        
+        void on_adc_resolution_change(int bits);
 };
 
 #endif // SCOPE_WIDGET_H

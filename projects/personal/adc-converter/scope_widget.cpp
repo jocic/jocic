@@ -1,4 +1,5 @@
 #include <QDebug>
+#include <QtMath>
 
 #include "scope_widget.h"
 #include "scope_data_types.h"
@@ -22,7 +23,7 @@ ScopeWidget::ScopeWidget(QWidget* parent)
     this->chart_x->setRange(0, 1024);
     
     this->chart_y->setTitleText("ADC Value");
-    this->chart_y->setRange(0, 1024);
+    this->chart_y->setRange(0, 255);
     
     this->chart->setBackgroundVisible(false);
     this->chart->addSeries(this->chart_series);
@@ -53,4 +54,12 @@ ScopeWidget::ScopeWidget(QWidget* parent)
     this->dat_ctl = new DataControl(ref);
     
     this->dat_ctl->start();
+}
+
+
+void ScopeWidget::on_adc_resolution_change(int bits) {
+    
+    quint64 max = qPow(2, bits);
+    
+    this->chart_y->setRange(0, max);
 }

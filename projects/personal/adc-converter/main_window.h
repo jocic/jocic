@@ -36,6 +36,7 @@ class MainWindow : public QMainWindow
         void on_cbSignedInteger_toggled(bool checked);
         void on_btnRefresh_clicked();
         void on_txtSamples_selectionChanged();
+        void on_cmbBitsPerSample_currentIndexChanged(int index);
         
     private:
         
@@ -45,6 +46,10 @@ class MainWindow : public QMainWindow
         
         void setupConnections();
         void showErrorMessage(QString title, QString message);
+        
+    signals:
+        
+        void adc_resolution_changed(int resolution);
         
 };
 #endif // MAINWINDOW_H

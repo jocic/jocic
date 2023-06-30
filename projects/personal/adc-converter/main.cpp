@@ -4,8 +4,9 @@
 
 /*
  * TO-DO (Tomorrow)
+ *   - com port couln't be open - error message not invali config
+ *   - implement basic vertical controls - left click zoom in, right click zoom out, scroll wheel shifts the range up/own
  *   - Update samples/duration in real time
- *   - implement a sliding window algorithm for the scope view, populate the samples vector
  *   - move the range continously even if there's no signal (set it to 1ms per division)
  *   - playback feature - remove the tab, add a button with the play icon - don't overthink it or overengineer it (just needs to play the samples at the specified sample rate)
  * TO-DO (Paid Version):
