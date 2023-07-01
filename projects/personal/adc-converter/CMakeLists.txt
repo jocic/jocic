@@ -20,6 +20,9 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Charts)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS SerialPort)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS SerialPort)
 
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Multimedia)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Multimedia)
+
 FILE(COPY icons DESTINATION ${CMAKE_BINARY_DIR})
 
 set(PROJECT_SOURCES
@@ -68,6 +71,7 @@ target_link_libraries(adc-converter PRIVATE
     Qt${QT_VERSION_MAJOR}::Widgets
     Qt${QT_VERSION_MAJOR}::SerialPort
     Qt${QT_VERSION_MAJOR}::Charts
+    Qt${QT_VERSION_MAJOR}::Multimedia
 )
 
 set_target_properties(adc-converter PROPERTIES

@@ -60,7 +60,7 @@
          <enum>QTabWidget::Rounded</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <property name="tabsClosable">
          <bool>false</bool>
@@ -125,6 +125,9 @@
             <property name="autoFillBackground">
              <bool>false</bool>
             </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
             <property name="frameShape">
              <enum>QFrame::NoFrame</enum>
             </property>
@@ -142,6 +145,9 @@
             </property>
             <property name="textInteractionFlags">
              <set>Qt::TextSelectableByMouse</set>
+            </property>
+            <property name="placeholderText">
+             <string/>
             </property>
            </widget>
           </item>
@@ -483,6 +489,20 @@
         <item>
          <property name="text">
           <string>19200</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="cmbType">
+        <item>
+         <property name="text">
+          <string>TXT</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>BIN</string>
          </property>
         </item>
        </widget>

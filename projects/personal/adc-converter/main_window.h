@@ -40,6 +40,10 @@ class MainWindow : public QMainWindow
         
         void on_txtSampleRate_textChanged(const QString &arg1);
         
+        void on_btnPlay_clicked();
+        
+        void on_btnExport_clicked();
+        
 private:
         
         Ui::MainWindow* ui;

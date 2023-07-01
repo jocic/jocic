@@ -12,7 +12,13 @@
  *   - Improve UI (use those tabs that can be moved around/docked etc)
  *   - Add ability to issue commands to the connected device
  *   - Configuration Window (UART -> Baud Rate,Parity, Samples -> Sample Format (Binary, Text), Hardware -> ADC Resolution, Positive/Negative Reference Voltages, etc)
- **/
+ *   - Improve sample management feature - general overview, view values by interval (minute, secons, etc), generate waveform, play interval, etc
+ *   - automatically etermine the sample rate
+ *   - make an efficient custom chart that oesn't crash the program with >1024 points
+ *   - show some notice when there are no samples
+ *   - make the ui look sexy AF
+ *   - ata receiver shoul exten qserialbus which extens qioevice - ez pz
+**/
 
 int main(int argc, char *argv[])
 {

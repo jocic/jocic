@@ -6,6 +6,11 @@
 #include <QDebug>
 #include <QFile>
 
+#include <QtMultimedia/QMediaDevices>
+#include <QtMultimedia/QAudioDevice>
+#include <QtMultimedia/QAudioFormat>
+#include <QtMultimedia/QAudioSink>
+
 #include <iostream>
 
 using namespace std;
@@ -633,5 +638,78 @@ void MainWindow::on_txtSampleRate_textChanged(const QString &arg1)
     qreal duration = this->samples.size() / qreal(ui_rate_value);
     
     this->ui->lblDurationCount->setText(QString::asprintf("%.2fs", duration));
+}
+
+
+void MainWindow::on_btnPlay_clicked()
+{
+    // Get UI Options
+    
+    QString  ui_rate_text;
+    quint32  ui_rate_value;
+    quint16  ui_bits_index;
+    QString  ui_bits_text;
+    quint8   ui_bits_value;
+    bool     ui_sample_signed;
+    
+    ui_rate_text  = this->ui->txtSampleRate->text();
+    ui_rate_value = ui_rate_text.toUInt(NULL, 10);
+    
+    ui_bits_index = this->ui->cmbBitsPerSample->currentIndex();
+    ui_bits_text  = this->ui->cmbBitsPerSample->itemText(ui_bits_index);
+    ui_bits_value = ui_bits_text.toUInt(NULL, 10);
+    
+    ui_sample_signed = this->ui->cbSignedSample->isChecked();
+    
+    // Play Samples
+    
+    QMediaDevices devices;
+    QAudioDevice  speakers;
+    QAudioFormat  format;
+    QAudioSink*   sink;
+    
+    speakers = devices.defaultAudioOutput();
+    
+    if (speakers.isNull()) {
+        this->showErrorMessage("Device Error", "Output not available.");
+        return;
+    }
+    
+    format.setSampleRate(ui_rate_value);
+    format.setChannelCount(1);
+    
+    switch (ui_bits_value) {
+        case 8:
+            if (ui_sample_signed) {
+                format.setSampleFormat(QAudioFormat::UInt8);
+            } else {
+                format.setSampleFormat(QAudioFormat::Int16);
+            }
+            break;
+        case 16:
+            format.setSampleFormat(QAudioFormat::Int16);
+            break;
+        case 32:
+        format.setSampleFormat(QAudioFormat::Int32);
+            break;
+        default:
+            this->showErrorMessage("Application Error", "Invalid bits per sample option.");
+            return;
+    }
+    
+    sink = new QAudioSink(format, this);
+    
+    QFile file;
+    
+    file.setFileName("putty.log");
+    file.open(QFile::ReadOnly);
+    connect(sink, SIGNAL(stateChanged(QAudio::State)), this, SLOT(handleStateChanged(QAudio::State)));
+    sink->start(&file);
+}
+
+
+void MainWindow::on_btnExport_clicked()
+{
+    
 }
 
