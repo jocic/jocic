@@ -3,9 +3,6 @@
 #include <QApplication>
 
 /*
- * TO-DO (Tomorrow)
- *   - Update samples/duration in real time
- *   - playback feature - remove the tab, add a button with the play icon - don't overthink it or overengineer it (just needs to play the samples at the specified sample rate)
  * TO-DO (Paid Version):
  *   - Add an Icon
  *   - Saving/Loading procedure should be optimized and done using Threads in combination with a progress bar
@@ -20,7 +17,8 @@
  *   - data receiver should exten qserialbus which extens qioevice - ez pz
  *   - have a tab terminal for serial i/o
  *   - Options for the bits per sample should be uint8, int16, int32 - and that's it
- *   - option to "slow down" the waveform 
+ *   - option to "slow down" the waveform
+ *   - signal/slots connection is severed if made with a mainwindow while its being moved
 **/
 
 int main(int argc, char *argv[])

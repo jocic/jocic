@@ -714,7 +714,130 @@ void MainWindow::on_btnPlay_clicked()
 
 void MainWindow::on_btnExport_clicked()
 {
+    const quint8 WAV_HEADER[44] = {
+        0x52, 0x49, 0x46, 0x46, 0xC4, 0x86, 0x01, 0x00, 0x57, 0x41, 0x56, 0x45,
+        0x66, 0x6D, 0x74, 0x20, 0x10, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00,
+        0x88, 0x13, 0x00, 0x00, 0x10, 0x27, 0x00, 0x00, 0x02, 0x00, 0x10, 0x00,
+        0x64, 0x61, 0x74, 0x61, 0xA0, 0x86
+    };
     
+    QString ui_rate_text;
+    quint64 ui_rate_value;
+    QString ui_bits_text;
+    quint8  ui_bits_value;
+    quint8  ui_bytes_value;
+    
+    ui_rate_text  = this->ui->txtSampleRate->text();
+    ui_rate_value = ui_rate_text.toULongLong();
+    
+    ui_bits_text  = this->ui->cmbBitsPerSample->currentText();
+    ui_bits_value = ui_bits_text.toUInt();
+    
+    QFileDialog export_dialog;
+    QFile       export_file;
+    QString     export_directory;
+    QString     export_filename;
+    
+    export_filename = "export_" + QDateTime::currentDateTime().toString("yyyyMMdd_hhmmss") + ".wav";
+    
+    export_dialog.setWindowTitle("Export Audio");
+    export_dialog.setAcceptMode(QFileDialog::AcceptSave);
+    export_dialog.selectFile(export_filename);
+    export_dialog.exec();
+    
+    quint8  wav_buffer[4];
+    quint8  wav_channels;
+    quint32 wav_sample_rate;
+    quint16 wav_bits_per_sample;
+    quint32 wav_byte_rate;
+    quint32 wav_subchunk2_size;
+    quint32 wav_chunk_size;
+    
+    ui_bytes_value = ui_bits_value / 8;
+    
+    if (export_dialog.selectedFiles().size() == 0) {
+        this->showErrorMessage("General Error", "You must specify a file.");
+        return;
+    }
+    
+    export_file.setFileName(export_dialog.selectedFiles().front());
+    export_file.open(QFile::ReadWrite);
+    
+    if (!export_file.isOpen()) {
+        this->showErrorMessage("I/O Error", "File couldn't be created.");
+        return;
+    }
+    
+    export_file.seek(0);
+    export_file.write((char*)WAV_HEADER, 44);
+    
+    export_file.seek(44);
+    for (const auto& sample : this->samples) {
+        export_file.write((char*)&sample, ui_bytes_value);
+    }
+    
+    export_file.seek(22);
+    
+    wav_channels = 1;
+    wav_buffer[0] = (wav_channels >> 0 ) & 0xFF;
+    wav_buffer[1] = (wav_channels >> 8 ) & 0xFF;
+    wav_buffer[2] = (wav_channels >> 16) & 0xFF;
+    wav_buffer[3] = (wav_channels >> 24) & 0xFF;
+    export_file.write((char*)wav_buffer, 2);
+    
+    export_file.seek(24);
+    
+    wav_sample_rate = ui_rate_value;
+    wav_buffer[0] = (wav_sample_rate >> 0 ) & 0xFF;
+    wav_buffer[1] = (wav_sample_rate >> 8 ) & 0xFF;
+    wav_buffer[2] = (wav_sample_rate >> 16) & 0xFF;
+    wav_buffer[3] = (wav_sample_rate >> 24) & 0xFF;
+    export_file.write((char*)wav_buffer, 4);
+    
+    export_file.seek(34);
+    
+    wav_bits_per_sample = ui_bits_value;
+    wav_buffer[0] = (wav_bits_per_sample >> 0 ) & 0xFF;
+    wav_buffer[1] = (wav_bits_per_sample >> 8 ) & 0xFF;
+    wav_buffer[2] = (wav_bits_per_sample >> 16) & 0xFF;
+    wav_buffer[3] = (wav_bits_per_sample >> 24) & 0xFF;
+    export_file.write((char*)wav_buffer, 2);
+    
+    export_file.seek(28);
+    
+    wav_byte_rate = wav_sample_rate * wav_channels * (wav_bits_per_sample / 8);
+    wav_buffer[0] = (wav_byte_rate >> 0 ) & 0xFF;
+    wav_buffer[1] = (wav_byte_rate >> 8 ) & 0xFF;
+    wav_buffer[2] = (wav_byte_rate >> 16) & 0xFF;
+    wav_buffer[3] = (wav_byte_rate >> 24) & 0xFF;
+    export_file.write((char*)wav_buffer, 4);
+    
+    export_file.seek(40);
+    
+    wav_subchunk2_size = this->samples.size() * wav_channels * (wav_bits_per_sample / 8);
+    wav_buffer[0] = (wav_subchunk2_size >> 0 ) & 0xFF;
+    wav_buffer[1] = (wav_subchunk2_size >> 8 ) & 0xFF;
+    wav_buffer[2] = (wav_subchunk2_size >> 16) & 0xFF;
+    wav_buffer[3] = (wav_subchunk2_size >> 24) & 0xFF;
+    export_file.write((char*)wav_buffer, 4);
+    
+    export_file.seek(4);
+    
+    wav_chunk_size = 36 + wav_subchunk2_size;
+    wav_buffer[0] = (wav_chunk_size >> 0 ) & 0xFF;
+    wav_buffer[1] = (wav_chunk_size >> 8 ) & 0xFF;
+    wav_buffer[2] = (wav_chunk_size >> 16) & 0xFF;
+    wav_buffer[3] = (wav_chunk_size >> 24) & 0xFF;
+    export_file.write((char*)wav_buffer, 4);
+    
+    export_file.close();
+    
+    qDebug() << "Channels =" << wav_channels
+        << "Sample Rate =" << wav_sample_rate
+        << "Bits per Sample =" << ui_bits_value
+        << "Byte Rate =" << wav_byte_rate
+        << "Subchunk2 Size =" << wav_subchunk2_size
+        << "Chunk Size =" << wav_chunk_size;
 }
 
 
