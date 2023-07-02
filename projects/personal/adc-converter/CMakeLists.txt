@@ -29,6 +29,7 @@ set(PROJECT_SOURCES
         
         main_window.ui
         
+        audio_source.h
         scope_data_types.h
         scope_chart.h
         data_control.h
@@ -36,6 +37,7 @@ set(PROJECT_SOURCES
         scope_widget.h
         main_window.h
         
+        audio_source.cpp
         scope_chart.cpp
         data_control.cpp
         data_receiver.cpp

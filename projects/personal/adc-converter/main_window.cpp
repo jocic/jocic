@@ -5,19 +5,19 @@
 #include <QDateTime>
 #include <QDebug>
 #include <QFile>
+#include <QScopedPointer>
 
 #include <QtMultimedia/QMediaDevices>
 #include <QtMultimedia/QAudioDevice>
 #include <QtMultimedia/QAudioFormat>
-#include <QtMultimedia/QAudioSink>
-
-#include <iostream>
 
 using namespace std;
 
 #include "main_window.h"
 #include "scope_widget.h"
 #include "data_receiver.h"
+#include "audio_source.h"
+
 #include "./ui_main_window.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -25,6 +25,9 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    
+    this->audio_sink   = NULL;
+    this->audio_source = NULL;
     
     this->setupConnections();
     
@@ -141,6 +144,7 @@ void MainWindow::on_btnCapture_clicked()
         this->ui->btnCapture->setText("Connect");
         this->ui->btnRefresh->setEnabled(true);
         this->ui->tabMain->setEnabled(true);
+        this->ui->btnLoad->setEnabled(true);
     }
     else {
         
@@ -151,6 +155,8 @@ void MainWindow::on_btnCapture_clicked()
         this->ui->btnCapture->setText("Disconnect");
         this->ui->btnRefresh->setEnabled(false);
         this->ui->tabMain->setEnabled(false);
+        this->ui->btnLoad->setEnabled(false);
+        
         this->receiver.start();
     }
 }
@@ -420,7 +426,6 @@ void MainWindow::on_btnLoad_clicked()
     }
 }
 
-
 void MainWindow::on_txtHex_1_textChanged(const QString &arg1)
 {
     bool    sig;
@@ -519,7 +524,6 @@ void MainWindow::on_txtDec_2_textChanged(const QString &arg1)
     qDebug() << "Dec to Hex: Input =" << arg1;
 }
 
-
 void MainWindow::on_txtSamples_selectionChanged()
 {
     // Get UI Parameters
@@ -586,7 +590,6 @@ void MainWindow::on_txtSamples_selectionChanged()
     qDebug() << "Extracted Word=" << word;
 }
 
-
 void MainWindow::on_cmbBitsPerSample_currentIndexChanged(int index)
 {
     // Get UI Parameters
@@ -626,7 +629,6 @@ void MainWindow::on_point_processed(qint64 sample) {
     this->samples.push_back(sample);
 }
 
-
 void MainWindow::on_txtSampleRate_textChanged(const QString &arg1)
 {
     QString  ui_rate_text;
@@ -640,73 +642,75 @@ void MainWindow::on_txtSampleRate_textChanged(const QString &arg1)
     this->ui->lblDurationCount->setText(QString::asprintf("%.2fs", duration));
 }
 
+void MainWindow::on_audio_sink_state_change(QAudio::State state) {
+    
+    if (state == QAudio::State::ActiveState) {
+        
+        this->ui->btnCapture->setEnabled(false);
+        this->ui->btnPlay->setEnabled(false);
+        this->ui->btnLoad->setEnabled(false);
+    }
+    else {
+        
+        this->ui->btnCapture->setEnabled(true);
+        this->ui->btnPlay->setEnabled(true);
+        this->ui->btnLoad->setEnabled(true);
+    }
+}
 
 void MainWindow::on_btnPlay_clicked()
 {
     // Get UI Options
     
-    QString  ui_rate_text;
-    quint32  ui_rate_value;
-    quint16  ui_bits_index;
-    QString  ui_bits_text;
-    quint8   ui_bits_value;
-    bool     ui_sample_signed;
+    QString ui_rate_text = this->ui->txtSampleRate->text();
+    quint64 ui_rate_value = ui_rate_text.toULongLong(NULL, 10);
     
-    ui_rate_text  = this->ui->txtSampleRate->text();
-    ui_rate_value = ui_rate_text.toUInt(NULL, 10);
+    QString ui_bits_text  = this->ui->cmbBitsPerSample->currentText();
+    quint8  ui_bits_value = ui_bits_text.toUInt(NULL, 10);
     
-    ui_bits_index = this->ui->cmbBitsPerSample->currentIndex();
-    ui_bits_text  = this->ui->cmbBitsPerSample->itemText(ui_bits_index);
-    ui_bits_value = ui_bits_text.toUInt(NULL, 10);
+    bool ui_sample_signed = this->ui->cbSignedSample->isChecked();
     
-    ui_sample_signed = this->ui->cbSignedSample->isChecked();
+    qDebug() << "Sample Rate =" << ui_rate_value
+        << "Bits per Sample =" << ui_bits_value
+        << "Signed Sample =" << ui_sample_signed;
     
-    // Play Samples
+    // Play Audio
     
-    QMediaDevices devices;
-    QAudioDevice  speakers;
-    QAudioFormat  format;
-    QAudioSink*   sink;
+    QAudioDevice audio_output;
+    QAudioFormat audio_format;
     
-    speakers = devices.defaultAudioOutput();
+    audio_output = QMediaDevices::defaultAudioOutput();
     
-    if (speakers.isNull()) {
-        this->showErrorMessage("Device Error", "Output not available.");
+    if (audio_output.isNull()) {
+        this->showErrorMessage("Device Error", "No output device available.");
         return;
     }
     
-    format.setSampleRate(ui_rate_value);
-    format.setChannelCount(1);
+    audio_format.setSampleRate(ui_rate_value);
+    audio_format.setChannelCount(1);
     
-    switch (ui_bits_value) {
-        case 8:
-            if (ui_sample_signed) {
-                format.setSampleFormat(QAudioFormat::UInt8);
-            } else {
-                format.setSampleFormat(QAudioFormat::Int16);
-            }
-            break;
-        case 16:
-            format.setSampleFormat(QAudioFormat::Int16);
-            break;
-        case 32:
-        format.setSampleFormat(QAudioFormat::Int32);
-            break;
-        default:
-            this->showErrorMessage("Application Error", "Invalid bits per sample option.");
-            return;
+    if (ui_bits_value == 8) {
+        audio_format.setSampleFormat(QAudioFormat::UInt8);
+    } else if (ui_bits_value == 16) {
+        audio_format.setSampleFormat(QAudioFormat::Int16);
+    } else {
+        audio_format.setSampleFormat(QAudioFormat::Int32);
     }
     
-    sink = new QAudioSink(format, this);
+    if (this->audio_sink != NULL) {
+        delete this->audio_sink;
+    }
     
-    QFile file;
+    this->audio_sink   = new QAudioSink(audio_format, this);
+    this->audio_source = new AudioSource();
     
-    file.setFileName("putty.log");
-    file.open(QFile::ReadOnly);
-    connect(sink, SIGNAL(stateChanged(QAudio::State)), this, SLOT(handleStateChanged(QAudio::State)));
-    sink->start(&file);
+    this->audio_source->setSamples(this->samples, ui_bits_value);
+    
+    connect(this->audio_sink, &QAudioSink::stateChanged,
+        this, &MainWindow::on_audio_sink_state_change);
+    
+    this->audio_sink->start(this->audio_source);
 }
-
 
 void MainWindow::on_btnExport_clicked()
 {

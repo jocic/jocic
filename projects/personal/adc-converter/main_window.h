@@ -5,7 +5,10 @@
 #include <QVector>
 #include <QPlainTextEdit>
 
+#include <QtMultimedia/QAudioSink>
+
 #include "data_receiver.h"
+#include "audio_source.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,6 +28,7 @@ class MainWindow : public QMainWindow
         // General
         
         void on_point_processed(qint64 sample);
+        void on_audio_sink_state_change(QAudio::State state);
         
         // UI
         
@@ -49,6 +53,8 @@ private:
         Ui::MainWindow* ui;
         DataReceiver    receiver;
         QVector<qint64> samples;
+        QAudioSink*     audio_sink;
+        AudioSource*    audio_source;
         
         void setupConnections();
         void showErrorMessage(QString title, QString message);

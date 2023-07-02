@@ -17,7 +17,9 @@
  *   - make an efficient custom chart that oesn't crash the program with >1024 points
  *   - show some notice when there are no samples
  *   - make the ui look sexy AF
- *   - ata receiver shoul exten qserialbus which extens qioevice - ez pz
+ *   - data receiver should exten qserialbus which extens qioevice - ez pz
+ *   - have a tab terminal for serial i/o
+ *   - Options for the bits per sample should be uint8, int16, int32 - and that's it
 **/
 
 int main(int argc, char *argv[])
