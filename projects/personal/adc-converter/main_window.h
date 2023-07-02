@@ -48,6 +48,8 @@ class MainWindow : public QMainWindow
         
         void on_btnExport_clicked();
         
+        void on_cmbType_currentIndexChanged(int index);
+        
 private:
         
         Ui::MainWindow* ui;

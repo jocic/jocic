@@ -20,10 +20,10 @@ ScopeWidget::ScopeWidget(QWidget* parent)
     this->chart_series->useOpenGL();
     
     this->chart_x->setTitleText("Time");
-    this->chart_x->setRange(0, 1024);
+    this->chart_x->setRange(0, 128);
     
     this->chart_y->setTitleText("ADC Value");
-    this->chart_y->setRange(0, 255);
+    this->chart_y->setRange(-128, 128);
     
     this->chart->setBackgroundVisible(false);
     this->chart->addSeries(this->chart_series);
@@ -60,5 +60,7 @@ void ScopeWidget::on_adc_resolution_change(int bits) {
     
     quint64 max = qPow(2, bits);
     
-    this->chart_y->setRange(0, max);
+    qint64 mid = max / 2;
+    
+    this->chart_y->setRange(mid * -1, mid);
 }

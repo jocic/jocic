@@ -1,4 +1,5 @@
 #include <QDebug>
+#include <QMutex>
 
 #include "data_control.h"
 
@@ -18,63 +19,78 @@ void DataControl::configure(quint64 queue_delay_ms)
 
 void DataControl::run()
 {
+    quint64  x      = 0;
+    bool processing = false;
+    
+    QQueue<qint64> window;
     
     while (true) {
         
-        if (!this->data_raw->empty()) {
+        if (processing) {
             
-            this->chart_ref.view->setUpdatesEnabled(false);
-            
-            QByteArray bytes = this->data_raw->front();
-            
-            this->data_raw->pop_front();
-            
-            qint64  sample_value  = 0;
-            quint64 array_length  = bytes.size() - 1;
-            bool    skipped_first = false;
-            
-            for (quint64 i = 0; i < array_length; i++) {
+            while (!window.empty()) {
                 
-                if (   (bytes[i] == '\r' && bytes[i + 1] == '\n')
-                    || (bytes[i] == '\n' && bytes[i + 1] == '\r')) {
+                qint64 sample_value = window.front();
+                window.pop_front();
+                
+                emit this->point_processed(sample_value);
+                
+                this->chart_ref.series->append(x++, sample_value);
+                
+                if (this->chart_ref.series->points().size() > 128) {
                     
-                    if (skipped_first) {
-                        emit this->point_processed(sample_value);
-                        if (_x % 8 == 0) {
-                            this->chart_ref.series->append(x, sample_value);
-                            x += 8;
+                    this->chart_ref.series->remove(0);
+                    
+                    QPointF front = this->chart_ref.series->points().front();
+                    
+                    this->chart_ref.x_axis->setRange(front.x(), front.x() + 128);
+                }
+                
+                qDebug() << "Series Size: " << this->chart_ref.series->points().size();
+            }
+            
+            processing = false;
+        }
+        else {
+            
+            if (!this->data_raw->empty()) {
+                
+                QByteArray bytes = this->data_raw->front();
+                this->data_raw->pop_front();
+                
+                qint64  sample_value  = 0;
+                quint64 array_length  = bytes.size() - 1;
+                bool    skipped_first = false;
+                
+                for (quint64 i = 0; i < array_length; i++) {
+                    
+                    if (   (bytes[i] == '\r' && bytes[i + 1] == '\n')
+                        || (bytes[i] == '\n' && bytes[i + 1] == '\r')) {
+                        
+                        if (skipped_first) {
+                            window.push_back(sample_value);
                         }
                         
-                        
-                        _x++;
+                        sample_value  = 0;
+                        skipped_first = true;
                     }
                     
-                    sample_value  = 0;
-                    skipped_first = true;
-                }
-                
-                if (!skipped_first) {
-                    continue;
-                }
-                
-                if (bytes[i] >= '0' && bytes[i] <= '9') {
-                    sample_value *= 10;
-                    sample_value += bytes[i] - '0';
+                    if (!skipped_first) {
+                        continue;
+                    }
+                    
+                    if (bytes[i] >= '0' && bytes[i] <= '9') {
+                        sample_value *= 10;
+                        sample_value += bytes[i] - '0';
+                    }
                 }
             }
             
-            if (_x > 1024) {
-                this->chart_ref.x_axis->setRange(_x - 1024, _x);
-                
-                if (_x % 8 == 0)
-                this->chart_ref.series->remove(0);
-            }
-            
-            this->chart_ref.view->setUpdatesEnabled(true);
+            processing = true;
         }
-        
-        //this->msleep(this->queue_delay_ms);
     }
+    
+    this->usleep(100);
 }
 
 void DataControl::on_new_data(QByteArray data) {

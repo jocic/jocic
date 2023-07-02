@@ -20,6 +20,7 @@
  *   - data receiver should exten qserialbus which extens qioevice - ez pz
  *   - have a tab terminal for serial i/o
  *   - Options for the bits per sample should be uint8, int16, int32 - and that's it
+ *   - option to "slow down" the waveform 
 **/
 
 int main(int argc, char *argv[])

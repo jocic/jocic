@@ -207,8 +207,8 @@ void MainWindow::on_btnRefresh_clicked()
     ui_bits_text  = this->ui->cmbBitsPerSample->currentText();
     ui_bits_value = ui_bits_text.toUInt(NULL, 10);
     
-    this->ui->wdScope->chart_series->clear();    
-    this->ui->wdScope->chart_x->setRange(0, 1024);
+    this->ui->wdScope->chart_series->clear();
+    this->ui->wdScope->chart_x->setRange(0, 128);
     this->ui->wdScope->dat_ctl->reset();
     
     this->ui->lblSampleCount->setText("N/A");
@@ -713,6 +713,12 @@ void MainWindow::on_btnPlay_clicked()
 }
 
 void MainWindow::on_btnExport_clicked()
+{
+    
+}
+
+
+void MainWindow::on_cmbType_currentIndexChanged(int index)
 {
     
 }
