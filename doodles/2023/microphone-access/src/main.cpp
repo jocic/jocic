@@ -208,8 +208,6 @@ void record_wav_file(const char* filename, uint32_t duration) {
         PaStreamCallbackFlags status_flags,
         void *user_data) -> PaError {
         
-        static bool init = false;
-        
         AUDIO_DATA* data = (AUDIO_DATA*)user_data;
         
         int16_t* iptr = (int16_t*)input;
