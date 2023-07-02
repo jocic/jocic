@@ -15,9 +15,14 @@ QAudioSink* audio_sink;
 
 void on_state_changed(QAudio::State state) {
     
-    if (state != QAudio::ActiveState) {
+    if (state == QAudio::ActiveState) {
+        
         audio_sink->stop();
         audio_file.close();
+        
+        delete audio_sink;
+        
+        QCoreApplication::quit();
     }
 }
 
@@ -56,6 +61,9 @@ int main(int argc, char *argv[]) {
     qDebug() << "-" << "Sample Rate: " << audio_format.sampleRate();
     qDebug() << "-" << "Channel Count: " << audio_format.channelCount();
     qDebug() << "-" << "Sample Format: " << audio_format.sampleFormat();
+    
+    qDebug() << "- Format Supported:" <<
+        (audio_output.isFormatSupported(audio_format) ? "Yes" : "No");
     
     // Play WAV File
     
