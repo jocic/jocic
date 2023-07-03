@@ -21,7 +21,9 @@ class DataControl : public QThread
         quint64             queue_delay_ms;
     
     public:
+        quint8              mode;
         quint64 _x = 0, x = 0;
+        quint64  y      = 0;
         QQueue<qint64>*     data;
         QQueue<QByteArray>* data_raw;
         DataControl(chart_ref_t ref);
@@ -31,7 +33,7 @@ class DataControl : public QThread
         void run();
         void reset() {
             
-            _x = 0; x = 0;
+            _x = 0; x = 0; y = 0;
         }
         
     public slots:

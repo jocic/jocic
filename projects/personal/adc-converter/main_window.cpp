@@ -70,7 +70,7 @@ void MainWindow::on_btnCapture_clicked()
     bool    ui_signed_value;
     QString ui_port_text;
     QString ui_baud_text;
-    quint16 ui_baud_value;
+    quint32 ui_baud_value;
     
     ui_rate_text    = this->ui->txtSampleRate->text();
     ui_rate_value   = ui_rate_text.toULong(NULL, 10);
@@ -843,6 +843,12 @@ void MainWindow::on_btnExport_clicked()
 
 void MainWindow::on_cmbType_currentIndexChanged(int index)
 {
+    if (this->ui->cmbType->currentText() == "TEXT") {
+        this->ui->wdScope->dat_ctl->mode = 0;
+    } else {
+        this->ui->wdScope->dat_ctl->mode = 1;
+    }
     
+    qDebug() << "Mode ="  << this->ui->wdScope->dat_ctl->mode;
 }
 

@@ -48,7 +48,8 @@ void DataReceiver::run() {
     
     while (true) {
         
-        if (this->serial_port->waitForReadyRead()) {
+        
+        if (this->serial_port->bytesAvailable()) {
             
             buffer = this->serial_port->readAll();
             
