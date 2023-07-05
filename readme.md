@@ -1,5 +1,3 @@
-Money for nothing. Chicks for free.
-
 |DSA Platforms|Freelancing Platforms|
 |---|---|
 |[![LeetCode Account](img/leetcode.png)](https://leetcode.com/jocic_91)|[![UpWork Account](img/upwork.png)](https://www.upwork.com/freelancers/~01b6c2fb9b033e93c0)|
