@@ -35,4 +35,5 @@ RUN rm -rfd /var/www
 
 COPY ./ /var/www
 
-RUN cd /var/www && composer install
+COPY ./resources/scripts/setup.sh /bin/setup
+RUN chmod +x /bin/setup
