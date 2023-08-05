@@ -66,14 +66,24 @@ int main()
     queue_pop();
     queue_pop();
     queue_pop();
+    queue_pop();
     
     queue_push(6);
     queue_push(7);
     queue_push(8);
+    queue_push(9);
     
-    queue_push(9);
-    queue_push(9);
-    queue_push(9);
+    queue_pop();
+    queue_pop();
+    queue_pop();
+    queue_pop();
+    
+    queue_push(10);
+    queue_push(11);
+    queue_push(12);
+    queue_push(13);
+    queue_push(13);
+    queue_push(13);
     
     while (queue_capacity > 0) {
         printf("TOP: %d\n", queue_top());
