@@ -1,0 +1,154 @@
+/**************************************************\
+|* Style Author: Djordje Jocic                    *|
+|* Style Year: 2016                               *|
+|* Official Website: http://www.djordjejocic.com/ *|
+\**************************************************/
+
+/* Core */
+
+.infinity-header {
+    font-weight: bold;
+    margin: 0 0 5px 0;
+}
+
+.infinity-row {
+    margin: 0 0 5px 0;
+}
+
+.infinity-input-wrapper {
+    padding: 0;
+}
+
+.infinity-btn {
+    background: none;
+    height: 14px;
+    width: 14px;
+    display: inline-block;
+    margin: 5px 5px 0 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}
+
+.infinity-btn:hover {
+    opacity: 0.9;
+}
+
+/* Buttons */
+
+.infinity-btn-add {
+    background: url(../img/buttons.png) 0 0 no-repeat;
+}
+.infinity-btn-remove {
+    background: url(../img/buttons.png) -14px 0 no-repeat;
+}
+
+
+/* Inputs */
+
+.infinity-object {
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
+}
+
+input.infinity-object {
+    width: 100%;
+}
+
+textarea.infinity-object {
+    width: 100%;
+    resize: vertical;
+}
+
+/* Columns */
+
+.infinity-col-1 {
+    width: 8.333333333%;
+    float: left;
+}
+
+.infinity-col-2 {
+    width: 16.666666667%;
+    float: left;
+}
+
+.infinity-col-3 {
+    width: 25%;
+    float: left;
+}
+
+.infinity-col-4 {
+    width: 33.333333333%;
+    float: left;
+}
+
+.infinity-col-5 {
+    width: 41.666666667%;
+    float: left;
+}
+
+.infinity-col-6 {
+    width: 50%;
+    float: left;
+}
+
+.infinity-col-7 {
+    width: 58.333333333%;
+    float: left;
+}
+
+.infinity-col-8 {
+    width: 66.666666667%;
+    float: left;
+}
+
+.infinity-col-9 {
+    width: 75%;
+    float: left;
+}
+
+.infinity-col-10 {
+    width: 83.333333333%;
+    float: left;
+}
+
+.infinity-col-11 {
+    width: 91.666666667%;
+    float: left;
+}
+
+.infinity-col-12 {
+    width: 100%;
+    float: left;
+}
+
+/* Other */
+
+.infinity-left {
+    text-align: left;
+}
+
+.infinity-left .infinity-input-wrapper {
+    padding: 0 20px 0 0;
+}
+
+.infinity-center {
+    text-align: center;
+}
+
+.infinity-center .infinity-input-wrapper {
+    padding: 0 20px;
+}
+
+.infinity-right {
+    text-align: right;
+}
+
+.infinity-right .infinity-input-wrapper {
+    padding: 0 0 0 20px;
+}
+
+.infinity-clear {
+    clear: both;
+}
