@@ -112,5 +112,5 @@ int main(int argc, char *argv[]) {
     closesocket(server_socket);
     WSACleanup();
     
-    return 0;
+    return ERR_NONE;
 }
