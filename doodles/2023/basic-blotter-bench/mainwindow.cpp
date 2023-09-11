@@ -1,5 +1,5 @@
 #include <QHBoxLayout>
-#include <QDateTime>
+#include <QElapsedTimer>
 
 #include "mainwindow.h"
 #include "basic_plot.h"
@@ -13,20 +13,15 @@ MainWindow::MainWindow(QWidget *parent)
     
     ///////////////////////////
     
-    ui->plot->set_Resolution(200, 200);
+    ui->plot->set_Resolution(100, 100);
     
     ///////////////////////////
     
     Updater* updater = new Updater();
     
-    updater->start(QThread::HighestPriority);
+    updater->start(QThread::Priority::TimeCriticalPriority);
     
     connect(updater, &Updater::sig_next, this, &MainWindow::on_next);
-    connect(this, &MainWindow::sig_ready, updater, &Updater::on_ready);
-    
-    ///////////////////////////
-    
-    emit MainWindow::sig_ready();
 }
 
 MainWindow::~MainWindow() {
@@ -38,11 +33,11 @@ void MainWindow::on_next() {
     static QVector<QPair<qint64, qint64>> data;
     
     qint64 x = data.size();
-    qint64 y = (rand() % 100) + 350;
+    qint64 y = (rand() % 100) + 150;
     
     data.push_back({ x, y });
     
-    if (data.size() >= 800) {
+    if (data.size() >= 400) {
         
         ui->plot->get_Buffer()->clear();
         ui->plot->get_Buffer()->append(data);
@@ -51,34 +46,30 @@ void MainWindow::on_next() {
         
         data.clear();
     }
-    
-    emit MainWindow::sig_ready();
 }
 
 ///////////////////////////
 
-void Updater::on_ready() {
-    this->ready = true;
-}
-
 void Updater::run() {
     
-    quint64 time_last = 0, time_diff = 0;
+    QElapsedTimer tmr_benchmark;
+    QElapsedTimer tmr_flow_control;
     
     quint64 points_updated = 0;
     
+    tmr_benchmark.start();
+    tmr_flow_control.start();
+    
     while (true) {
         
-        time_diff = QDateTime::currentMSecsSinceEpoch() - time_last;
-        
-        if (time_diff >= 1000) {
-            time_last = QDateTime::currentMSecsSinceEpoch();
+        if (tmr_benchmark.elapsed() >= 1000) {
+            tmr_benchmark.restart();
             qDebug() << "Points Updated" << points_updated;
             points_updated = 0;
         }
         
-        if (this->ready) {
-            this->ready = false;
+        if (tmr_flow_control.nsecsElapsed() >= 25000) {
+            tmr_flow_control.restart();
             emit Updater::sig_next();
             points_updated++;
         }

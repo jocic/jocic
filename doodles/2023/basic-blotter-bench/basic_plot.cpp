@@ -93,10 +93,9 @@ void BasicPlot::refresh() {
     this->repaint();
 }
 
-void BasicPlot::paintEvent(QPaintEvent *event) {
+void BasicPlot::paintEvent(QPaintEvent* event) {
     
     QPainter painter(this);
-    QWidget* parent   = ((QWidget*)this->parent());
     
     quint64 width  = this->width();
     quint64 height = this->height();
@@ -149,17 +148,16 @@ void BasicPlot::paintEvent(QPaintEvent *event) {
     
     ///////////////////////
     
-    QPainterPath signal_path;
-    
-    signal_path.moveTo(BORDER_WIDTH, height - BORDER_WIDTH);
-    
-    for (const auto& p : *m_BufferN) {
-        signal_path.lineTo(p.first, p.second);
-    }
-    
     painter.setPen(pen_signal);
-    painter.drawPath(signal_path);
     
+    for (quint64 i = 1; i < m_BufferN->size(); i++) {
+        
+        painter.drawLine(
+            m_BufferN->at(i - 1).first,
+            m_BufferN->at(i - 1).second,
+            m_BufferN->at(i).first,
+            m_BufferN->at(i).second);
+    }
     ///////////////////////
     
     painter.setPen(pen_border);

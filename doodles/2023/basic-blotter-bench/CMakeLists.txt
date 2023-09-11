@@ -14,6 +14,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS OpenGL)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS OpenGL)
+
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS OpenGLWidgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS OpenGLWidgets)
+
 set(PROJECT_SOURCES
         basic_plot.h
         basic_plot.cpp
@@ -46,7 +52,10 @@ else()
     endif()
 endif()
 
-target_link_libraries(basic-blotter-bench PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(basic-blotter-bench PRIVATE
+    Qt${QT_VERSION_MAJOR}::Widgets
+    Qt${QT_VERSION_MAJOR}::OpenGL
+    Qt${QT_VERSION_MAJOR}::OpenGLWidgets)
 
 set_target_properties(basic-blotter-bench PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

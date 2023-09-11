@@ -2,7 +2,7 @@
 #include "./ui_mainwindow.h"
 
 #include <QHBoxLayout>
-#include <QDateTime>
+#include <QElapsedTimer>
 #include <QtCharts/QChartView>
 #include <QtCharts/QChart>
 #include <QtCharts/QLineSeries>
@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     QHBoxLayout* layout = new QHBoxLayout();
     QChartView*  view   = new QChartView();
     QChart*      chart  = new QChart();
-    QLineSeries* series = new QLineSeries();
+    QSplineSeries* series = new QSplineSeries();
     QValueAxis*  x_axis = new QValueAxis();
     QValueAxis*  y_axis = new QValueAxis();
     
@@ -58,14 +58,9 @@ MainWindow::MainWindow(QWidget *parent)
     
     Updater* updater = new Updater();
     
-    updater->start(QThread::HighestPriority);
+    updater->start(QThread::TimeCriticalPriority);
     
     connect(updater, &Updater::sig_next, this, &MainWindow::on_next);
-    connect(this, &MainWindow::sig_ready, updater, &Updater::on_ready);
-    
-    ///////////////////////////
-    
-    emit MainWindow::sig_ready();
 }
 
 MainWindow::~MainWindow() {
@@ -91,33 +86,30 @@ void MainWindow::on_next() {
         
         points.clear();
     }
-    
-    emit MainWindow::sig_ready();
 }
 
 ///////////////////////////
 
-void Updater::on_ready() {
-    this->ready = true;
-}
-
 void Updater::run() {
     
-    quint64 time_last = 0, time_diff = 0;
+    QElapsedTimer tmr_benchmark;
+    QElapsedTimer tmr_flow_control;
+    
     quint64 points_updated = 0;
+    
+    tmr_benchmark.start();
+    tmr_flow_control.start();
     
     while (true) {
         
-        time_diff = QDateTime::currentMSecsSinceEpoch() - time_last;
-        
-        if (time_diff >= 1000) {
-            time_last = QDateTime::currentMSecsSinceEpoch();
+        if (tmr_benchmark.elapsed() >= 1000) {
+            tmr_benchmark.restart();
             qDebug() << "Points Updated" << points_updated;
             points_updated = 0;
         }
         
-        if (this->ready) {
-            this->ready = false;
+        if (tmr_flow_control.nsecsElapsed() >= 50000) {
+            tmr_flow_control.restart();
             emit Updater::sig_next();
             points_updated++;
         }

@@ -9,7 +9,7 @@
 #include <QObject>
 #include <QWidget>
 
-class BasicPlot : public QWidget {
+class BasicPlot : public QWidget  {
     
     private:
         quint64 m_VDiv;
@@ -18,8 +18,8 @@ class BasicPlot : public QWidget {
         quint64 m_HDivRes;
         QVector<QPair<qint64, qint64>>* m_Buffer;
         QVector<QPair<qint64, qint64>>* m_BufferN;
-        void paintEvent(QPaintEvent *event);
-        void resizeEvent(QResizeEvent *event);
+        void paintEvent(QPaintEvent* event) override;
+        void resizeEvent(QResizeEvent *event) override;;
     
     public:
         BasicPlot(QWidget* parent);

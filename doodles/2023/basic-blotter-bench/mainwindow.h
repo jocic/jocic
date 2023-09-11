@@ -12,14 +12,8 @@ class Updater : public QThread {
     
     Q_OBJECT
     
-    private:
-        bool ready;
-    
     public:
         void run();
-    
-    public slots:
-        void on_ready();
     
     signals:
         void sig_next();
@@ -38,8 +32,5 @@ class MainWindow : public QMainWindow {
         
     private slots:
         void on_next();
-    
-    signals:
-        void sig_ready();
 };
 #endif // MAINWINDOW_H
