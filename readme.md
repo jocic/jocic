@@ -4,3 +4,13 @@
 |---|---|
 |[![LeetCode Account](images/leetcode.png)](https://leetcode.com/jocic_91)|[![UpWork Account](images/upwork.png)](https://www.upwork.com/freelancers/~01b6c2fb9b033e93c0)|
 [![BeeCrowd Account](images/beecrowd.png)](https://www.beecrowd.com.br/judge/en/profile/848740)|[![Freelancer Account](images/freelancer.png)](https://www.freelancer.com/u/jocic)|
+
+## References (Web Development)
+
+### Figma Conversion (Corporate Team Portfolio)
+
+This project was part of the vetting process for a Frontend Development position on UpWork, and it involved conversion of the provided FIGMA Design to a responsive HTML/CSS Template.
+
+**Links:** [FIGMA Design](projects/showcase/2023/figma-conversion-1/figma-design.jpg) | [Desktop View](projects/showcase/2023/figma-conversion-1/figma-desktop.jpg) | [Mobile View](projects/showcase/2023/figma-conversion-1/figma-mobile.jpg) | [Source Code](projects/showcase/2023/figma-conversion-1/src) | [Live Demo](https://djordjejocic.com/showcase/figma-1/index.html)
+
+[![Desktop View](projects/showcase/2023/figma-conversion-1/figma-desktop.jpg)](https://djordjejocic.com/showcase/figma-1/index.html)
