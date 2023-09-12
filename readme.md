@@ -7,7 +7,26 @@
 
 ## References (Web Development)
 
-### Figma Conversion (Corporate Team Portfolio)
+### October CMS Websites
+
+Here are some websites I did in OctoberCMS.
+
+<table>
+  <tr>
+    <td><img src="projects/showcase/aston-waldner.png" /></td>
+    <td><img src="projects/showcase/jaklovsky.png" /></td>
+  </tr>
+  <tr>
+    <td><img src="projects/showcase/mastervita.png" /></td>
+    <td><img src="projects/showcase/braxton.png" /></td>
+  </tr>
+  <tr>
+    <td><img src="projects/showcase/mapei.png" /></td>
+    <td><img src="projects/showcase/personal-website.png" /></td>
+  </tr>
+</table>
+
+### FIGMA Conversion (Corporate Team Portfolio)
 
 This project was part of the vetting process for a Frontend Development position on UpWork, and it involved conversion of the provided FIGMA Design to a responsive HTML/CSS Template.
 
