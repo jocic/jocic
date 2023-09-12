@@ -23,16 +23,16 @@ Here are some websites I did in OctoberCMS.
 
 <table>
   <tr>
-    <td><a href="#"><img src="projects/showcase/aston-waldner.png" /></a></td>
-    <td><a href="#"><img src="projects/showcase/jaklovsky.png" /></a></td>
+    <td><a href="http://www.astonwaldner.sk/"><img src="projects/showcase/aston-waldner.png" /></a></td>
+    <td><a href="https://jaklovsky.sk/"><img src="projects/showcase/jaklovsky.png" /></a></td>
   </tr>
   <tr>
-    <td><a href="#"><img src="projects/showcase/mastervita.png" /></a></td>
-    <td><a href="#"><img src="projects/showcase/braxton.png" /></a></td>
+    <td><a href="https://mastervita.djordjejocic.com/"><img src="projects/showcase/mastervita.png" /></a></td>
+    <td><a href="https://braxton.djordjejocic.com/"><img src="projects/showcase/braxton.png" /></a></td>
   </tr>
   <tr>
-    <td><a href="#"><img src="projects/showcase/mapei.png" /></a></td>
-    <td><a href="#"><img src="projects/showcase/personal-website.png" /></a></td>
+    <td><a href="https://mapei.djordjejocic.com/"><img src="projects/showcase/mapei.png" /></a></td>
+    <td><a href="https://djordjejocic.com/"><img src="projects/showcase/personal-website.png" /></a></td>
   </tr>
 </table>
 
