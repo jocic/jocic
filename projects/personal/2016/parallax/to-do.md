@@ -1,0 +1,7 @@
+- Review the existing code (rewrite it completely if it's crap - it should be a simple project, don't do anything crazy - everything should be in a SINGLE file)
+- Update the demo - change the font, the color-scheme, etc
+- Setup a sub-domain parallax.djordjejocic.com pointing with a demo
+- Use CSS pre-loaders instead GIFs - add an option to custom IMG preloaders (animated or not) - there should be a rotation switch
+- Make a generator for the demo, and a YouTube video about it
+- Prepare 2.0 release
+- Update readme file
