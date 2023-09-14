@@ -13,8 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
     auto plot_buffer = ui->plot->get_Buffer();
     
     plot_buffer->append({ 0, 0 });
-    plot_buffer->append({ 50, 100 });
-    plot_buffer->append({ 100, 500 });
+    plot_buffer->append({ 50, 400 });
+    plot_buffer->append({ 100, 0 });
     plot_buffer->append({ 300, 300 });
     plot_buffer->append({ 400, 800 });
     plot_buffer->append({ 800, 3000 });

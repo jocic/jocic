@@ -2,8 +2,8 @@
 
 <table>
   <tr>
-    <td><strong>DSA Platforms</strong></td>
-    <td><strong>Freelancing Platforms</strong></td>
+    <td align="center"><strong>DSA Platforms</strong></td>
+    <td align="center"><strong>Freelancing Platforms</strong></td>
   </tr>
   <tr>
     <td><a href="https://leetcode.com/jocic_91"><img src="./images/leetcode.png" alt="LeetCode Account" /></a></td>
@@ -19,7 +19,7 @@
 
 ### October CMS Websites
 
-Here are some websites I did in OctoberCMS.
+I made quite a few websites using OctoberCMS, here are some of them.
 
 <table>
   <tr>

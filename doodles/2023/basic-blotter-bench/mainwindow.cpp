@@ -13,7 +13,9 @@ MainWindow::MainWindow(QWidget *parent)
     
     ///////////////////////////
     
-    ui->plot->set_Resolution(100, 100);
+    ui->plot->set_HDiv(8);
+    ui->plot->set_VDiv(8);
+    ui->plot->set_Resolution(50, 50);
     
     ///////////////////////////
     

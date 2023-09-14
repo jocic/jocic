@@ -108,6 +108,11 @@ void BasicPlot::paintEvent(QPaintEvent *event) {
     brush_bg.setColor(QColor(255, 255, 255));
     brush_bg.setStyle(Qt::BrushStyle::SolidPattern);
     
+    QBrush brush_marker;
+    
+    brush_marker.setColor(QColor(50, 150, 50));
+    brush_marker.setStyle(Qt::BrushStyle::SolidPattern);
+    
     ///////////////////////
     
     QPen pen_border;
@@ -149,12 +154,28 @@ void BasicPlot::paintEvent(QPaintEvent *event) {
     
     ///////////////////////
     
-    QPainterPath signal_path;
+    QPainterPath signal_path;    
+    QPainterPath signal_path2;
     
-    signal_path.moveTo(BORDER_WIDTH, height - BORDER_WIDTH);
+    signal_path.moveTo(BORDER_WIDTH, height - BORDER_WIDTH);    
+    signal_path2.moveTo(BORDER_WIDTH, height - BORDER_WIDTH);
+    
+    for (int i = 0; i < m_BufferN->size(); i+=2) {
+        
+        if (i + 1 >= m_BufferN->size()) {
+            continue;
+        }
+        
+        auto p1 = m_BufferN->at(i);
+        auto p2 = m_BufferN->at(i + 1);
+        
+        signal_path.quadTo(
+            p1.first, p1.second,
+            p2.first, p2.second);
+    }
     
     for (const auto& p : *m_BufferN) {
-        signal_path.lineTo(p.first, p.second);
+        signal_path2.lineTo(p.first, p.second);
     }
     
     painter.setPen(pen_signal);
