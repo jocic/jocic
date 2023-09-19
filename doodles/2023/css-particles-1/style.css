@@ -1,0 +1,4086 @@
+.wrapper {
+    width: 400px;
+    height: 400px;
+    margin: 50px;
+    position: relative;
+    border: 1px solid #ccc;
+    overflow: hidden;
+  }
+  @keyframes flow-1 {
+    0% {
+      opacity: 0.84;
+      top: 109%;
+    }
+    25% {
+      opacity: 0.11;
+    }
+    100% {
+      opacity: 1;
+      top: 25%;
+    }
+  }
+  .particle-1 {
+    background: #333;
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    display: block;
+    left: 46%;
+    border-radius: 50%;
+    animation-name: flow-1;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-2 {
+    0% {
+      opacity: 0.86;
+      top: 130%;
+    }
+    25% {
+      opacity: 0.7;
+    }
+    100% {
+      opacity: 0.07;
+      top: 95%;
+    }
+  }
+  .particle-2 {
+    background: #333;
+    width: 9px;
+    height: 9px;
+    position: absolute;
+    display: block;
+    left: 46%;
+    border-radius: 50%;
+    animation-name: flow-2;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-3 {
+    0% {
+      opacity: 0.38;
+      top: 26%;
+    }
+    25% {
+      opacity: 0.02;
+    }
+    100% {
+      opacity: 0.96;
+      top: 96%;
+    }
+  }
+  .particle-3 {
+    background: #333;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    display: block;
+    left: 83%;
+    border-radius: 50%;
+    animation-name: flow-3;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-4 {
+    0% {
+      opacity: 0.1;
+      top: 145%;
+    }
+    25% {
+      opacity: 0.85;
+    }
+    100% {
+      opacity: 0.81;
+      top: 86%;
+    }
+  }
+  .particle-4 {
+    background: #333;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    display: block;
+    left: 87%;
+    border-radius: 50%;
+    animation-name: flow-4;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-5 {
+    0% {
+      opacity: 0.93;
+      top: 21%;
+    }
+    25% {
+      opacity: 0.56;
+    }
+    100% {
+      opacity: 0.67;
+      top: 134%;
+    }
+  }
+  .particle-5 {
+    background: #333;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    display: block;
+    left: 54%;
+    border-radius: 50%;
+    animation-name: flow-5;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-6 {
+    0% {
+      opacity: 0.24;
+      top: 131%;
+    }
+    25% {
+      opacity: 0.41;
+    }
+    100% {
+      opacity: 0.69;
+      top: 27%;
+    }
+  }
+  .particle-6 {
+    background: #333;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    display: block;
+    left: 91%;
+    border-radius: 50%;
+    animation-name: flow-6;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-7 {
+    0% {
+      opacity: 0.67;
+      top: 64%;
+    }
+    25% {
+      opacity: 0.46;
+    }
+    100% {
+      opacity: 0.3;
+      top: 64%;
+    }
+  }
+  .particle-7 {
+    background: #333;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    display: block;
+    left: 69%;
+    border-radius: 50%;
+    animation-name: flow-7;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-8 {
+    0% {
+      opacity: 0.83;
+      top: 25%;
+    }
+    25% {
+      opacity: 0.25;
+    }
+    100% {
+      opacity: 0.71;
+      top: 111%;
+    }
+  }
+  .particle-8 {
+    background: #333;
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    display: block;
+    left: 18%;
+    border-radius: 50%;
+    animation-name: flow-8;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-9 {
+    0% {
+      opacity: 0.52;
+      top: 46%;
+    }
+    25% {
+      opacity: 0.33;
+    }
+    100% {
+      opacity: 0.16;
+      top: 52%;
+    }
+  }
+  .particle-9 {
+    background: #333;
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    display: block;
+    left: 33%;
+    border-radius: 50%;
+    animation-name: flow-9;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-10 {
+    0% {
+      opacity: 0.52;
+      top: 55%;
+    }
+    25% {
+      opacity: 0.88;
+    }
+    100% {
+      opacity: 0.48;
+      top: 25%;
+    }
+  }
+  .particle-10 {
+    background: #333;
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    display: block;
+    left: 63%;
+    border-radius: 50%;
+    animation-name: flow-10;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-11 {
+    0% {
+      opacity: 0.31;
+      top: 133%;
+    }
+    25% {
+      opacity: 0.16;
+    }
+    100% {
+      opacity: 0.14;
+      top: 94%;
+    }
+  }
+  .particle-11 {
+    background: #333;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    display: block;
+    left: 76%;
+    border-radius: 50%;
+    animation-name: flow-11;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-12 {
+    0% {
+      opacity: 0.78;
+      top: 21%;
+    }
+    25% {
+      opacity: 0.98;
+    }
+    100% {
+      opacity: 0.1;
+      top: 62%;
+    }
+  }
+  .particle-12 {
+    background: #333;
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    display: block;
+    left: 28%;
+    border-radius: 50%;
+    animation-name: flow-12;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-13 {
+    0% {
+      opacity: 0.43;
+      top: 14%;
+    }
+    25% {
+      opacity: 0.55;
+    }
+    100% {
+      opacity: 0.08;
+      top: 59%;
+    }
+  }
+  .particle-13 {
+    background: #333;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    display: block;
+    left: 20%;
+    border-radius: 50%;
+    animation-name: flow-13;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-14 {
+    0% {
+      opacity: 0.95;
+      top: 46%;
+    }
+    25% {
+      opacity: 0.12;
+    }
+    100% {
+      opacity: 0.88;
+      top: 31%;
+    }
+  }
+  .particle-14 {
+    background: #333;
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    display: block;
+    left: 29%;
+    border-radius: 50%;
+    animation-name: flow-14;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-15 {
+    0% {
+      opacity: 0.98;
+      top: 75%;
+    }
+    25% {
+      opacity: 0.73;
+    }
+    100% {
+      opacity: 0.18;
+      top: 37%;
+    }
+  }
+  .particle-15 {
+    background: #333;
+    width: 2px;
+    height: 2px;
+    position: absolute;
+    display: block;
+    left: 16%;
+    border-radius: 50%;
+    animation-name: flow-15;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-16 {
+    0% {
+      opacity: 1;
+      top: 105%;
+    }
+    25% {
+      opacity: 0.38;
+    }
+    100% {
+      opacity: 0.98;
+      top: 74%;
+    }
+  }
+  .particle-16 {
+    background: #333;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    display: block;
+    left: 17%;
+    border-radius: 50%;
+    animation-name: flow-16;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-17 {
+    0% {
+      opacity: 0.27;
+      top: 29%;
+    }
+    25% {
+      opacity: 0.87;
+    }
+    100% {
+      opacity: 0.47;
+      top: 132%;
+    }
+  }
+  .particle-17 {
+    background: #333;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    display: block;
+    left: 73%;
+    border-radius: 50%;
+    animation-name: flow-17;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-18 {
+    0% {
+      opacity: 0.6;
+      top: 116%;
+    }
+    25% {
+      opacity: 0.32;
+    }
+    100% {
+      opacity: 0.85;
+      top: 87%;
+    }
+  }
+  .particle-18 {
+    background: #333;
+    width: 2px;
+    height: 2px;
+    position: absolute;
+    display: block;
+    left: 87%;
+    border-radius: 50%;
+    animation-name: flow-18;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-19 {
+    0% {
+      opacity: 1;
+      top: 78%;
+    }
+    25% {
+      opacity: 0.06;
+    }
+    100% {
+      opacity: 0.72;
+      top: 49%;
+    }
+  }
+  .particle-19 {
+    background: #333;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    display: block;
+    left: 39%;
+    border-radius: 50%;
+    animation-name: flow-19;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-20 {
+    0% {
+      opacity: 0.91;
+      top: 22%;
+    }
+    25% {
+      opacity: 0.97;
+    }
+    100% {
+      opacity: 0.94;
+      top: 144%;
+    }
+  }
+  .particle-20 {
+    background: #333;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    display: block;
+    left: 73%;
+    border-radius: 50%;
+    animation-name: flow-20;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-21 {
+    0% {
+      opacity: 0.11;
+      top: 139%;
+    }
+    25% {
+      opacity: 0.44;
+    }
+    100% {
+      opacity: 0.25;
+      top: 130%;
+    }
+  }
+  .particle-21 {
+    background: #333;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    display: block;
+    left: 14%;
+    border-radius: 50%;
+    animation-name: flow-21;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-22 {
+    0% {
+      opacity: 0.09;
+      top: 132%;
+    }
+    25% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0.91;
+      top: 28%;
+    }
+  }
+  .particle-22 {
+    background: #333;
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    display: block;
+    left: 68%;
+    border-radius: 50%;
+    animation-name: flow-22;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-23 {
+    0% {
+      opacity: 0.42;
+      top: 116%;
+    }
+    25% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 0.93;
+      top: 40%;
+    }
+  }
+  .particle-23 {
+    background: #333;
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    display: block;
+    left: 93%;
+    border-radius: 50%;
+    animation-name: flow-23;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-24 {
+    0% {
+      opacity: 0.28;
+      top: 30%;
+    }
+    25% {
+      opacity: 0.02;
+    }
+    100% {
+      opacity: 0.55;
+      top: 12%;
+    }
+  }
+  .particle-24 {
+    background: #333;
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    display: block;
+    left: 60%;
+    border-radius: 50%;
+    animation-name: flow-24;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-25 {
+    0% {
+      opacity: 0.47;
+      top: 103%;
+    }
+    25% {
+      opacity: 0.71;
+    }
+    100% {
+      opacity: 0.79;
+      top: 61%;
+    }
+  }
+  .particle-25 {
+    background: #333;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    display: block;
+    left: 15%;
+    border-radius: 50%;
+    animation-name: flow-25;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-26 {
+    0% {
+      opacity: 0.38;
+      top: 92%;
+    }
+    25% {
+      opacity: 0.38;
+    }
+    100% {
+      opacity: 0.32;
+      top: 43%;
+    }
+  }
+  .particle-26 {
+    background: #333;
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    display: block;
+    left: 100%;
+    border-radius: 50%;
+    animation-name: flow-26;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-27 {
+    0% {
+      opacity: 0.29;
+      top: 114%;
+    }
+    25% {
+      opacity: 0.77;
+    }
+    100% {
+      opacity: 0.87;
+      top: 2%;
+    }
+  }
+  .particle-27 {
+    background: #333;
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    display: block;
+    left: 26%;
+    border-radius: 50%;
+    animation-name: flow-27;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-28 {
+    0% {
+      opacity: 0.41;
+      top: 114%;
+    }
+    25% {
+      opacity: 0.65;
+    }
+    100% {
+      opacity: 0.29;
+      top: 149%;
+    }
+  }
+  .particle-28 {
+    background: #333;
+    width: 9px;
+    height: 9px;
+    position: absolute;
+    display: block;
+    left: 58%;
+    border-radius: 50%;
+    animation-name: flow-28;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-29 {
+    0% {
+      opacity: 0.28;
+      top: 58%;
+    }
+    25% {
+      opacity: 0.71;
+    }
+    100% {
+      opacity: 0.08;
+      top: 141%;
+    }
+  }
+  .particle-29 {
+    background: #333;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    display: block;
+    left: 70%;
+    border-radius: 50%;
+    animation-name: flow-29;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-30 {
+    0% {
+      opacity: 0.88;
+      top: 26%;
+    }
+    25% {
+      opacity: 0.06;
+    }
+    100% {
+      opacity: 0.63;
+      top: 70%;
+    }
+  }
+  .particle-30 {
+    background: #333;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    display: block;
+    left: 38%;
+    border-radius: 50%;
+    animation-name: flow-30;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-31 {
+    0% {
+      opacity: 0.78;
+      top: 12%;
+    }
+    25% {
+      opacity: 0.42;
+    }
+    100% {
+      opacity: 0.22;
+      top: 63%;
+    }
+  }
+  .particle-31 {
+    background: #333;
+    width: 4px;
+    height: 4px;
+    position: absolute;
+    display: block;
+    left: 66%;
+    border-radius: 50%;
+    animation-name: flow-31;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-32 {
+    0% {
+      opacity: 0.21;
+      top: 23%;
+    }
+    25% {
+      opacity: 0.61;
+    }
+    100% {
+      opacity: 0.63;
+      top: 148%;
+    }
+  }
+  .particle-32 {
+    background: #333;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    display: block;
+    left: 57%;
+    border-radius: 50%;
+    animation-name: flow-32;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-33 {
+    0% {
+      opacity: 0.17;
+      top: 20%;
+    }
+    25% {
+      opacity: 0.17;
+    }
+    100% {
+      opacity: 0.74;
+      top: 137%;
+    }
+  }
+  .particle-33 {
+    background: #333;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    display: block;
+    left: 29%;
+    border-radius: 50%;
+    animation-name: flow-33;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-34 {
+    0% {
+      opacity: 0.16;
+      top: 147%;
+    }
+    25% {
+      opacity: 0.11;
+    }
+    100% {
+      opacity: 0.24;
+      top: 56%;
+    }
+  }
+  .particle-34 {
+    background: #333;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    display: block;
+    left: 39%;
+    border-radius: 50%;
+    animation-name: flow-34;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-35 {
+    0% {
+      opacity: 0.05;
+      top: 13%;
+    }
+    25% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 0.91;
+      top: 43%;
+    }
+  }
+  .particle-35 {
+    background: #333;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    display: block;
+    left: 9%;
+    border-radius: 50%;
+    animation-name: flow-35;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-36 {
+    0% {
+      opacity: 0.69;
+      top: 130%;
+    }
+    25% {
+      opacity: 0.42;
+    }
+    100% {
+      opacity: 0.07;
+      top: 124%;
+    }
+  }
+  .particle-36 {
+    background: #333;
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    display: block;
+    left: 93%;
+    border-radius: 50%;
+    animation-name: flow-36;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-37 {
+    0% {
+      opacity: 0.8;
+      top: 83%;
+    }
+    25% {
+      opacity: 0.63;
+    }
+    100% {
+      opacity: 0.42;
+      top: 31%;
+    }
+  }
+  .particle-37 {
+    background: #333;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    display: block;
+    left: 84%;
+    border-radius: 50%;
+    animation-name: flow-37;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-38 {
+    0% {
+      opacity: 0.37;
+      top: 5%;
+    }
+    25% {
+      opacity: 0.52;
+    }
+    100% {
+      opacity: 0.24;
+      top: 73%;
+    }
+  }
+  .particle-38 {
+    background: #333;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    display: block;
+    left: 44%;
+    border-radius: 50%;
+    animation-name: flow-38;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-39 {
+    0% {
+      opacity: 0.31;
+      top: 59%;
+    }
+    25% {
+      opacity: 0.63;
+    }
+    100% {
+      opacity: 0.07;
+      top: 28%;
+    }
+  }
+  .particle-39 {
+    background: #333;
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    display: block;
+    left: 89%;
+    border-radius: 50%;
+    animation-name: flow-39;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-40 {
+    0% {
+      opacity: 0.71;
+      top: 31%;
+    }
+    25% {
+      opacity: 0.94;
+    }
+    100% {
+      opacity: 0.59;
+      top: 59%;
+    }
+  }
+  .particle-40 {
+    background: #333;
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    display: block;
+    left: 58%;
+    border-radius: 50%;
+    animation-name: flow-40;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-41 {
+    0% {
+      opacity: 0.35;
+      top: 82%;
+    }
+    25% {
+      opacity: 0.36;
+    }
+    100% {
+      opacity: 0.25;
+      top: 25%;
+    }
+  }
+  .particle-41 {
+    background: #333;
+    width: 2px;
+    height: 2px;
+    position: absolute;
+    display: block;
+    left: 89%;
+    border-radius: 50%;
+    animation-name: flow-41;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-42 {
+    0% {
+      opacity: 0.63;
+      top: 10%;
+    }
+    25% {
+      opacity: 0.84;
+    }
+    100% {
+      opacity: 0.06;
+      top: 37%;
+    }
+  }
+  .particle-42 {
+    background: #333;
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    display: block;
+    left: 63%;
+    border-radius: 50%;
+    animation-name: flow-42;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-43 {
+    0% {
+      opacity: 0.52;
+      top: 136%;
+    }
+    25% {
+      opacity: 0.38;
+    }
+    100% {
+      opacity: 0.47;
+      top: 47%;
+    }
+  }
+  .particle-43 {
+    background: #333;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    display: block;
+    left: 23%;
+    border-radius: 50%;
+    animation-name: flow-43;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-44 {
+    0% {
+      opacity: 0.65;
+      top: 115%;
+    }
+    25% {
+      opacity: 0.2;
+    }
+    100% {
+      opacity: 0.6;
+      top: 147%;
+    }
+  }
+  .particle-44 {
+    background: #333;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    display: block;
+    left: 48%;
+    border-radius: 50%;
+    animation-name: flow-44;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-45 {
+    0% {
+      opacity: 0.16;
+      top: 52%;
+    }
+    25% {
+      opacity: 0.42;
+    }
+    100% {
+      opacity: 0.25;
+      top: 99%;
+    }
+  }
+  .particle-45 {
+    background: #333;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    display: block;
+    left: 100%;
+    border-radius: 50%;
+    animation-name: flow-45;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-46 {
+    0% {
+      opacity: 0.06;
+      top: 56%;
+    }
+    25% {
+      opacity: 0.12;
+    }
+    100% {
+      opacity: 0.54;
+      top: 68%;
+    }
+  }
+  .particle-46 {
+    background: #333;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    display: block;
+    left: 16%;
+    border-radius: 50%;
+    animation-name: flow-46;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-47 {
+    0% {
+      opacity: 0.9;
+      top: 19%;
+    }
+    25% {
+      opacity: 0.47;
+    }
+    100% {
+      opacity: 0.08;
+      top: 44%;
+    }
+  }
+  .particle-47 {
+    background: #333;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    display: block;
+    left: 73%;
+    border-radius: 50%;
+    animation-name: flow-47;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-48 {
+    0% {
+      opacity: 0.89;
+      top: 77%;
+    }
+    25% {
+      opacity: 0.7;
+    }
+    100% {
+      opacity: 0.49;
+      top: 6%;
+    }
+  }
+  .particle-48 {
+    background: #333;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    display: block;
+    left: 12%;
+    border-radius: 50%;
+    animation-name: flow-48;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-49 {
+    0% {
+      opacity: 0.73;
+      top: 72%;
+    }
+    25% {
+      opacity: 0.37;
+    }
+    100% {
+      opacity: 0.55;
+      top: 124%;
+    }
+  }
+  .particle-49 {
+    background: #333;
+    width: 2px;
+    height: 2px;
+    position: absolute;
+    display: block;
+    left: 76%;
+    border-radius: 50%;
+    animation-name: flow-49;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-50 {
+    0% {
+      opacity: 0.95;
+      top: 67%;
+    }
+    25% {
+      opacity: 0.65;
+    }
+    100% {
+      opacity: 0.83;
+      top: 51%;
+    }
+  }
+  .particle-50 {
+    background: #333;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    display: block;
+    left: 40%;
+    border-radius: 50%;
+    animation-name: flow-50;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-51 {
+    0% {
+      opacity: 0.1;
+      top: 132%;
+    }
+    25% {
+      opacity: 0.31;
+    }
+    100% {
+      opacity: 0.91;
+      top: 29%;
+    }
+  }
+  .particle-51 {
+    background: #333;
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    display: block;
+    left: 13%;
+    border-radius: 50%;
+    animation-name: flow-51;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-52 {
+    0% {
+      opacity: 0.92;
+      top: 12%;
+    }
+    25% {
+      opacity: 0.61;
+    }
+    100% {
+      opacity: 0.07;
+      top: 100%;
+    }
+  }
+  .particle-52 {
+    background: #333;
+    width: 9px;
+    height: 9px;
+    position: absolute;
+    display: block;
+    left: 98%;
+    border-radius: 50%;
+    animation-name: flow-52;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-53 {
+    0% {
+      opacity: 0.2;
+      top: 39%;
+    }
+    25% {
+      opacity: 0.84;
+    }
+    100% {
+      opacity: 0.36;
+      top: 23%;
+    }
+  }
+  .particle-53 {
+    background: #333;
+    width: 4px;
+    height: 4px;
+    position: absolute;
+    display: block;
+    left: 88%;
+    border-radius: 50%;
+    animation-name: flow-53;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-54 {
+    0% {
+      opacity: 0.01;
+      top: 58%;
+    }
+    25% {
+      opacity: 0.08;
+    }
+    100% {
+      opacity: 0.76;
+      top: 6%;
+    }
+  }
+  .particle-54 {
+    background: #333;
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    display: block;
+    left: 36%;
+    border-radius: 50%;
+    animation-name: flow-54;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-55 {
+    0% {
+      opacity: 0.01;
+      top: 143%;
+    }
+    25% {
+      opacity: 0.1;
+    }
+    100% {
+      opacity: 0.27;
+      top: 140%;
+    }
+  }
+  .particle-55 {
+    background: #333;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    display: block;
+    left: 37%;
+    border-radius: 50%;
+    animation-name: flow-55;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-56 {
+    0% {
+      opacity: 0.97;
+      top: 10%;
+    }
+    25% {
+      opacity: 0.37;
+    }
+    100% {
+      opacity: 0.97;
+      top: 134%;
+    }
+  }
+  .particle-56 {
+    background: #333;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    display: block;
+    left: 25%;
+    border-radius: 50%;
+    animation-name: flow-56;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-57 {
+    0% {
+      opacity: 0.87;
+      top: 12%;
+    }
+    25% {
+      opacity: 0.67;
+    }
+    100% {
+      opacity: 0.47;
+      top: 7%;
+    }
+  }
+  .particle-57 {
+    background: #333;
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    display: block;
+    left: 13%;
+    border-radius: 50%;
+    animation-name: flow-57;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-58 {
+    0% {
+      opacity: 0.66;
+      top: 81%;
+    }
+    25% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 0.65;
+      top: 97%;
+    }
+  }
+  .particle-58 {
+    background: #333;
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    display: block;
+    left: 4%;
+    border-radius: 50%;
+    animation-name: flow-58;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-59 {
+    0% {
+      opacity: 0.61;
+      top: 56%;
+    }
+    25% {
+      opacity: 0.98;
+    }
+    100% {
+      opacity: 0.91;
+      top: 143%;
+    }
+  }
+  .particle-59 {
+    background: #333;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    display: block;
+    left: 40%;
+    border-radius: 50%;
+    animation-name: flow-59;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-60 {
+    0% {
+      opacity: 0.74;
+      top: 96%;
+    }
+    25% {
+      opacity: 0.84;
+    }
+    100% {
+      opacity: 0.15;
+      top: 67%;
+    }
+  }
+  .particle-60 {
+    background: #333;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    display: block;
+    left: 21%;
+    border-radius: 50%;
+    animation-name: flow-60;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-61 {
+    0% {
+      opacity: 0.77;
+      top: 62%;
+    }
+    25% {
+      opacity: 0.34;
+    }
+    100% {
+      opacity: 0.65;
+      top: 116%;
+    }
+  }
+  .particle-61 {
+    background: #333;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    display: block;
+    left: 77%;
+    border-radius: 50%;
+    animation-name: flow-61;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-62 {
+    0% {
+      opacity: 0.73;
+      top: 58%;
+    }
+    25% {
+      opacity: 0.76;
+    }
+    100% {
+      opacity: 0.73;
+      top: 96%;
+    }
+  }
+  .particle-62 {
+    background: #333;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    display: block;
+    left: 52%;
+    border-radius: 50%;
+    animation-name: flow-62;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-63 {
+    0% {
+      opacity: 0.37;
+      top: 42%;
+    }
+    25% {
+      opacity: 0.24;
+    }
+    100% {
+      opacity: 0.36;
+      top: 35%;
+    }
+  }
+  .particle-63 {
+    background: #333;
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    display: block;
+    left: 75%;
+    border-radius: 50%;
+    animation-name: flow-63;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-64 {
+    0% {
+      opacity: 0.6;
+      top: 25%;
+    }
+    25% {
+      opacity: 0.14;
+    }
+    100% {
+      opacity: 0.77;
+      top: 142%;
+    }
+  }
+  .particle-64 {
+    background: #333;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    display: block;
+    left: 55%;
+    border-radius: 50%;
+    animation-name: flow-64;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-65 {
+    0% {
+      opacity: 0.57;
+      top: 28%;
+    }
+    25% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 0.89;
+      top: 126%;
+    }
+  }
+  .particle-65 {
+    background: #333;
+    width: 2px;
+    height: 2px;
+    position: absolute;
+    display: block;
+    left: 61%;
+    border-radius: 50%;
+    animation-name: flow-65;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-66 {
+    0% {
+      opacity: 0.46;
+      top: 97%;
+    }
+    25% {
+      opacity: 0.34;
+    }
+    100% {
+      opacity: 0.72;
+      top: 89%;
+    }
+  }
+  .particle-66 {
+    background: #333;
+    width: 2px;
+    height: 2px;
+    position: absolute;
+    display: block;
+    left: 3%;
+    border-radius: 50%;
+    animation-name: flow-66;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-67 {
+    0% {
+      opacity: 0.58;
+      top: 130%;
+    }
+    25% {
+      opacity: 0.65;
+    }
+    100% {
+      opacity: 0.97;
+      top: 109%;
+    }
+  }
+  .particle-67 {
+    background: #333;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    display: block;
+    left: 56%;
+    border-radius: 50%;
+    animation-name: flow-67;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-68 {
+    0% {
+      opacity: 0.74;
+      top: 141%;
+    }
+    25% {
+      opacity: 0.94;
+    }
+    100% {
+      opacity: 0.84;
+      top: 135%;
+    }
+  }
+  .particle-68 {
+    background: #333;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    display: block;
+    left: 82%;
+    border-radius: 50%;
+    animation-name: flow-68;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-69 {
+    0% {
+      opacity: 0.12;
+      top: 111%;
+    }
+    25% {
+      opacity: 0.13;
+    }
+    100% {
+      opacity: 0.13;
+      top: 118%;
+    }
+  }
+  .particle-69 {
+    background: #333;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    display: block;
+    left: 59%;
+    border-radius: 50%;
+    animation-name: flow-69;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-70 {
+    0% {
+      opacity: 0.68;
+      top: 78%;
+    }
+    25% {
+      opacity: 0.23;
+    }
+    100% {
+      opacity: 0.32;
+      top: 95%;
+    }
+  }
+  .particle-70 {
+    background: #333;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    display: block;
+    left: 28%;
+    border-radius: 50%;
+    animation-name: flow-70;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-71 {
+    0% {
+      opacity: 0.46;
+      top: 64%;
+    }
+    25% {
+      opacity: 0.76;
+    }
+    100% {
+      opacity: 0.23;
+      top: 13%;
+    }
+  }
+  .particle-71 {
+    background: #333;
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    display: block;
+    left: 16%;
+    border-radius: 50%;
+    animation-name: flow-71;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-72 {
+    0% {
+      opacity: 0.17;
+      top: 4%;
+    }
+    25% {
+      opacity: 0.15;
+    }
+    100% {
+      opacity: 0.3;
+      top: 58%;
+    }
+  }
+  .particle-72 {
+    background: #333;
+    width: 4px;
+    height: 4px;
+    position: absolute;
+    display: block;
+    left: 29%;
+    border-radius: 50%;
+    animation-name: flow-72;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-73 {
+    0% {
+      opacity: 0.11;
+      top: 119%;
+    }
+    25% {
+      opacity: 0.45;
+    }
+    100% {
+      opacity: 0.35;
+      top: 26%;
+    }
+  }
+  .particle-73 {
+    background: #333;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    display: block;
+    left: 49%;
+    border-radius: 50%;
+    animation-name: flow-73;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-74 {
+    0% {
+      opacity: 0.48;
+      top: 122%;
+    }
+    25% {
+      opacity: 0.87;
+    }
+    100% {
+      opacity: 0.46;
+      top: 90%;
+    }
+  }
+  .particle-74 {
+    background: #333;
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    display: block;
+    left: 53%;
+    border-radius: 50%;
+    animation-name: flow-74;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-75 {
+    0% {
+      opacity: 0.4;
+      top: 48%;
+    }
+    25% {
+      opacity: 0.26;
+    }
+    100% {
+      opacity: 0.22;
+      top: 7%;
+    }
+  }
+  .particle-75 {
+    background: #333;
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    display: block;
+    left: 41%;
+    border-radius: 50%;
+    animation-name: flow-75;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-76 {
+    0% {
+      opacity: 0.17;
+      top: 66%;
+    }
+    25% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.63;
+      top: 117%;
+    }
+  }
+  .particle-76 {
+    background: #333;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    display: block;
+    left: 87%;
+    border-radius: 50%;
+    animation-name: flow-76;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-77 {
+    0% {
+      opacity: 0.04;
+      top: 11%;
+    }
+    25% {
+      opacity: 0.26;
+    }
+    100% {
+      opacity: 0.53;
+      top: 72%;
+    }
+  }
+  .particle-77 {
+    background: #333;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    display: block;
+    left: 5%;
+    border-radius: 50%;
+    animation-name: flow-77;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-78 {
+    0% {
+      opacity: 0.18;
+      top: 63%;
+    }
+    25% {
+      opacity: 0.46;
+    }
+    100% {
+      opacity: 0.68;
+      top: 148%;
+    }
+  }
+  .particle-78 {
+    background: #333;
+    width: 2px;
+    height: 2px;
+    position: absolute;
+    display: block;
+    left: 79%;
+    border-radius: 50%;
+    animation-name: flow-78;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-79 {
+    0% {
+      opacity: 0.37;
+      top: 119%;
+    }
+    25% {
+      opacity: 0.11;
+    }
+    100% {
+      opacity: 0.74;
+      top: 112%;
+    }
+  }
+  .particle-79 {
+    background: #333;
+    width: 9px;
+    height: 9px;
+    position: absolute;
+    display: block;
+    left: 98%;
+    border-radius: 50%;
+    animation-name: flow-79;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-80 {
+    0% {
+      opacity: 0.29;
+      top: 108%;
+    }
+    25% {
+      opacity: 0.33;
+    }
+    100% {
+      opacity: 0.25;
+      top: 86%;
+    }
+  }
+  .particle-80 {
+    background: #333;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    display: block;
+    left: 23%;
+    border-radius: 50%;
+    animation-name: flow-80;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-81 {
+    0% {
+      opacity: 0.33;
+      top: 73%;
+    }
+    25% {
+      opacity: 0.13;
+    }
+    100% {
+      opacity: 0.75;
+      top: 40%;
+    }
+  }
+  .particle-81 {
+    background: #333;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    display: block;
+    left: 78%;
+    border-radius: 50%;
+    animation-name: flow-81;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-82 {
+    0% {
+      opacity: 0.17;
+      top: 91%;
+    }
+    25% {
+      opacity: 0.37;
+    }
+    100% {
+      opacity: 0.1;
+      top: 9%;
+    }
+  }
+  .particle-82 {
+    background: #333;
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    display: block;
+    left: 16%;
+    border-radius: 50%;
+    animation-name: flow-82;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-83 {
+    0% {
+      opacity: 0.49;
+      top: 120%;
+    }
+    25% {
+      opacity: 0.31;
+    }
+    100% {
+      opacity: 0.48;
+      top: 68%;
+    }
+  }
+  .particle-83 {
+    background: #333;
+    width: 4px;
+    height: 4px;
+    position: absolute;
+    display: block;
+    left: 33%;
+    border-radius: 50%;
+    animation-name: flow-83;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-84 {
+    0% {
+      opacity: 0.5;
+      top: 96%;
+    }
+    25% {
+      opacity: 0.28;
+    }
+    100% {
+      opacity: 0.69;
+      top: 150%;
+    }
+  }
+  .particle-84 {
+    background: #333;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    display: block;
+    left: 88%;
+    border-radius: 50%;
+    animation-name: flow-84;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-85 {
+    0% {
+      opacity: 0.19;
+      top: 117%;
+    }
+    25% {
+      opacity: 0.45;
+    }
+    100% {
+      opacity: 0.28;
+      top: 140%;
+    }
+  }
+  .particle-85 {
+    background: #333;
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    display: block;
+    left: 89%;
+    border-radius: 50%;
+    animation-name: flow-85;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-86 {
+    0% {
+      opacity: 0.81;
+      top: 104%;
+    }
+    25% {
+      opacity: 0.01;
+    }
+    100% {
+      opacity: 0.6;
+      top: 42%;
+    }
+  }
+  .particle-86 {
+    background: #333;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    display: block;
+    left: 80%;
+    border-radius: 50%;
+    animation-name: flow-86;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-87 {
+    0% {
+      opacity: 0.05;
+      top: 43%;
+    }
+    25% {
+      opacity: 0.43;
+    }
+    100% {
+      opacity: 0.69;
+      top: 63%;
+    }
+  }
+  .particle-87 {
+    background: #333;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    display: block;
+    left: 60%;
+    border-radius: 50%;
+    animation-name: flow-87;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-88 {
+    0% {
+      opacity: 0.45;
+      top: 87%;
+    }
+    25% {
+      opacity: 0.4;
+    }
+    100% {
+      opacity: 0.63;
+      top: 139%;
+    }
+  }
+  .particle-88 {
+    background: #333;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    display: block;
+    left: 46%;
+    border-radius: 50%;
+    animation-name: flow-88;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-89 {
+    0% {
+      opacity: 0.32;
+      top: 68%;
+    }
+    25% {
+      opacity: 0.11;
+    }
+    100% {
+      opacity: 0.36;
+      top: 54%;
+    }
+  }
+  .particle-89 {
+    background: #333;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    display: block;
+    left: 7%;
+    border-radius: 50%;
+    animation-name: flow-89;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-90 {
+    0% {
+      opacity: 0.49;
+      top: 28%;
+    }
+    25% {
+      opacity: 0.1;
+    }
+    100% {
+      opacity: 0.26;
+      top: 124%;
+    }
+  }
+  .particle-90 {
+    background: #333;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    display: block;
+    left: 95%;
+    border-radius: 50%;
+    animation-name: flow-90;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-91 {
+    0% {
+      opacity: 0.35;
+      top: 88%;
+    }
+    25% {
+      opacity: 0.38;
+    }
+    100% {
+      opacity: 0.28;
+      top: 50%;
+    }
+  }
+  .particle-91 {
+    background: #333;
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    display: block;
+    left: 8%;
+    border-radius: 50%;
+    animation-name: flow-91;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-92 {
+    0% {
+      opacity: 0.08;
+      top: 132%;
+    }
+    25% {
+      opacity: 0.4;
+    }
+    100% {
+      opacity: 0.26;
+      top: 84%;
+    }
+  }
+  .particle-92 {
+    background: #333;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    display: block;
+    left: 23%;
+    border-radius: 50%;
+    animation-name: flow-92;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-93 {
+    0% {
+      opacity: 0.43;
+      top: 135%;
+    }
+    25% {
+      opacity: 0.4;
+    }
+    100% {
+      opacity: 0.92;
+      top: 21%;
+    }
+  }
+  .particle-93 {
+    background: #333;
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    display: block;
+    left: 69%;
+    border-radius: 50%;
+    animation-name: flow-93;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-94 {
+    0% {
+      opacity: 0.98;
+      top: 103%;
+    }
+    25% {
+      opacity: 0.01;
+    }
+    100% {
+      opacity: 0.26;
+      top: 61%;
+    }
+  }
+  .particle-94 {
+    background: #333;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    display: block;
+    left: 14%;
+    border-radius: 50%;
+    animation-name: flow-94;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-95 {
+    0% {
+      opacity: 0.77;
+      top: 140%;
+    }
+    25% {
+      opacity: 0.97;
+    }
+    100% {
+      opacity: 0.89;
+      top: 65%;
+    }
+  }
+  .particle-95 {
+    background: #333;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    display: block;
+    left: 75%;
+    border-radius: 50%;
+    animation-name: flow-95;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-96 {
+    0% {
+      opacity: 0.11;
+      top: 140%;
+    }
+    25% {
+      opacity: 0.58;
+    }
+    100% {
+      opacity: 0.42;
+      top: 119%;
+    }
+  }
+  .particle-96 {
+    background: #333;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    display: block;
+    left: 72%;
+    border-radius: 50%;
+    animation-name: flow-96;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-97 {
+    0% {
+      opacity: 0.08;
+      top: 134%;
+    }
+    25% {
+      opacity: 0.48;
+    }
+    100% {
+      opacity: 0.92;
+      top: 13%;
+    }
+  }
+  .particle-97 {
+    background: #333;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    display: block;
+    left: 67%;
+    border-radius: 50%;
+    animation-name: flow-97;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-98 {
+    0% {
+      opacity: 0.57;
+      top: 16%;
+    }
+    25% {
+      opacity: 0.61;
+    }
+    100% {
+      opacity: 0.64;
+      top: 65%;
+    }
+  }
+  .particle-98 {
+    background: #333;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    display: block;
+    left: 12%;
+    border-radius: 50%;
+    animation-name: flow-98;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-99 {
+    0% {
+      opacity: 0.06;
+      top: 23%;
+    }
+    25% {
+      opacity: 0.19;
+    }
+    100% {
+      opacity: 0.77;
+      top: 41%;
+    }
+  }
+  .particle-99 {
+    background: #333;
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    display: block;
+    left: 73%;
+    border-radius: 50%;
+    animation-name: flow-99;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-100 {
+    0% {
+      opacity: 0.97;
+      top: 120%;
+    }
+    25% {
+      opacity: 0.49;
+    }
+    100% {
+      opacity: 0.7;
+      top: 126%;
+    }
+  }
+  .particle-100 {
+    background: #333;
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    display: block;
+    left: 25%;
+    border-radius: 50%;
+    animation-name: flow-100;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-101 {
+    0% {
+      opacity: 0.76;
+      top: 52%;
+    }
+    25% {
+      opacity: 0.05;
+    }
+    100% {
+      opacity: 0.08;
+      top: 114%;
+    }
+  }
+  .particle-101 {
+    background: #333;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    display: block;
+    left: 38%;
+    border-radius: 50%;
+    animation-name: flow-101;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-102 {
+    0% {
+      opacity: 0.89;
+      top: 118%;
+    }
+    25% {
+      opacity: 0.79;
+    }
+    100% {
+      opacity: 0.92;
+      top: 19%;
+    }
+  }
+  .particle-102 {
+    background: #333;
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    display: block;
+    left: 53%;
+    border-radius: 50%;
+    animation-name: flow-102;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-103 {
+    0% {
+      opacity: 0.03;
+      top: 114%;
+    }
+    25% {
+      opacity: 0.9;
+    }
+    100% {
+      opacity: 0.47;
+      top: 107%;
+    }
+  }
+  .particle-103 {
+    background: #333;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    display: block;
+    left: 71%;
+    border-radius: 50%;
+    animation-name: flow-103;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-104 {
+    0% {
+      opacity: 0.08;
+      top: 84%;
+    }
+    25% {
+      opacity: 0.55;
+    }
+    100% {
+      opacity: 0.58;
+      top: 78%;
+    }
+  }
+  .particle-104 {
+    background: #333;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    display: block;
+    left: 1%;
+    border-radius: 50%;
+    animation-name: flow-104;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-105 {
+    0% {
+      opacity: 0.24;
+      top: 106%;
+    }
+    25% {
+      opacity: 0.09;
+    }
+    100% {
+      opacity: 0.03;
+      top: 35%;
+    }
+  }
+  .particle-105 {
+    background: #333;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    display: block;
+    left: 93%;
+    border-radius: 50%;
+    animation-name: flow-105;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-106 {
+    0% {
+      opacity: 0.1;
+      top: 101%;
+    }
+    25% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 0.48;
+      top: 93%;
+    }
+  }
+  .particle-106 {
+    background: #333;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    display: block;
+    left: 93%;
+    border-radius: 50%;
+    animation-name: flow-106;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-107 {
+    0% {
+      opacity: 0.46;
+      top: 78%;
+    }
+    25% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0.8;
+      top: 130%;
+    }
+  }
+  .particle-107 {
+    background: #333;
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    display: block;
+    left: 24%;
+    border-radius: 50%;
+    animation-name: flow-107;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-108 {
+    0% {
+      opacity: 0.37;
+      top: 2%;
+    }
+    25% {
+      opacity: 0.78;
+    }
+    100% {
+      opacity: 0.71;
+      top: 138%;
+    }
+  }
+  .particle-108 {
+    background: #333;
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    display: block;
+    left: 97%;
+    border-radius: 50%;
+    animation-name: flow-108;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-109 {
+    0% {
+      opacity: 0.84;
+      top: 104%;
+    }
+    25% {
+      opacity: 0.86;
+    }
+    100% {
+      opacity: 0.89;
+      top: 22%;
+    }
+  }
+  .particle-109 {
+    background: #333;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    display: block;
+    left: 88%;
+    border-radius: 50%;
+    animation-name: flow-109;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-110 {
+    0% {
+      opacity: 0.74;
+      top: 73%;
+    }
+    25% {
+      opacity: 0.89;
+    }
+    100% {
+      opacity: 0.89;
+      top: 52%;
+    }
+  }
+  .particle-110 {
+    background: #333;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    display: block;
+    left: 64%;
+    border-radius: 50%;
+    animation-name: flow-110;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-111 {
+    0% {
+      opacity: 0.7;
+      top: 100%;
+    }
+    25% {
+      opacity: 0.22;
+    }
+    100% {
+      opacity: 0.65;
+      top: 9%;
+    }
+  }
+  .particle-111 {
+    background: #333;
+    width: 9px;
+    height: 9px;
+    position: absolute;
+    display: block;
+    left: 90%;
+    border-radius: 50%;
+    animation-name: flow-111;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-112 {
+    0% {
+      opacity: 0.69;
+      top: 119%;
+    }
+    25% {
+      opacity: 0.02;
+    }
+    100% {
+      opacity: 0.41;
+      top: 44%;
+    }
+  }
+  .particle-112 {
+    background: #333;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    display: block;
+    left: 14%;
+    border-radius: 50%;
+    animation-name: flow-112;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-113 {
+    0% {
+      opacity: 0.64;
+      top: 137%;
+    }
+    25% {
+      opacity: 0.22;
+    }
+    100% {
+      opacity: 0.21;
+      top: 56%;
+    }
+  }
+  .particle-113 {
+    background: #333;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    display: block;
+    left: 43%;
+    border-radius: 50%;
+    animation-name: flow-113;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-114 {
+    0% {
+      opacity: 0.99;
+      top: 82%;
+    }
+    25% {
+      opacity: 0.31;
+    }
+    100% {
+      opacity: 0.27;
+      top: 140%;
+    }
+  }
+  .particle-114 {
+    background: #333;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    display: block;
+    left: 15%;
+    border-radius: 50%;
+    animation-name: flow-114;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-115 {
+    0% {
+      opacity: 0.22;
+      top: 2%;
+    }
+    25% {
+      opacity: 0.25;
+    }
+    100% {
+      opacity: 0.6;
+      top: 53%;
+    }
+  }
+  .particle-115 {
+    background: #333;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    display: block;
+    left: 69%;
+    border-radius: 50%;
+    animation-name: flow-115;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-116 {
+    0% {
+      opacity: 0.66;
+      top: 64%;
+    }
+    25% {
+      opacity: 0.95;
+    }
+    100% {
+      opacity: 0.62;
+      top: 50%;
+    }
+  }
+  .particle-116 {
+    background: #333;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    display: block;
+    left: 89%;
+    border-radius: 50%;
+    animation-name: flow-116;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-117 {
+    0% {
+      opacity: 0.4;
+      top: 94%;
+    }
+    25% {
+      opacity: 0.83;
+    }
+    100% {
+      opacity: 0.48;
+      top: 91%;
+    }
+  }
+  .particle-117 {
+    background: #333;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    display: block;
+    left: 78%;
+    border-radius: 50%;
+    animation-name: flow-117;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-118 {
+    0% {
+      opacity: 0.36;
+      top: 82%;
+    }
+    25% {
+      opacity: 0.03;
+    }
+    100% {
+      opacity: 0.42;
+      top: 64%;
+    }
+  }
+  .particle-118 {
+    background: #333;
+    width: 2px;
+    height: 2px;
+    position: absolute;
+    display: block;
+    left: 33%;
+    border-radius: 50%;
+    animation-name: flow-118;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-119 {
+    0% {
+      opacity: 0.48;
+      top: 6%;
+    }
+    25% {
+      opacity: 0.71;
+    }
+    100% {
+      opacity: 0.87;
+      top: 81%;
+    }
+  }
+  .particle-119 {
+    background: #333;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    display: block;
+    left: 30%;
+    border-radius: 50%;
+    animation-name: flow-119;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-120 {
+    0% {
+      opacity: 0.72;
+      top: 148%;
+    }
+    25% {
+      opacity: 0.78;
+    }
+    100% {
+      opacity: 0.84;
+      top: 40%;
+    }
+  }
+  .particle-120 {
+    background: #333;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    display: block;
+    left: 12%;
+    border-radius: 50%;
+    animation-name: flow-120;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-121 {
+    0% {
+      opacity: 0.61;
+      top: 34%;
+    }
+    25% {
+      opacity: 0.11;
+    }
+    100% {
+      opacity: 0.54;
+      top: 136%;
+    }
+  }
+  .particle-121 {
+    background: #333;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    display: block;
+    left: 4%;
+    border-radius: 50%;
+    animation-name: flow-121;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-122 {
+    0% {
+      opacity: 0.7;
+      top: 104%;
+    }
+    25% {
+      opacity: 0.43;
+    }
+    100% {
+      opacity: 0.17;
+      top: 80%;
+    }
+  }
+  .particle-122 {
+    background: #333;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    display: block;
+    left: 63%;
+    border-radius: 50%;
+    animation-name: flow-122;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-123 {
+    0% {
+      opacity: 0.72;
+      top: 9%;
+    }
+    25% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0.67;
+      top: 14%;
+    }
+  }
+  .particle-123 {
+    background: #333;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    display: block;
+    left: 42%;
+    border-radius: 50%;
+    animation-name: flow-123;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-124 {
+    0% {
+      opacity: 0.6;
+      top: 104%;
+    }
+    25% {
+      opacity: 0.75;
+    }
+    100% {
+      opacity: 0.63;
+      top: 123%;
+    }
+  }
+  .particle-124 {
+    background: #333;
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    display: block;
+    left: 35%;
+    border-radius: 50%;
+    animation-name: flow-124;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-125 {
+    0% {
+      opacity: 0.48;
+      top: 52%;
+    }
+    25% {
+      opacity: 0.09;
+    }
+    100% {
+      opacity: 0.48;
+      top: 3%;
+    }
+  }
+  .particle-125 {
+    background: #333;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    display: block;
+    left: 25%;
+    border-radius: 50%;
+    animation-name: flow-125;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-126 {
+    0% {
+      opacity: 0.6;
+      top: 13%;
+    }
+    25% {
+      opacity: 0.84;
+    }
+    100% {
+      opacity: 0.64;
+      top: 45%;
+    }
+  }
+  .particle-126 {
+    background: #333;
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    display: block;
+    left: 52%;
+    border-radius: 50%;
+    animation-name: flow-126;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-127 {
+    0% {
+      opacity: 0.41;
+      top: 136%;
+    }
+    25% {
+      opacity: 0.05;
+    }
+    100% {
+      opacity: 0.41;
+      top: 63%;
+    }
+  }
+  .particle-127 {
+    background: #333;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    display: block;
+    left: 52%;
+    border-radius: 50%;
+    animation-name: flow-127;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-128 {
+    0% {
+      opacity: 0.72;
+      top: 66%;
+    }
+    25% {
+      opacity: 0.93;
+    }
+    100% {
+      opacity: 0.26;
+      top: 53%;
+    }
+  }
+  .particle-128 {
+    background: #333;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    display: block;
+    left: 20%;
+    border-radius: 50%;
+    animation-name: flow-128;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-129 {
+    0% {
+      opacity: 0.22;
+      top: 108%;
+    }
+    25% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.58;
+      top: 74%;
+    }
+  }
+  .particle-129 {
+    background: #333;
+    width: 9px;
+    height: 9px;
+    position: absolute;
+    display: block;
+    left: 23%;
+    border-radius: 50%;
+    animation-name: flow-129;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-130 {
+    0% {
+      opacity: 0.57;
+      top: 22%;
+    }
+    25% {
+      opacity: 0.22;
+    }
+    100% {
+      opacity: 0.95;
+      top: 22%;
+    }
+  }
+  .particle-130 {
+    background: #333;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    display: block;
+    left: 76%;
+    border-radius: 50%;
+    animation-name: flow-130;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-131 {
+    0% {
+      opacity: 0.14;
+      top: 33%;
+    }
+    25% {
+      opacity: 0.19;
+    }
+    100% {
+      opacity: 0.71;
+      top: 38%;
+    }
+  }
+  .particle-131 {
+    background: #333;
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    display: block;
+    left: 18%;
+    border-radius: 50%;
+    animation-name: flow-131;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-132 {
+    0% {
+      opacity: 0.75;
+      top: 89%;
+    }
+    25% {
+      opacity: 0.75;
+    }
+    100% {
+      opacity: 0.53;
+      top: 121%;
+    }
+  }
+  .particle-132 {
+    background: #333;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    display: block;
+    left: 89%;
+    border-radius: 50%;
+    animation-name: flow-132;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-133 {
+    0% {
+      opacity: 0.58;
+      top: 76%;
+    }
+    25% {
+      opacity: 0.49;
+    }
+    100% {
+      opacity: 0.21;
+      top: 30%;
+    }
+  }
+  .particle-133 {
+    background: #333;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    display: block;
+    left: 56%;
+    border-radius: 50%;
+    animation-name: flow-133;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-134 {
+    0% {
+      opacity: 0.69;
+      top: 75%;
+    }
+    25% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 0.58;
+      top: 88%;
+    }
+  }
+  .particle-134 {
+    background: #333;
+    width: 4px;
+    height: 4px;
+    position: absolute;
+    display: block;
+    left: 47%;
+    border-radius: 50%;
+    animation-name: flow-134;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-135 {
+    0% {
+      opacity: 0.61;
+      top: 1%;
+    }
+    25% {
+      opacity: 0.14;
+    }
+    100% {
+      opacity: 0.19;
+      top: 123%;
+    }
+  }
+  .particle-135 {
+    background: #333;
+    width: 4px;
+    height: 4px;
+    position: absolute;
+    display: block;
+    left: 10%;
+    border-radius: 50%;
+    animation-name: flow-135;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-136 {
+    0% {
+      opacity: 0.62;
+      top: 123%;
+    }
+    25% {
+      opacity: 0.86;
+    }
+    100% {
+      opacity: 0.47;
+      top: 133%;
+    }
+  }
+  .particle-136 {
+    background: #333;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    display: block;
+    left: 97%;
+    border-radius: 50%;
+    animation-name: flow-136;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-137 {
+    0% {
+      opacity: 0.58;
+      top: 2%;
+    }
+    25% {
+      opacity: 0.22;
+    }
+    100% {
+      opacity: 0.09;
+      top: 125%;
+    }
+  }
+  .particle-137 {
+    background: #333;
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    display: block;
+    left: 51%;
+    border-radius: 50%;
+    animation-name: flow-137;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-138 {
+    0% {
+      opacity: 0.24;
+      top: 132%;
+    }
+    25% {
+      opacity: 0.11;
+    }
+    100% {
+      opacity: 0.62;
+      top: 67%;
+    }
+  }
+  .particle-138 {
+    background: #333;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    display: block;
+    left: 76%;
+    border-radius: 50%;
+    animation-name: flow-138;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-139 {
+    0% {
+      opacity: 0.15;
+      top: 96%;
+    }
+    25% {
+      opacity: 0.35;
+    }
+    100% {
+      opacity: 0.44;
+      top: 130%;
+    }
+  }
+  .particle-139 {
+    background: #333;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    display: block;
+    left: 4%;
+    border-radius: 50%;
+    animation-name: flow-139;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-140 {
+    0% {
+      opacity: 0.26;
+      top: 28%;
+    }
+    25% {
+      opacity: 0.15;
+    }
+    100% {
+      opacity: 0.88;
+      top: 4%;
+    }
+  }
+  .particle-140 {
+    background: #333;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    display: block;
+    left: 69%;
+    border-radius: 50%;
+    animation-name: flow-140;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-141 {
+    0% {
+      opacity: 1;
+      top: 17%;
+    }
+    25% {
+      opacity: 0.32;
+    }
+    100% {
+      opacity: 0.15;
+      top: 135%;
+    }
+  }
+  .particle-141 {
+    background: #333;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    display: block;
+    left: 69%;
+    border-radius: 50%;
+    animation-name: flow-141;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-142 {
+    0% {
+      opacity: 0.16;
+      top: 45%;
+    }
+    25% {
+      opacity: 0.87;
+    }
+    100% {
+      opacity: 0.88;
+      top: 75%;
+    }
+  }
+  .particle-142 {
+    background: #333;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    display: block;
+    left: 19%;
+    border-radius: 50%;
+    animation-name: flow-142;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-143 {
+    0% {
+      opacity: 0.25;
+      top: 61%;
+    }
+    25% {
+      opacity: 0.07;
+    }
+    100% {
+      opacity: 0.02;
+      top: 8%;
+    }
+  }
+  .particle-143 {
+    background: #333;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    display: block;
+    left: 21%;
+    border-radius: 50%;
+    animation-name: flow-143;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-144 {
+    0% {
+      opacity: 0.85;
+      top: 74%;
+    }
+    25% {
+      opacity: 0.01;
+    }
+    100% {
+      opacity: 0.72;
+      top: 119%;
+    }
+  }
+  .particle-144 {
+    background: #333;
+    width: 9px;
+    height: 9px;
+    position: absolute;
+    display: block;
+    left: 57%;
+    border-radius: 50%;
+    animation-name: flow-144;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-145 {
+    0% {
+      opacity: 0.33;
+      top: 132%;
+    }
+    25% {
+      opacity: 0.53;
+    }
+    100% {
+      opacity: 0.42;
+      top: 91%;
+    }
+  }
+  .particle-145 {
+    background: #333;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    display: block;
+    left: 31%;
+    border-radius: 50%;
+    animation-name: flow-145;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-146 {
+    0% {
+      opacity: 0.9;
+      top: 125%;
+    }
+    25% {
+      opacity: 0.91;
+    }
+    100% {
+      opacity: 0.28;
+      top: 92%;
+    }
+  }
+  .particle-146 {
+    background: #333;
+    width: 4px;
+    height: 4px;
+    position: absolute;
+    display: block;
+    left: 96%;
+    border-radius: 50%;
+    animation-name: flow-146;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-147 {
+    0% {
+      opacity: 0.6;
+      top: 127%;
+    }
+    25% {
+      opacity: 0.01;
+    }
+    100% {
+      opacity: 0.16;
+      top: 136%;
+    }
+  }
+  .particle-147 {
+    background: #333;
+    width: 4px;
+    height: 4px;
+    position: absolute;
+    display: block;
+    left: 89%;
+    border-radius: 50%;
+    animation-name: flow-147;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-148 {
+    0% {
+      opacity: 0.54;
+      top: 73%;
+    }
+    25% {
+      opacity: 0.38;
+    }
+    100% {
+      opacity: 0.45;
+      top: 39%;
+    }
+  }
+  .particle-148 {
+    background: #333;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    display: block;
+    left: 11%;
+    border-radius: 50%;
+    animation-name: flow-148;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-149 {
+    0% {
+      opacity: 0.63;
+      top: 42%;
+    }
+    25% {
+      opacity: 0.39;
+    }
+    100% {
+      opacity: 0.17;
+      top: 131%;
+    }
+  }
+  .particle-149 {
+    background: #333;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    display: block;
+    left: 1%;
+    border-radius: 50%;
+    animation-name: flow-149;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-150 {
+    0% {
+      opacity: 0.98;
+      top: 103%;
+    }
+    25% {
+      opacity: 0.34;
+    }
+    100% {
+      opacity: 0.96;
+      top: 63%;
+    }
+  }
+  .particle-150 {
+    background: #333;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    display: block;
+    left: 1%;
+    border-radius: 50%;
+    animation-name: flow-150;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes flow-151 {
+    0% {
+      opacity: 0.44;
+      top: 139%;
+    }
+    25% {
+      opacity: 0.98;
+    }
+    100% {
+      opacity: 0.92;
+      top: 127%;
+    }
+  }
+  .particle-151 {
+    background: #333;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    display: block;
+    left: 90%;
+    border-radius: 50%;
+    animation-name: flow-151;
+    animation-duration: 15s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  

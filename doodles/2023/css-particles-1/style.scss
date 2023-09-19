@@ -1,0 +1,42 @@
+.wrapper {
+    width: 400px;
+    height: 400px;
+    margin: 50px;
+    position: relative;
+    border: 1px solid #ccc;
+    overflow: hidden;
+  }
+  
+  @for $i from 1 through 151 {
+    
+    $radius: random(15) + px;
+  
+    @keyframes flow-#{$i} {
+      0% {
+        opacity: random(100) / 100;
+        top: percentage(random(150) / 100);
+      }
+      25% {
+        opacity: random(100) / 100;
+      }
+      100% {
+        opacity: random(100) / 100;
+        top: percentage(random(150) / 100);
+      }
+    }
+    
+    .particle-#{$i} {
+      background: #333;
+      width: #{$radius};
+      height: #{$radius};
+      position: absolute;
+      display: block;
+      left: percentage(random(100) / 100);
+      border-radius: 50%;
+      animation-name: flow-#{$i};
+      animation-duration: 15s;
+      animation-direction: alternate-reverse;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+    }
+  }

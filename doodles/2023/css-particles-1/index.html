@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>CSS Particles 1</title>
+        <link href="style.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        
+        <div class="wrapper"></div>
+        
+        <script>
+            
+            let wrapper = document.querySelectorAll('.wrapper')
+            
+            for (let i = 0; i < 150; i++) {
+                wrapper[0].innerHTML += '<div class="particle-' + i + '"></div>'
+            }
+            
+        </script>
+        
+    </body>
+    
+</html>
