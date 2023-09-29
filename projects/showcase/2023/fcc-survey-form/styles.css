@@ -1,0 +1,200 @@
+/* Core */
+
+body {  
+  font-family: "Onest", sans-serif;
+  font-size: 14px;
+  color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  font-family: "Onest", sans-serif;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  vertical-align: middle;
+}
+
+h1 {
+  color: #2bd245;
+  font-size: 2rem;
+  margin: 0 0 0.25rem 0;
+  padding: 0;
+}
+
+p {
+  margin: 0 0 0.15rem 0;
+  padding: 0; 
+}
+
+label {
+  width: 100%;
+  display: block;
+  font-size: 1.25rem;
+  margin: 0 0 1rem 0;
+}
+
+label:last-of-type {
+  margin: 0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"] {
+  width: 100%;
+  background: #444;
+  color: #fff;
+  display: block;
+  font-size: 1rem;
+  padding: 0.6rem;
+  border: unset;
+  outline: unset;
+  border-bottom: 6px solid #999;
+  transition: ease-in-out all 0.25s;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  transform: scale(1.25);
+  margin: 0 0.25rem 0 0;
+}
+
+input:focus {
+  border-color: #2bd245;
+}
+
+textarea {
+  width: 100%;
+  min-height: 100px;  
+  background: #444;
+  color: #fff;
+  display: block;
+  font-size: 1rem;
+  padding: 0.6rem;
+  border: unset;
+  outline: unset;
+  border-bottom: 6px solid #999;
+  transition: ease-in-out all 0.25s;
+}
+
+textarea:focus {
+  border-color: #2bd245;
+}
+
+select {
+  width: 100%;
+  background: #444;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: unset;
+  outline: unset;
+  border-bottom: 6px solid #999;
+  transition: ease-in-out all 0.25s;
+}
+
+select:focus {
+  border-color: #2bd245;
+}
+
+button {
+  width: 100%;
+  background: #2bd245;
+  color: #fff;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+fieldset {
+  background: rgba(255, 255, 255, 0.85);
+  color: #222;
+  margin: 0 0 2rem 0;
+  padding: 2rem;
+  padding-top: 1.5rem;
+  border: none;
+}
+
+fieldset > legend {
+  background: #2bd245;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+}
+
+fieldset > .section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  padding: 0;
+}
+
+fieldset > hr {
+  margin: 0 0 1rem 0;
+  padding: 0;
+  border: 1px solid #ccc;
+}
+
+/* Background */
+
+.background {
+  background-image: url("bg.jpg");
+  background-size: max(100vw, 1920px) auto;
+  background-position: center center;
+  position: fixed;
+  top: -1280px;
+  right: -1280px;
+  bottom: -1280px;
+  left: -1280px;
+  transition: ease-in-out all 2s;
+  transform: rotate(15deg);
+  z-index: 1000;
+}
+
+body:hover .background {
+  background-size: 2100px auto;
+  transform: rotate(20deg);
+}
+
+.background > .overlay {
+  background: rgba(10, 45, 20, 0.75);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: ease-in-out all 2s;
+}
+
+body:hover .background > .overlay {
+  background: rgba(10, 65, 20, 0.75);
+}
+
+/* Form */
+
+form .field-label {
+  display: block;
+  margin: 0 0 0.25rem 0;
+}
+
+/* Contents */
+
+.contents {
+  width: 90%;
+  min-width: 480px;
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  position: relative;
+  z-index: 2000;
+}
+
+header {
+  text-align: center;
+  color: #e6e6e6;
+  margin: 0 0 2.5rem 0;
+}

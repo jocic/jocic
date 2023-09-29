@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="author" content="Đorđe Jocić">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customer Satisfaction Survey</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+
+  </head>
+  <body>
+    <div class="background">
+      <div class="overlay"></div>
+    </div>
+    <div class="contents">
+      <header>
+        <h1 id="title">
+          Customer Satisfaction Survey
+        </h1>
+        <p id="description">
+          Fill out the Survey and earn 200 credits with your next purchase!
+        </p>
+      </header>
+      <main>
+        <form id="survey-form">
+          <fieldset>
+            <legend>Your Details</legend>
+            <label id="name-label" for="name">
+              <span class="field-label">
+                Full Name
+              </span>
+              <input id="name" class="field-element" type="text" placeholder="Enter your full name (required)" required>
+            </label>
+            <label id="email-label" for="email">
+              <span class="field-label">
+                Emal Address
+              </span>
+              <input id="email" class="field-element" type="email" placeholder="Enter your email address (required)" required>
+            </label>
+            <label id="number-label" for="number">
+              <span class="field-label">
+                Age
+              </span>
+              <input id="number" class="field-element" type="number" min="14" max="120" placeholder="Enter your age (optional)">
+            </label>
+          </fieldset>
+          <fieldset>
+            <legend>Your Opinion</legend>
+            <label id="dropdown-label" for="dropdown">
+              <span class="field-label">
+                How did you hear about us?
+              </span>
+              <select id="dropdown" class="field-element">
+                <option>Social Media</option>
+                <option>Google</option>
+                <option>Forum</option>
+                <option>Other</option>
+              </select>
+            </label>
+            <hr />
+            <p class="section-title">
+              How would you rate us?
+            </p>
+            <label for="rating-0">
+              <input id="rating-0" class="field-element" name="rating" type="radio" value="0">
+              I wouldn't recommend you to my worst enemy...
+            </label>
+            <label for="rating-1">
+              <input id="rating-1" class="field-element" name="rating" type="radio" value="1"> There's room for improvement...
+            </label>
+            <label for="rating-2">
+              <input id="rating-2" class="field-element" name="rating" type="radio" value="2"> You're the best thing that ever happened to me...
+            </label>
+            <hr />
+            <p class="section-title">
+              What do you purchase the most?
+            </p>
+            <label for="item-0">
+              <input id="item-0" class="field-element" type="checkbox" value="phone-accessories" /> Phone Accessories
+            </label>
+            <label for="item-1">
+              <input id="item-1" class="field-element" type="checkbox" value="computer-accessories" /> Computer Accessories
+            </label>
+            <label for="item-2">
+              <input id="item-2" class="field-element" type="checkbox" value="other" /> Other
+            </label>
+            <hr />
+            <label for="comment">
+              <span class="field-label">
+                Do you have any comments?
+              </span>
+              <textarea id="comment" class="field-element"></textarea>
+            </label>
+          </fieldset>
+          <button id="submit" type="submit">
+            Submit
+          </button>
+        </form>
+      </main>
+    </div>
+  </body>
+</html>
