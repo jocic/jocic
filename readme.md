@@ -43,3 +43,15 @@ This project was part of the vetting process for a Frontend Development position
 **Links:** [FIGMA Design](projects/showcase/2023/figma-conversion-1/figma-design.jpg) | [Desktop View](projects/showcase/2023/figma-conversion-1/figma-desktop.jpg) | [Mobile View](projects/showcase/2023/figma-conversion-1/figma-mobile.jpg) | [Source Code](projects/showcase/2023/figma-conversion-1/src) | [Live Demo](https://djordjejocic.com/showcase/figma-1/index.html)
 
 [![Desktop View](projects/showcase/2023/figma-conversion-1/showcase.jpg)](https://djordjejocic.com/showcase/figma-1/index.html)
+
+### freeCodeCamp - Responsive Web Design Challenges
+
+<table>
+  <tr>
+    <td><a href="#"><img src="projects/showcase/2023/fcc-survey-form/showcase.jpg" /></a></td>
+    <td>...</td>
+    <td>...</td>
+    <td>...</td>
+    <td>...</td>
+  </tr>
+</table>
