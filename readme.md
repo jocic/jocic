@@ -23,16 +23,16 @@ I made quite a few websites using OctoberCMS, here are some of them.
 
 <table>
   <tr>
-    <td><a href="http://www.astonwaldner.sk/"><img src="projects/showcase/aston-waldner.png" /></a></td>
-    <td><a href="https://jaklovsky.sk/"><img src="projects/showcase/jaklovsky.png" /></a></td>
+    <td><a href="http://www.astonwaldner.sk/"><img src="projects/showcase/kolovratok/aston-waldner.jpg" /></a></td>
+    <td><a href="https://jaklovsky.sk/"><img src="projects/showcase/kolovratok/jaklovsky.jpg" /></a></td>
   </tr>
   <tr>
-    <td><a href="https://mastervita.djordjejocic.com/"><img src="projects/showcase/mastervita.png" /></a></td>
-    <td><a href="https://braxton.djordjejocic.com/"><img src="projects/showcase/braxton.png" /></a></td>
+    <td><a href="https://mastervita.djordjejocic.com/"><img src="projects/showcase/kolovratok/mastervita.jpg" /></a></td>
+    <td><a href="https://braxton.djordjejocic.com/"><img src="projects/showcase/kolovratok/braxton.jpg" /></a></td>
   </tr>
   <tr>
-    <td><a href="https://mapei.djordjejocic.com/"><img src="projects/showcase/mapei.png" /></a></td>
-    <td><a href="https://djordjejocic.com/"><img src="projects/showcase/personal-website.png" /></a></td>
+    <td><a href="https://mapei.djordjejocic.com/"><img src="projects/showcase/kolovratok/mapei.jpg" /></a></td>
+    <td><a href="https://djordjejocic.com/"><img src="projects/showcase/kolovratok/personal-website.jpg" /></a></td>
   </tr>
 </table>
 
@@ -46,12 +46,10 @@ This project was part of the vetting process for a Frontend Development position
 
 ### freeCodeCamp - Responsive Web Design Challenges
 
+Mini-projects done for the FCC Responsive Web Design certification.
+
 <table>
   <tr>
-    <td><a href="#"><img src="projects/showcase/2023/fcc-survey-form/showcase.jpg" /></a></td>
-    <td>...</td>
-    <td>...</td>
-    <td>...</td>
-    <td>...</td>
+    <td><a href="https://djordjejocic.com/showcase/fcc-survey-form/index.html"><img src="projects/showcase/2023/fcc-survey-form/showcase.jpg" /></a></td>
   </tr>
 </table>
