@@ -1,0 +1,271 @@
+/* Core */
+
+body {
+  background: #30a0df;
+  font-family: "Onest", sans-serif;
+  font-size: 16px;
+  color: #ececec;
+}
+
+body:before {
+  content: " ";
+  background-color: #0f77b0;
+  background-image: url("https://djordjejocic.com/storage/app/media/tribute-page-fcc/bg.jpg");
+  background-size: 150px 150px;
+  position: fixed;
+  top: -4000px;
+  right: -4000px;
+  bottom: -4000px;
+  left: -4000px;
+  z-index: -20;
+  transition: ease-in-out all 3s;
+  transform: rotate(15deg) scale(1);
+}
+
+body:hover:before {
+  transform: rotate(20deg) scale(1.25);
+}
+
+body:after {
+  content: " ";
+  background: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -10;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+h1 {
+  font-size: max(2rem, min(10vw, 2.5rem));
+  font-weight: 800;
+}
+
+h2 {
+  font-size: max(1rem, min(6vw, 1.5rem));
+  font-weight: 800;
+}
+
+h3 {
+  font-size: max(1rem, min(6vw, 1.25rem));
+  font-weight: 800;
+}
+
+blockquote {
+  font-size: max(0.8rem, min(5vw, 1.5rem));
+  text-align: justify;
+  line-height: max(1.4rem, min(7vw, 2rem));
+  margin: 0 0 3rem 0;
+  padding: 0 1rem;
+}
+
+/* Main */
+
+main {
+  position: relative;
+  min-width: 360px;
+  max-width: 1400px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* Header */
+
+header {
+  margin: 0 0 1.5rem 0;
+  padding: 6rem 0 0 0;
+}
+
+header h1 {
+  text-align: center;
+  font-weight: 700;
+}
+
+header h2 {
+  text-align: center;
+  font-weight: 400;
+}
+
+header section {
+  margin: 0 0 2rem 0;
+  padding: 0.5rem;
+}
+
+header figure {
+  position: relative;
+  border: 6px solid #666;
+  margin: 0 1rem 3rem;
+  z-index: -5;
+}
+
+header figure > img {
+  display: block;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+header figure > figcaption {
+  background: #1a85c1;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  bottom: 0;
+  right: 2rem;
+  transform: translateY(50%);
+}
+
+/* Nav */
+
+nav {
+  display: flex;
+  width: 100%;
+  background: #1a85c1;
+  border-bottom: 1px solid #1b7db5;
+  box-shadow: 0 0 5px #333;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+@media(max-width: 900px) {
+
+  header {
+    padding: 0;
+  }
+
+  nav {
+    position: relative;
+    justify-content: center;
+    margin: 0 0 1.5rem 0;
+  }
+}
+
+#main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#main-nav > li {
+  list-style-type: none;
+  border-right: 1px solid #1b7db5;
+}
+
+#main-nav > li > a {
+  display: flex;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #e8e8e8;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#main-nav > li > a > .icon {
+  background: #fff;
+  text-align: center;
+  margin: 0.25rem 0.5rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+#main-nav > li > a > .icon > img {
+  display: block;
+  height: 1.25rem;
+  width: 1.25rem;
+  margin: 0 auto;
+  opacity: 0.8;
+}
+
+#paho {
+  display: block;
+  background: #fff;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+}
+
+#paho img {
+  height: auto;
+  max-height: 2.5rem;
+  width: auto;
+  max-width: 100%;
+  margin: 0.25rem 0.75rem;
+}
+
+/* Tribute Info */
+
+#tribute-info {
+  background: #1b7db5AF;
+  margin: 0 0 4rem 0;
+  padding: 1rem;
+}
+
+#tribute-info h2 {
+  margin: 0 0 1rem 0;
+}
+
+#tribute-info ul {
+  font-size: max(0.8rem, min(5vw, 1.25rem));
+  padding: 0 0 0 2rem;
+}
+
+/* Honours */
+
+#honours {
+  background: #1b7db5AF;
+  margin: 0 0 4rem 0;
+  padding: 1rem;
+}
+
+#honours h2 {
+  margin: 0 0 1rem 0;
+}
+
+#honours ul {
+  font-size: max(0.8rem, min(5vw, 1.25rem));
+  padding: 0 0 0 2rem;
+}
+
+/* Tribute Link */
+
+#tribute-link {
+  display: block;
+  font-size: max(1rem, min(6vw, 1.5rem));
+  text-align: center;
+  margin: 0 0 4rem 0;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Footer */
+
+footer {
+  background: #1a85c1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer img {
+  height: 250px;
+  width: auto;
+}
