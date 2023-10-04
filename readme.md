@@ -50,6 +50,6 @@ Mini-projects done for the FCC Responsive Web Design certification.
 
 <table>
   <tr>
-    <td><a href="https://djordjejocic.com/showcase/fcc-survey-form/index.html"><img src="projects/showcase/2023/fcc-survey-form/showcase.jpg" /></a></td>
+    <td><a href="https://djordjejocic.com/showcase/fcc-survey-form/index.html"><img src="projects/showcase/2023/fcc-survey-form/showcase.jpg" /></a></td>    <td><a href="https://djordjejocic.com/showcase/fcc-tribute-page/index.html"><img src="projects/showcase/2023/fcc-tribute-page/showcase.jpg" /></a></td>
   </tr>
 </table>
