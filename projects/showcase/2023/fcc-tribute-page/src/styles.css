@@ -10,7 +10,7 @@ body {
 body:before {
   content: " ";
   background-color: #0f77b0;
-  background-image: url("https://djordjejocic.com/storage/app/media/tribute-page-fcc/bg.jpg");
+  background-image: url("./img/bg.jpg");
   background-size: 150px 150px;
   position: fixed;
   top: -4000px;
@@ -266,6 +266,7 @@ footer {
 }
 
 footer img {
-  height: 250px;
+  height: 150px;
   width: auto;
+  margin: 3rem 1.5rem 2rem;
 }
