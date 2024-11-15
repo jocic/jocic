@@ -93,6 +93,10 @@ void MainWindow::on_Scan_Finished() {
 
 void MainWindow::on_Connected() {
     
+    ui->cb_Devices->setEnabled(false);
+    ui->btn_Scan->setEnabled(false);
+    ui->btn_Connect->setEnabled(true);
+    
     ui->btn_TH0->setEnabled(true);
     ui->btn_TH1->setEnabled(true);
     ui->btn_TH2->setEnabled(true);
@@ -202,6 +206,22 @@ void MainWindow::on_btn_Connect_clicked()
     if (ui->btn_Connect->text() == "Disconnect") {
         
         m_BTE_Socket->disconnectFromService();
+        
+        delete m_BTE_Socket;
+        
+        ///////////////////
+        
+        m_BTE_Socket = new QBluetoothSocket(QBluetoothServiceInfo::Protocol::RfcommProtocol);
+        
+        connect(m_BTE_Socket, &QBluetoothSocket::connected,
+            this, &MainWindow::on_Connected);
+        
+        connect(m_BTE_Socket, &QBluetoothSocket::disconnected,
+            this, &MainWindow::on_Disconnected);
+        
+        connect(m_BTE_Socket, &QBluetoothSocket::errorOccurred,
+            this, &MainWindow::on_Error);
+        
     }
     else {
         
